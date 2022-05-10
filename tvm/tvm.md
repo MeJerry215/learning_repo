@@ -355,11 +355,74 @@ def @main(%data: Tensor[(96, 64), float16], %weight: Tensor[(64, 64), float16]) 
 }
 ```
 
-在原来的nn.dense之外多加了一层function 封装了Composite属性，属性即pattern的名字。然后调用%0定义的fn。
+在原来的nn.dense之外多加了一层function 封装了Composite属性，属性即pattern的名字。然后调用%0定义的fn。**综上MergeComposite 就是标记这部分op子图可以使用cutlass来运行。**
 
+AnnotateTarget 这个Pass的功能相对来说说比较简单，就是标记哪些op应该使用cutlass编译器，而不是使用原来的后端编译器。
 
+```
+def @main(%data: Tensor[(96, 64), float16], %weight: Tensor[(64, 64), float16]) -> Tensor[(96, 64), float32] {
+  %0 = annotation.compiler_begin(%data, compiler="cutlass") /* ty=Tensor[(96, 64), float16] */;
+  %1 = annotation.compiler_begin(%weight, compiler="cutlass") /* ty=Tensor[(64, 64), float16] */;
+  %2 = fn (%FunctionVar_0_0: Tensor[(96, 64), float16], %FunctionVar_0_1: Tensor[(64, 64), float16], PartitionedFromPattern="nn.dense_", Composite="cutlass.dense") -> Tensor[(96, 64), float32] {
+    nn.dense(%FunctionVar_0_0, %FunctionVar_0_1, units=None, out_dtype="float32") /* ty=Tensor[(96, 64), float32] */
+  };
+  %3 = %2(%0, %1) /* ty=Tensor[(96, 64), float32] */;
+  annotation.compiler_end(%3, compiler="cutlass") /* ty=Tensor[(96, 64), float32] */
+}
+```
 
+然后是切分子图PartitionGraph， 对于虽然使用cutlass也是在gpu backend上跑的，但是这边后面为了更好的处理图，将cutlass子图部分给切出来。
 
+```
+def @main(%data: Tensor[(96, 64), float16], %weight: Tensor[(64, 64), float16]) -> Tensor[(96, 64), float32] {
+  @tvmgen_default_cutlass_main_0(%data, %weight) /* ty=Tensor[(96, 64), float32] */
+}
+
+def @tvmgen_default_cutlass_main_0(%cutlass_0_i0: Tensor[(96, 64), float16], %cutlass_0_i1: Tensor[(64, 64), float16], Inline=1, Compiler="cutlass", global_symbol="tvmgen_default_cutlass_main_0", Primitive=1) -> Tensor[(96, 64), float32] {
+  %0 = fn (%FunctionVar_0_0: Tensor[(96, 64), float16], %FunctionVar_0_1: Tensor[(64, 64), float16], PartitionedFromPattern="nn.dense_", Composite="cutlass.dense") -> Tensor[(96, 64), float32] {
+    nn.dense(%FunctionVar_0_0, %FunctionVar_0_1, units=None, out_dtype="float32") /* ty=Tensor[(96, 64), float32] */
+  };
+  %0(%cutlass_0_i0, %cutlass_0_i1) /* ty=Tensor[(96, 64), float32] */
+}
+```
+
+得到上面的子图就可以对Compiler类型的op单独提取出来进行tune_cutlass_kernel。
+
+**tune_cutlass_kernels**
+
+```python
+def tune_cutlass_kernels(mod, sm, use_3xtf32=True, split_k_slices=[1],
+    profile_all_alignments=False, find_first_valid=False,
+    use_multiprocessing=False, tmp_dir="./tmp",):
+    gemm_profiler = CutlassGemmProfiler(sm, _get_cutlass_path(), tmp_dir)
+    conv2d_profiler = CutlassConv2DProfiler(sm, _get_cutlass_path(), tmp_dir)
+    num_cutlass_partition = 0
+    for var in mod.get_global_vars():
+        fun_name = var.name_hint
+        if "cutlass" in fun_name:
+            ...
+            if "conv2d" in op_type:
+                ...
+                new_attrs.update(handle_conv2d(...))
+            elif "batch_matmul" in op_type:
+                new_attrs.update(handle_batch_matmul(...))
+            elif "dense" in op_type:
+                new_attrs.update(handle_dense(...))
+            else:
+                raise ValueError("%s unsupported composite" % op_type)
+
+            new_attrs = tvm.ir.make_node("DictAttrs", **new_attrs)
+            new_func = relay.Function(...)
+            mod.update_func(var, new_func)
+
+    return mod, num_cutlass_partition
+```
+
+tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlass func，只要名字中存在cutlass，就是要使用cutlass处理的op在上一步PartitionGraph中单独切出来的tvmgen_default_cutlass_main_0 就是要单独调优处理的函数。
+
+这里的gemm_profiler和conv2d_profiler是对cutlass codegen调用以及性能profile。对于不同的op存在不同的profiler。
+
+而在handle_conv2d, handle_batch_matmul, handle_dense,  封装调用的返回属性，主要是将cutlass的源代码kernel给编译进来了，以及调用profiler。其主要流程是调用了select_gemm_kernel这个函数。就
 
 
 
