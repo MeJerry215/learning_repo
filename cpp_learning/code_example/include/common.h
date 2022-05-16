@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
-
+#include <exception>
 #define SIZE(arr, T) (sizeof(arr)/sizeof(T))
 
 template<typename T>
