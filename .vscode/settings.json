@@ -45,7 +45,8 @@
         "tuple": "cpp",
         "utility": "cpp",
         "fstream": "cpp",
-        "sstream": "cpp"
+        "sstream": "cpp",
+        "climits": "cpp"
     },
     "astyle.cmd_options": [
         "--style=k&r",
