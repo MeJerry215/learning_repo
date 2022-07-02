@@ -17,7 +17,6 @@ public:
             } else {
                 cur = nums2[p2--];
             }
-            
             nums1[tail--] = cur;
         }
     }

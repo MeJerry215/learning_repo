@@ -31,6 +31,7 @@ using std::string;
 #include <climits>
 
 #include <queue>
+using std::priority_queue;
 using std::queue;
 
 #include <map>
@@ -41,6 +42,15 @@ using std::unordered_map;
 
 #include <unordered_set>
 using std::unordered_set;
+
+struct ListNode
+{
+    int val;
+    ListNode *next;
+    ListNode() : val(0), next(nullptr) {}
+    ListNode(int x) : val(x), next(nullptr) {}
+    ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
 
 extern void TestSolution();
 int main(int argc, char const *argv[])
@@ -74,4 +84,25 @@ void print_mat(vector<vector<T>> &mat)
         }
         cout << endl;
     }
+}
+
+// template<const int SIZE>
+ListNode* make_list_node(vector<int> arr) {
+    ListNode* head = new ListNode(0);
+    ListNode* cur = head;
+    for(int i = 0; i < arr.size(); i ++) {
+        cur->next = new ListNode(arr[i]);
+        cur = cur->next;
+    }
+    return head->next;
+}
+
+
+
+void print_list_node(ListNode* head) {
+    while(head) {
+        cout << head->val << " ";
+        head = head->next;
+    }
+    cout << endl;
 }
