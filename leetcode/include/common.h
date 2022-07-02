@@ -43,6 +43,9 @@ using std::unordered_map;
 #include <unordered_set>
 using std::unordered_set;
 
+#include <cstring>
+using std::memset;
+
 struct ListNode
 {
     int val;
