@@ -34,10 +34,30 @@ public:
         中位数， 即在有序n 长度数组中，小于中位数存在n / 2的元素， 大于中位数的元素存在 n/2个
         */
         int size = nums1.size() + nums2.size();
-        int before = 0, cur = 0;
-        int i = 0;
-        for(; i < size / 2; i++) {
-
+        double before = 0, cur = 0;
+        int i = 0, j = 0, k = 0;
+        nums1.push_back(INT_MAX);
+        nums2.push_back(INT_MAX);
+        for(; i <= size / 2; i++) {
+            before = cur;
+            if (nums1[j] < nums2[k]) {
+                cur = nums1[j++];
+            } else {
+                cur = nums2[k++];
+            }
+        }
+        cout << before << " " << cur << endl;
+        if (size % 2 == 0) {
+            return (before + cur) / 2;
+        } else {
+            return cur;
         }
     }
 };
+
+void TestSolution() {
+    Solution s;
+    vector<int> v1 = {};
+    vector<int> v2 = {};
+    cout << s.findMedianSortedArrays(v1, v2) << endl;
+}
