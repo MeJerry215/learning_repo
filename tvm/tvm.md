@@ -422,7 +422,18 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 这里的gemm_profiler和conv2d_profiler是对cutlass codegen调用以及性能profile。对于不同的op存在不同的profiler。
 
-而在handle_conv2d, handle_batch_matmul, handle_dense,  封装调用的返回属性，主要是将cutlass的源代码kernel给编译进来了，以及调用profiler。其主要流程是调用了select_gemm_kernel这个函数。就
+而在handle_conv2d, handle_batch_matmul, handle_dense,  封装调用的返回属性，主要是将cutlass的源代码kernel给编译进来了，以及调用profiler。其主要流程是调用了select_gemm_kernel这个函数。这个函数就是使用之前的profiler(CutlassGemmProfiler, CutlassConv2DProfiler)来对各种kernel进行profile操作，选择出最优kernel或者默认的kernel。
+
+对于Profiler `__init__`方法 初始化ProfileEngine，`get_default`方法获取默认的kernel实现，`select_op`为profile核心实现，而`profile`方法则是包含了选择合适的op然后调用`create_gemm_operator_with_epilogue`或者`create_conv2d_operator_with_epilogue`封装成opdef 。
+
+**select_op**
+
+```python
+```
+
+
+
+
 
 
 
