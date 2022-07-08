@@ -10,6 +10,9 @@ sudo groupadd docker          #添加docker用户组
 sudo gpasswd -a $USER docker  #将当前用户添加至docker用户组
 newgrp docker                 #更新docker用户组
 
+# 查询apt 软件安装位置
+dpkg -L 软件名
+
 # ping 工具安装
 apt-get install inetutils-ping
 
@@ -109,3 +112,8 @@ sudo docker run --name "gpu_tvm_v2_zhanglei" --gpus all --shm-size=1g --ulimit m
 
 ```
 
+
+
+[python extract path](https://www.csdn.net/tags/NtTakg2sNDM1OS1ibG9n.html)
+
+[有效筛选github的issue](https://docs.github.com/cn/search-github/searching-on-github/searching-issues-and-pull-requests)

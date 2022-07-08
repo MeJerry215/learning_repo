@@ -2,6 +2,30 @@
 
 [TOC]
 
+## relay frontend
+
+tvm的relay frontend 提供了将源平台的模型转换为relay图表示的能力，也是了解tvm的relay图中较为基础也是比较容易上手的一部分，也便于对于后续的pass优化有很好的了解。
+
+代码目录 `python/tvm/relay/frontend`。tvm提供了mxnet、tensorflow、onnx、pytorch、caffe主流平台的模型转化为relay模型的接口。通俗的讲就是将目标平台的模型文件中的**算子映射到TVM中支持的op**，然后重构出计算图。提供的接口为from_xxxx(), xxxx为对应平台。
+
+在tvm中一个比较重要的数据结构为IRModule，tvm.IRModule，tvm更像一个map，key就是函数名，而val则是函数，除此以外还有type的定义。
+
+这个过程中转换出来得到得到的是mod和 params，mod就是IRModule，而mod是不包含权值的，权值则是在params中以键值对的形式保存。
+
+IRModule则是计算图的定义，则目标平台的模型经过这一步骤被转化为图定义和权值定义。
+
+在构造完图之后一般都会经过一个操作`analysis.free_vars`， 这个操作就是获取到图中函数所有未绑定的变量Var。参数中的一部分Var被分离成了params中的权值，而剩下的一部分则作为函数的输入，但是在权值中找不到。那么就说明这是函数的输入变量。
+
+
+
+## relay build
+
+relay build会将模型转换为可执行的对应平台的的lib
+
+
+
+
+
 ## TVM中Object
 
 在tvm中基本上所有的类都来自于Object, 在object.h文件定义，根据注释base class of all  object container，对于任何继承该类的类都应该声明`_type_index`、`_type_key`、`_type_final`、`_type_child_slots`、`_type_child_slots_can_overflow`
@@ -435,6 +459,54 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 
 
+## 有趣的链接
+
+[TVM InferBound Pass](https://tvm.apache.org/docs/arch/inferbound.html)
+
+[Relay Visualize, Relay Debug 脚本](https://tvm.apache.org/docs/how_to/work_with_relay/using_relay_viz.html)
+
+[Dense Cpu 优化](https://tvm.apache.org/docs/how_to/optimize_operators/opt_gemm.html)
+
+[MLSys](https://proceedings.mlsys.org/paper/2022)
+
+[Relay Viz](https://github.com/hcho3/relayviz)
+
+## 单笔提交修改
+
+[batch matmul int8 support && batch_matmul quantization](https://github.com/apache/tvm/commit/90dce48de6ca74a439ed24fc3a3d80d57b305dd0)
+
+[引入TensorRT 以及Cutlass的修改](https://github.com/apache/tvm/pull/11979/files)
+
+[pytorch front end 添加l1 loss mseloss](https://github.com/apache/tvm/pull/11978/files)
+
+[onnx front end 添加op支持](https://github.com/apache/tvm/pull/11894/files)
+
+
+
+
+
+MetaSchedule
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 更多Mermaid用法参考 [mermaid js](https://mermaid-js.github.io/mermaid/#/classDiagram)
@@ -593,4 +665,8 @@ graph LR
             clickContact --> enterContactView
         end
 ```
+
+
+
+
 
