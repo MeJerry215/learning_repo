@@ -457,6 +457,38 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 
 
+## Transform Pass
+
+- InferType
+- FoldScaleAxis
+- RemoveUnusedFunctions
+- SimplifyInference
+- FastMath
+- CanonicalizeOps
+- DeadCodeElimination
+- FoldConstant
+- FuseOps
+- DefuseOps
+- CombineParallelConv2D
+- CombineParallelDense
+- CombineParallelBatchMatmul
+- BatchingOps
+- AlterOpLayout
+- ConvertLayout
+- Legalize
+- MergeComposite
+- ToANormalForm
+- CanonicalizeCast
+- PartitionGraph
+- AnnotateTarget
+- Inline
+- PlanDevices
+- ToMixedPrecision
+
+
+
+
+
 
 
 ## 有趣的链接
@@ -483,9 +515,11 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 
 
+## 论文
+
+[Attention is All your Need](https://arxiv.org/pdf/1706.03762.pdf)
 
 
-MetaSchedule
 
 
 

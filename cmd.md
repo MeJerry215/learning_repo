@@ -77,7 +77,7 @@ sudo docker exec -it container_bi_20220422 /bin/bash
 reverent_lamarr
 # 将运行的镜像保存为可加载镜像，以便后续拉起
 sudo docker commit 14478deb892d tvm_gpu_test_images
-sudo docker run --name "gpu_tvm_v1_zhanglei" --gpus all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -it --rm -v /home/lei.zhang/:/home/lei.zhang/ -v /mnt/nas/:/mnt/nas/ --privileged  2912baf2ad18
+sudo docker run --name "gpu_tvm_v1_zhanglei" --gpus all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -it --rm -v /home/lei.zhang/:/home/lei.zhang/ -v /mnt/nas/:/mnt/nas/    2912baf2ad18
 
 sudo -s
 # adduser user.name --force-badname
@@ -117,3 +117,7 @@ sudo docker run --name "gpu_tvm_v2_zhanglei" --gpus all --shm-size=1g --ulimit m
 [python extract path](https://www.csdn.net/tags/NtTakg2sNDM1OS1ibG9n.html)
 
 [有效筛选github的issue](https://docs.github.com/cn/search-github/searching-on-github/searching-issues-and-pull-requests)
+
+
+
+![image-20220712224940831](D:\Repo\learning_repo\cmd.assets\image-20220712224940831.png)
