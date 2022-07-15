@@ -503,6 +503,10 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 [Relay Viz](https://github.com/hcho3/relayviz)
 
+[Graph Partition RFC](https://discuss.tvm.apache.org/t/rfc-byoc-an-extended-graph-partitioning-flow/6028/2)
+
+[Graph Patttern Match](https://discuss.tvm.apache.org/t/rfc-relay-program-matching-for-relay-pt-1-a-pattern-language/5833/25)
+
 ## 单笔提交修改
 
 [batch matmul int8 support && batch_matmul quantization](https://github.com/apache/tvm/commit/90dce48de6ca74a439ed24fc3a3d80d57b305dd0)
