@@ -9,6 +9,7 @@ using std::max;
 using std::min;
 using std::reverse;
 using std::sort;
+using std::find;
 
 #include <iostream>
 using std::cout;
@@ -27,6 +28,7 @@ using std::pair;
 
 #include <string>
 using std::string;
+using std::swap;
 
 #include <climits>
 
@@ -46,6 +48,7 @@ using std::unordered_set;
 #include <cstring>
 using std::memset;
 
+#include <cassert>
 struct ListNode
 {
     int val;
@@ -53,6 +56,15 @@ struct ListNode
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 extern void TestSolution();
@@ -69,6 +81,22 @@ void print_vec(vector<T> &vec)
     for (size_type i = 0; i < vec.size(); i++)
     {
         cout << vec[i] << "\t";
+    }
+    cout << endl;
+}
+
+template <>
+void print_vec(vector<vector<int>> &vec)
+{
+    typedef typename vector<vector<int>>::size_type size_type;
+    for (size_type i = 0; i < vec.size(); i++)
+    {
+        cout << "(" ;
+        for (int j = 0; j < vec[i].size(); j++)
+        {
+            cout << vec[i][j] << ",";
+        }
+        cout << "),";
     }
     cout << endl;
 }
@@ -90,20 +118,22 @@ void print_mat(vector<vector<T>> &mat)
 }
 
 // template<const int SIZE>
-ListNode* make_list_node(vector<int> arr) {
-    ListNode* head = new ListNode(0);
-    ListNode* cur = head;
-    for(int i = 0; i < arr.size(); i ++) {
+ListNode *make_list_node(vector<int> arr)
+{
+    ListNode *head = new ListNode(0);
+    ListNode *cur = head;
+    for (int i = 0; i < arr.size(); i++)
+    {
         cur->next = new ListNode(arr[i]);
         cur = cur->next;
     }
     return head->next;
 }
 
-
-
-void print_list_node(ListNode* head) {
-    while(head) {
+void print_list_node(ListNode *head)
+{
+    while (head)
+    {
         cout << head->val << " ";
         head = head->next;
     }
