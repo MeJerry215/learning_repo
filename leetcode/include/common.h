@@ -139,3 +139,47 @@ void print_list_node(ListNode *head)
     }
     cout << endl;
 }
+
+TreeNode* make_tree_node(vector<int> arr) {
+    vector<TreeNode*> tmp(arr.size(), nullptr);
+    for(int i = 0; i < arr.size(); i++) {
+        if (arr[i] != INT_MIN) {
+            tmp[i] = new TreeNode(arr[i]);
+        }
+    }
+    // 0 1 2 3 4 5 6 7 8
+    /*              0
+                /       \
+               1         2
+            /   \      /   \
+           3     4    5     6
+    */
+    for(int i = 1; i < arr.size(); i++) {
+        TreeNode* parent = tmp[(i - 1) / 2];
+        if (!parent) continue;
+        if (i % 2 == 0) {
+            parent->right = tmp[i];
+        } else {
+            parent->left = tmp[i];
+
+        }
+    }
+    return tmp[0];
+}
+
+void bfs_tree_node(TreeNode* node) {
+    queue<TreeNode*> node_queue;
+    node_queue.push(node);
+    while(!node_queue.empty()) {
+        TreeNode* cur = node_queue.front();
+        node_queue.pop();
+        if (cur) {
+            cout << cur->val << "\t";
+            node_queue.push(cur->left);
+            node_queue.push(cur->right);
+        } else {
+            cout << "null" << "\t";
+        }
+    }
+    cout << endl;
+}

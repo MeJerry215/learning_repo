@@ -4,17 +4,17 @@
             "name": "Win32",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${workspaceFolder}/leetcode/include"
+                "${workspaceFolder}/leetcode/include/"
             ],
             "defines": [
                 "_DEBUG",
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "E:\\program\\mingw64\\bin\\gcc.exe",
+            "compilerPath": "D:\\program\\mingw64\\bin\\gcc.exe",
             "cStandard": "gnu17",
             "cppStandard": "gnu++14",
-            "intelliSenseMode": "windows-gcc-x64",
+            "intelliSenseMode": "windows-gcc-x64"
         }
     ],
     "version": 4
