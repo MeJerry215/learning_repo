@@ -59,25 +59,7 @@ def prerequisite_optimize(mod, params=None):
 
 在上述过程中只是进行一些通用的优化，来使得图更加的简洁。
 
-再之后使用的是4个主要pass: `partition`、`annotate`、`calibrate_pass`、`InferType`，而这4个pass的则是依赖三个Pass：`QuantizeAnnotate`、`QuantizeCalibrate`、`QuantizeRealize`。
+在这之后就是量化的核心Pass：
 
-```c++
-IRModule Pass::operator()(IRModule mod, const PassContext& pass_ctx) const {
-  const PassNode* node = operator->();
-  ICHECK(node != nullptr);
-  const PassInfo& pass_info = node->Info();
-  if (!pass_ctx.InstrumentBeforePass(mod, pass_info)) {
-    DLOG(INFO) << "Skipping pass : " << pass_info->name
-               << " with opt level: " << pass_info->opt_level;
-    return mod;
-  }
-  auto ret = node->operator()(std::move(mod), pass_ctx);
-  pass_ctx.InstrumentAfterPass(ret, pass_info);
-  return std::move(ret);
-}
-```
-
-`required_pass`则是表示这个Pass调用的时候提前调用到了`InstrumentBeforePass`将require的pass提前调用一把，然后再执行当前的Pass。
-
-而当前的Pass则是执行SequentialPass, SequentialPass中添加的Pass则会按照添加的顺序，顺序执行。
+首先第一个Pass就是`QuantizePartition`, 
 
