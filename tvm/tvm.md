@@ -517,7 +517,9 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 [onnx front end 添加op支持](https://github.com/apache/tvm/pull/11894/files)
 
+[表达式简化, add add相消](https://github.com/apache/tvm/pull/9671/files#diff-c75f1092effd03b7a1415b51dab46e72a2ea137bf8051af9181bedbbf1d147a9)
 
+[Relay 可视化 Call Op](https://github.com/apache/tvm/commit/55cfc4ad2df0120411b6b5ae2a2f28d8b467a25a#diff-ffafde7b705a970be1cee1482b34bf75960d1b402c1cafa186344885ecb77f74)
 
 ## 论文
 
