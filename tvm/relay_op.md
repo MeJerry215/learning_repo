@@ -170,7 +170,7 @@ class OpNode : public RelayExprNode {
    TVM_REGISTER_GLOBAL("relay.op.nn._make.bias_add").set_body_typed(MakeBiasAdd);
    ```
    
-   从Op构造函数一般化到其他网络中的op，都是使用Call 封装了实际Op节点，Op抽象了节点，抽象成几个输入几个输出、输入什么shape、输出什么shape、op名称、计算方式。而Op的一些参数信息则是绑定到Call上面
+   从Op构造函数一般化到其他网络中的op，都是使用Call 封装了实际Op节点，Op抽象了节点，抽象成几个输入几个输出、输入什么shape、输出什么shape、op名称、计算方式。而Op的一些参数实体信息则是绑定到Call上面
    
 4. 提供上层python接口
    
@@ -199,4 +199,63 @@ class OpNode : public RelayExprNode {
    ````
    
    batch_norm的输出结果直接用TupleWrapper封装，描述存在3个输出
+
+
+
+这里推荐两个可视化工具，一个是
+
+github的官方提交的可视化工具
+
+https://github.com/apache/tvm/commit/55cfc4ad2df0120411b6b5ae2a2f28d8b467a25a#diff-ffafde7b705a970be1cee1482b34bf75960d1b402c1cafa186344885ecb77f74
+
+https://xinetzone.github.io/tvm-book/tutorials/ir/relay_viz.html
+
+```python
+data = relay.var("data")
+bias = relay.var("bias")
+add_op = relay.add(data, bias)
+add_func = relay.Function([data, bias], add_op)
+add_gvar = relay.GlobalVar("AddFunc")
+
+input0 = relay.var("input0")
+input1 = relay.var("input1")
+input2 = relay.var("input2")
+add_01 = relay.Call(add_gvar, [input0, input1])
+add_012 = relay.Call(add_gvar, [input2, add_01])
+main_func = relay.Function([input0, input1, input2], add_012)
+main_gvar = relay.GlobalVar("main")
+
+mod = tvm.IRModule({main_gvar: main_func, add_gvar: add_func})
+
+######################################################################
+# Render the graph with Relay Visualizer on the terminal
+# ------------------------------------------------------
+# The terminal can show a Relay IR module in text similar to clang AST-dump.
+# We should see ``main`` and ``AddFunc`` function. ``AddFunc`` is called twice in the ``main`` function.
+viz = relay_viz.RelayVisualizer(mod)
+viz.render()
+
+viz = RelayVisualizer(mod, plotter=DotPlotter())
+viz.render("add")
+```
+
+
+
+这个工具则从图的构图的基础上描述了图
+
+![image-20220720144839491](D:\Repo\learning_repo\tvm\relay_op.assets\image-20220720144839491.png)
+
+CallNode的op部分就是函数的计算函数，可以是expr 也是是function，其后紧接着的是args，这里并没有打印出属性节点。
+
+在上图中GlobalVar AddFunc 就是op， `Var(Input) name_hint:input1` 和`Var(Input) name_hint:input2` 就是图的args
+
+另外一个是
+
+知乎博主 Archer 文章[【我与TVM二三事 前篇（2）】relay optimize准备知识](https://zhuanlan.zhihu.com/p/457131758) 中提到的工具
+
+https://github.com/Archermmt/tvm_walk_through/blob/master/visualize.py
+
+这个工具相对更加关注op之间的关系
+
+![image-20220720144808982](D:\Repo\learning_repo\tvm\relay_op.assets\image-20220720144808982.png)
 
