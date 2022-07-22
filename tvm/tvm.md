@@ -521,6 +521,8 @@ tune_cutlass_kernels的实现也是相对来说流程很清晰，获取到cutlas
 
 [Relay 可视化 Call Op](https://github.com/apache/tvm/commit/55cfc4ad2df0120411b6b5ae2a2f28d8b467a25a#diff-ffafde7b705a970be1cee1482b34bf75960d1b402c1cafa186344885ecb77f74)
 
+[Pytorch JIT Trace 直接导入](https://github.com/neo-ai/tvm/pull/63/files#diff-c3944b64b67ba0ac07ec0485386d9862175081224fe93cb49624da4c5cd2be41)
+
 ## 论文
 
 [Attention is All your Need](https://arxiv.org/pdf/1706.03762.pdf)
