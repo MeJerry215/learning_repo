@@ -41,7 +41,6 @@ public:
         bool dp[s1.size() + 1][s2.size() + 1];
         // 0, 0 必然能够组成s3 的0个元素
         dp[0][0] = true;
-        cout << s1.size() << " " << s2.size() << " " << s3.size() <<endl;
         for (int i = 0; i <= s1.size(); i++) {
             for(int j = 0; j <= s2.size(); j++) {
                 if (i == 0 && j == 0) continue;

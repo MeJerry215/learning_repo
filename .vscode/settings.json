@@ -19,6 +19,8 @@
         "tuple": "cpp",
         "initializer_list": "cpp",
         "utility": "cpp",
-        "deque": "cpp"
+        "deque": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp"
     }
 }
