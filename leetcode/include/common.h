@@ -9,6 +9,7 @@ using std::max;
 using std::min;
 using std::reverse;
 using std::sort;
+using std::find;
 
 #include <iostream>
 using std::cout;
@@ -27,6 +28,7 @@ using std::pair;
 
 #include <string>
 using std::string;
+using std::swap;
 
 #include <climits>
 
@@ -46,6 +48,7 @@ using std::unordered_set;
 #include <cstring>
 using std::memset;
 
+#include <cassert>
 struct ListNode
 {
     int val;
@@ -53,6 +56,15 @@ struct ListNode
     ListNode() : val(0), next(nullptr) {}
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
+};
+
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode() : val(0), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
 extern void TestSolution();
@@ -69,6 +81,22 @@ void print_vec(vector<T> &vec)
     for (size_type i = 0; i < vec.size(); i++)
     {
         cout << vec[i] << "\t";
+    }
+    cout << endl;
+}
+
+template <>
+void print_vec(vector<vector<int>> &vec)
+{
+    typedef typename vector<vector<int>>::size_type size_type;
+    for (size_type i = 0; i < vec.size(); i++)
+    {
+        cout << "(" ;
+        for (int j = 0; j < vec[i].size(); j++)
+        {
+            cout << vec[i][j] << ",";
+        }
+        cout << "),";
     }
     cout << endl;
 }
@@ -90,22 +118,68 @@ void print_mat(vector<vector<T>> &mat)
 }
 
 // template<const int SIZE>
-ListNode* make_list_node(vector<int> arr) {
-    ListNode* head = new ListNode(0);
-    ListNode* cur = head;
-    for(int i = 0; i < arr.size(); i ++) {
+ListNode *make_list_node(vector<int> arr)
+{
+    ListNode *head = new ListNode(0);
+    ListNode *cur = head;
+    for (int i = 0; i < arr.size(); i++)
+    {
         cur->next = new ListNode(arr[i]);
         cur = cur->next;
     }
     return head->next;
 }
 
-
-
-void print_list_node(ListNode* head) {
-    while(head) {
+void print_list_node(ListNode *head)
+{
+    while (head)
+    {
         cout << head->val << " ";
         head = head->next;
+    }
+    cout << endl;
+}
+
+TreeNode* make_tree_node(vector<int> arr) {
+    vector<TreeNode*> tmp(arr.size(), nullptr);
+    for(int i = 0; i < arr.size(); i++) {
+        if (arr[i] != INT_MIN) {
+            tmp[i] = new TreeNode(arr[i]);
+        }
+    }
+    // 0 1 2 3 4 5 6 7 8
+    /*              0
+                /       \
+               1         2
+            /   \      /   \
+           3     4    5     6
+    */
+    for(int i = 1; i < arr.size(); i++) {
+        TreeNode* parent = tmp[(i - 1) / 2];
+        if (!parent) continue;
+        if (i % 2 == 0) {
+            parent->right = tmp[i];
+        } else {
+            parent->left = tmp[i];
+
+        }
+    }
+    return tmp[0];
+}
+
+void bfs_tree_node(TreeNode* node) {
+    queue<TreeNode*> node_queue;
+    node_queue.push(node);
+    while(!node_queue.empty()) {
+        TreeNode* cur = node_queue.front();
+        node_queue.pop();
+        if (cur) {
+            cout << cur->val << "\t";
+            node_queue.push(cur->left);
+            node_queue.push(cur->right);
+        } else {
+            cout << "null" << "\t";
+        }
     }
     cout << endl;
 }
