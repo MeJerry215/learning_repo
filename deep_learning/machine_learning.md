@@ -26,7 +26,7 @@ Unsupervised Learning: Give X without Y, find the feature. K-means cluster
 
 Reinforce Learning
 
-
+https://github.com/tensorflow/models/tree/master/research/slim
 
 ## Supervised Learning
 
