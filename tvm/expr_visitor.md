@@ -6,7 +6,7 @@
 
 参考[TVM之设计模式解读（一）--visitor模式](https://zhuanlan.zhihu.com/p/341334406)
 
-
+## ExprFunctor
 
 对于表达式的访问类的基类都是`ExprFunctor`
 
@@ -50,7 +50,11 @@ private:
 }
 ```
 
-`ExprFunctor`内部维护了虚函数表，每个Node都存在type_index，根据node注册的type_index选择合适的的VisitExpr函数执行。在这个类中并没有进行遍历的逻辑，而是定义方法行为。这里看另外一个实现`ExprVisitor`，如果要对特定属性进行访问可以继承`ExprVisitor`，默认实现`ExprVisitor`访问了所有结点的所有属性。
+`ExprFunctor`内部维护了虚函数表，每个Node都存在type_index，根据node注册的type_index选择合适的的VisitExpr函数执行。在这个类中并没有进行遍历的逻辑，而是定义方法行为。
+
+## ExprVisitor
+
+这里看另外一个实现`ExprVisitor`，如果要对特定属性进行访问可以继承`ExprVisitor`，默认实现`ExprVisitor`访问了所有结点的所有属性。
 
 ```c++
 class ExprVisitor : public ::tvm::relay::ExprFunctor<void(const Expr& n)> {
@@ -78,7 +82,7 @@ class ExprVisitor : public ::tvm::relay::ExprFunctor<void(const Expr& n)> {
 };
 ```
 
-首先看`VisitExpr`方法，VisitExpr方法对于访问进行了计数，如果op访问过则计数加一，没有访问过则走父类的虚函数表执行对应的VisitExpr_函数。
+首先看`VisitExpr`方法，VisitExpr方法对于访问进行了计数，如果op访问过则计数加一，**没有访问过则走父类的虚函数表执行对应的VisitExpr_函数**。
 
 ```c++
 void ExprVisitor::VisitExpr(const Expr& expr) {
@@ -96,6 +100,14 @@ void ExprVisitor::VisitExpr(const Expr& expr) {
 这里简单看一下某几种op的实现
 
 ```c++
+class CallNode : public ExprNode {
+ public:
+  Expr op;
+  tvm::Array<relay::Expr> args;
+  Attrs attrs;
+  tvm::Array<Type> type_args;
+}
+
 void ExprVisitor::VisitExpr_(const CallNode* op) {
   this->VisitSpan(op->span);
   this->VisitExpr(op->op);
@@ -118,6 +130,15 @@ void ExprVisitor::VisitExpr_(const VarNode* op) {
 ```
 
 对特定的节点访问其内部所有节点。所以默认的ExprVisitor的功能，除了op计数没有其他功能了。
+
+这里有个注意点就是当执行具体VisitExpr_的时候，还原成对应Node实体的节点指针。
+
+```c++
+#define RELAY_EXPR_FUNCTOR_DISPATCH(OP)                                                    \
+  vtable.template set_dispatch<OP>([](const ObjectRef& n, TSelf* self, Args... args) {     \
+    return self->VisitExpr_(static_cast<const OP*>(n.get()), std::forward<Args>(args)...); \
+  });
+```
 
 当要进行扩展的时候，继承ExprVisitor，然后重写你感兴趣的节点的`VisitExpr_`函数即可。
 
@@ -144,5 +165,28 @@ class UseVarVisitor : public ExprVisitor {
 };
 ```
 
+## ExprFunctor
 
+既然存在访问，那么就存在对Expr的改写，`ExprFunctor`就是处理这种事情。ExprFunctor其主要实现在VisitExpr
+
+```c++
+Expr ExprMutator::VisitExpr(const Expr& expr) {
+  auto it = this->memo_.find(expr);
+  if (it != this->memo_.end()) {
+    return it->second;
+  } else {
+    Expr new_expr = ExprFunctor::VisitExpr(expr);
+    memo_[expr] = new_expr;
+    return new_expr;
+  }
+}
+```
+
+VisitExpr的memo 以及返回的都是new_expr，那么什么是new_expr。new_expr是你对expr本身做的一些修改，然后将新的节点返回回去。
+
+```c++
+Expr ExprMutator::VisitExpr_(const ConstantNode* op) { return GetRef<Expr>(op); }
+```
+
+因为Expr进来的时候进行了一次脱壳处理，即从Expr 转换为ExprNode，现在就是将ExprNode再次转换为Expr回去。
 
