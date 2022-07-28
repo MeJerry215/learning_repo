@@ -188,5 +188,80 @@ VisitExpr的memo 以及返回的都是new_expr，那么什么是new_expr。new_e
 Expr ExprMutator::VisitExpr_(const ConstantNode* op) { return GetRef<Expr>(op); }
 ```
 
-因为Expr进来的时候进行了一次脱壳处理，即从Expr 转换为ExprNode，现在就是将ExprNode再次转换为Expr回去。
+因为Expr进来的时候进行了一次脱壳处理，即从Expr 转换为ExprNode，现在就是将ExprNode再次转换为Expr回去。**GetRef总是指向同一元素，返回的Expr实际指向的数据指针仍然是op**。
 
+同样的是看一个简单的派生类`CastCanonicalizer`的实现，其只扩展了对于`CallNode`的实现，首先为什么会存在这样的实现，我们希望网络中总是传输较少的数据，这样可以节省带宽，如果正常场景下的融合，如下图左半部分，则conv+cast 融合，网络输出的是int32的数据。而转换为右图之后，conv的输出int8的结果，而融合节点下移变为cast + log、cast + relu的方式。这个Pass的核心思想是减少数据传输。如果以这个角度看
+
+```c++
+/*
+                conv                  conv
+                  | int8              /   \
+                cast        --->   cast   cast
+                /   \                |     |
+              log   relu            log    relu
+                \   /                 \   /
+                 add                   add
+*/
+
+Expr VisitExpr_(const CallNode *call) {
+    static auto fpattern = Op::GetAttrMap<TOpPattern>("TOpPattern");
+
+    if (const OpNode *opnode = call->op.as<OpNode>()) {
+        auto pattern = fpattern[GetRef<Op>(opnode)];
+        // 当前Op和之前的Op能够融合，主要考虑的是和前面一层的cast融合，所以有这个判断。
+        if (pattern <= kBroadcast) {
+            Array<Expr> call_args = call->args;
+            bool unchanged = true;
+            // 先遍历本Op的输入Op
+            for (size_t i = 0; i < call_args.size(); ++i) {
+                Expr arg = call_args[i];
+                Expr new_arg = GetNewCallArg(arg);
+                // 如果输入参数和产生的新参数不同则设置为新的参数
+                if (!arg.same_as(new_arg)) {
+                    call_args.Set(i, new_arg);
+                    unchanged = false;
+                }
+            }
+            // 如果没有改变则直接返回当前的封装，对图结构没有影响
+            if (unchanged) {
+                return GetRef<Expr>(call);
+            }
+            // 图发生了改变，重新构造一个新的Call, 主要是修改当前的输入，导致的入参改变
+            return Call(call->op, call_args, call->attrs, call->type_args);
+        }
+    }
+
+    Expr new_expr = ExprMutator::VisitExpr_(call);
+    return new_expr;
+}
+
+
+Expr GetNewCallArg(const Expr &e) {
+    // 先访问当前节点之前的节点DFS, 如果之前的节点发生改变那么就是产生了new expr, 没有就是没有产生新的节点等同于e
+    Expr new_expr = this->VisitExpr(e);
+
+    if (const CallNode *call = e.as<CallNode>()) {
+        // 只处理cast节点
+        if (call->op == cast_op_) {
+            auto attrs = call->attrs.as<CastAttrs>();
+            const auto *from_type = call->args[0]->type_as<TensorTypeNode>();
+            ICHECK(from_type);
+			// 只有低bit转换到高bit才有需要做转换
+            if (from_type->dtype.bits() < attrs->dtype.bits()) {
+                // 如果当前访问超过1次对于当前节点，则需要创建一个对于当前节点的拷贝，则产生一个分支。
+                if (++ref_counter_[call] > 1) {
+                    const CallNode *new_call = new_expr.as<CallNode>();
+                    ICHECK(new_call);
+                    ICHECK(new_call->op == cast_op_);
+                    return Call(new_call->op, new_call->args, new_call->attrs, new_call->type_args);
+                }
+            }
+        }
+    }
+    return new_expr;
+}
+```
+
+
+
+##
