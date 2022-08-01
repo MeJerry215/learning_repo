@@ -16,6 +16,20 @@ public:
 };
 
 
+class Base {
+public:
+    virtual void do_something() {
+        std::cout << "base" << std::endl;
+    }
+};
+
+class Derived : public Base{
+public:
+    virtual void do_something() override {
+         std::cout << "derived" << std::endl;
+    }
+};
+
 
 int main(int argc, char** argv) {
     // std::cout << "Enter two numbers:" << std::endl;
@@ -36,8 +50,10 @@ int main(int argc, char** argv) {
     // A b();
     // A a(2);
     // b.print();
-    void (*pf)(int* x) = nullptr;
-
-    
+    int a = 2;
+    int b = std::move(a);
+    std::cout << a << " " << b << std::endl;
+    Derived d;
+    d.Base::do_something();
     return 0;
 }
