@@ -159,3 +159,67 @@ void ParallelOpCombiner::CombineBranches(const Group& branches) {
 }
 ```
 
+然后就是如何将多路的Dense合并成一个Dense的呢？MakeCombinedOp的重写方法，直接将Dense的权值concat在axis=0的维度上。
+
+```c++
+/*
+	dense op的输入是 M * K x N * K的矩阵相乘, weight矩阵是转置过的
+	d1  M * K x N1 * K = M * N1
+	d2  M * K x N2 * K = M * N2
+	d3  M * K x N3 * K = M * N3
+	合并后的单个dense = M * K x (N1 + N2 + N3) * K的矩阵乘法
+	
+	
+*/
+
+Call MakeCombinedOp(const Group &branches) {
+    const Op &dense_op = Op::Get("nn.dense");
+    // dense 的两个输入data, weight, 通常来说第二个输入必然是权值, 对于第一个输入是共享输入的, 即公共的输入
+    Expr input = branches[0][0]->args[0];
+    Expr new_weight;
+    IndexExpr new_output_dims;
+    // 将weight合并， 即多个weight在axis=0的轴上进行拼接
+    std::tie(new_weight, new_output_dims) = TransformWeight(branches);
+    const auto *origin_attrs = branches[0][0]->attrs.as<DenseAttrs>();
+    ICHECK(origin_attrs);
+    // 生成新的DenseAttr以及Op
+    const auto dense_attrs = make_object<DenseAttrs>();
+    dense_attrs->units = new_output_dims;
+    dense_attrs->out_dtype = origin_attrs->out_dtype;
+    return Call(dense_op, {input, new_weight}, Attrs{dense_attrs}, {});
+}
+```
+
+判断dense后续的分支op是否参数兼容， 这里主要由一点就是原来的三路输出是 M * N1, M * N2, M * N3
+
+```c++
+bool IsArgCompatible(const CallNode *a, const CallNode *b, size_t index)
+{
+    StructuralEqual eq;
+    auto ta = a->args[index]->type_as<TensorTypeNode>();
+    auto tb = b->args[index]->type_as<TensorTypeNode>();
+    auto toutput_a = a->type_as<TensorTypeNode>();
+    auto toutput_b = b->type_as<TensorTypeNode>();
+    ICHECK(ta != nullptr && tb != nullptr && toutput_a != nullptr && toutput_b != nullptr);
+
+    if (!eq(ta->dtype, tb->dtype) || ta->shape.size() != tb->shape.size())
+    {
+        return false;
+    }
+    if (toutput_a->shape.size() < ta->shape.size() || toutput_b->shape.size() < tb->shape.size())
+    {
+        return false; // not broadcast/elemwise
+    }
+    if (ta->shape.size() > 0)
+    {
+        for (size_t i = 0; i < ta->shape.size() - 1; i++)
+        {
+            // shape dims must match except last dim
+            if (!eq(ta->shape[i], tb->shape[i]))
+                return false;
+        }
+    }
+    return true;
+}
+```
+
