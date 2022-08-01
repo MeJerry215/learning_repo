@@ -264,4 +264,30 @@ Expr GetNewCallArg(const Expr &e) {
 
 
 
-##
+## MixedModeVisitor
+
+在以上的`ExprVisitor`和`ExprFunctor`中，由于是递归调用的，当遇到大的模型时候，递归带来一个问题就是会爆栈如果深度太深。所以这就引入了后面的两个类，在遍历的时候扩展节点，减少递归深度。对于节点访问存在visit_limit的限制，每个节点最多访问visit_limit次数。
+
+```c++
+class MixedModeVisitor : public ::tvm::relay::ExprVisitor
+{
+public:
+    explicit MixedModeVisitor(int visit_limit = 1);
+
+    void VisitExpr(const Expr &expr) final;
+    void VisitExpr_(const CallNode *op) override;
+    void VisitExpr_(const TupleNode *op) override;
+    void VisitExpr_(const TupleGetItemNode *op) override;
+
+protected:
+
+    virtual void VisitLeaf(const Expr &expr);
+
+    virtual bool CheckVisited(const Expr &expr);
+
+    size_t visit_limit_;
+};
+```
+
+其中重写的三个VistExpr_函数对于CallNode、TupleNode、TupleGetItemNode没有实现，其他没有重写的函数都是集成自ExprVisitor将个个Node的元素访问一遍。重点需要关注的三个函数`VisitExpr`、`VisitLeaf`、`CheckVisited`。
+
