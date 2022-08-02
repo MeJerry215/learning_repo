@@ -165,9 +165,9 @@ class UseVarVisitor : public ExprVisitor {
 };
 ```
 
-## ExprFunctor
+## ExprMutator
 
-既然存在访问，那么就存在对Expr的改写，`ExprFunctor`就是处理这种事情。ExprFunctor其主要实现在VisitExpr
+既然存在访问，那么就存在对Expr的改写，`ExprMutator`就是处理这种事情。`ExprMutator`其主要实现在VisitExpr
 
 ```c++
 Expr ExprMutator::VisitExpr(const Expr& expr) {
@@ -291,3 +291,170 @@ protected:
 
 其中重写的三个VistExpr_函数对于CallNode、TupleNode、TupleGetItemNode没有实现，其他没有重写的函数都是集成自ExprVisitor将个个Node的元素访问一遍。重点需要关注的三个函数`VisitExpr`、`VisitLeaf`、`CheckVisited`。
 
+`MixedModeVisitor`自带备忘录memo，来统计节点访问的次数。当访问节点时，首先需要判断是否超过visit_limit，没超过则调用ExprFunctor中的虚函数表进行访问。
+
+```c++
+bool MixedModeVisitor::CheckVisited(const Expr& expr) {
+  if (visit_counter_[expr.get()] < visit_limit_) {
+    return false;
+  } else {
+    visit_counter_[expr.get()]++;
+    return true;
+  }
+}
+
+void MixedModeVisitor::VisitLeaf(const Expr& expr) {
+  if (visit_counter_[expr.get()] < visit_limit_) {
+    ExprFunctor::VisitExpr(expr);
+  }
+  visit_counter_[expr.get()]++;
+}
+```
+
+其最为重要的一个方法为`Visit_Expr`，将checkVisited函数以及VisitLeaf传给ExpandDataflow，然后访问节点。
+
+```c++
+template <typename FCheckVisited, typename FVisitLeaf>
+void ExpandDataflow(Expr expr, FCheckVisited fcheck_visited, FVisitLeaf fvisit_leaf) {
+  auto fexpand_expr = [](const Expr& expr) {
+    std::vector<Expr> result;
+    if (const CallNode* op = expr.as<CallNode>()) {
+      for (auto it = op->args.rbegin(); it != op->args.rend(); ++it) {
+        result.push_back(*it);
+      }
+      result.push_back(op->op);
+    } else if (const TupleNode* op = expr.as<TupleNode>()) {
+      for (auto it = op->fields.rbegin(); it != op->fields.rend(); ++it) {
+        result.push_back(*it);
+      }
+    } else if (const TupleGetItemNode* op = expr.as<TupleGetItemNode>()) {
+      result.push_back(op->tuple);
+    }
+    return result;
+  };
+  ExpandDataflow(expr, fcheck_visited, fvisit_leaf, fexpand_expr);
+}
+
+void MixedModeVisitor::VisitExpr(const Expr& expr) {
+  auto fcheck_visited = [this](const Expr& expr) { return this->CheckVisited(expr); };
+  auto fvisit_leaf = [this](const Expr& expr) { return this->VisitLeaf(expr); };
+  if (visit_counter_[expr.get()] < visit_limit_) {
+    ExpandDataflow(expr, fcheck_visited, fvisit_leaf);
+  }
+}
+```
+
+在`ExpandDataflow`中定义了如何扩展节点的lamda函数`fexpand_expr`来扩展三种类型的节点：`CallNode`、`TupleNode`、`TupleGetItemNode`。
+
+在主流程`ExpandDataflow`中
+
+```c++
+template <typename FCheckVisited, typename FVisitLeaf, typename FExpandExpr>
+void ExpandDataflow(Expr expr, FCheckVisited fcheck_visited, FVisitLeaf fvisit_leaf,
+                    FExpandExpr fexpand_expr) {
+  std::deque<v_info> stack;
+  // lamda函数定义了, 如果节点没有访问，压入栈中，栈先进后出，expr节点会最后访问到，而其前置节点都会在这之前访问
+  auto fpush_to_stack = [&fcheck_visited, &stack](const Expr& expr) {
+    if (!fcheck_visited(expr)) {
+      stack.emplace_front(v_info(expr));
+    }
+  };
+
+  fpush_to_stack(expr);
+  // 如果栈中还存在元素没有遍历
+  while (stack.size() > 0) {
+    v_info* front = &stack.front();
+    if (fcheck_visited(front->node)) { // 如果该元素已经访问, 则直接出栈
+      stack.pop_front();
+    } else if (front->children_expanded) { // 如果当前节点的子节点都已经展开，即已经遍历过，可以遍历本节点
+      fvisit_leaf(front->node);
+      stack.pop_front();
+    } else {
+      // 设置当前子节点展开标志，并将所有的子节点压栈，后进先出，当子节点全部遍历过后，则当前节点可以出栈。
+      front->children_expanded = true;
+      for (auto e : fexpand_expr(front->node)) {
+        fpush_to_stack(e);
+      }
+    }
+  }
+}
+```
+
+`MixedModeVistor`主要是将dfs的访问模式改变使用栈循环的访问模式，避免了调用栈过深导致的爆栈的可能。
+
+## MixedModeMutator
+
+`MixedModeMutator`支持修改节点的遍历器。本质上还是`MixedModeMutator`，只是在原来的`VisitExpr_`里面增加了`Rewrite`的逻辑。
+
+```c++
+Expr VisitExpr_(const CallNode *call_node) final { return Rewrite(call_node); };
+
+virtual Expr Rewrite_(const CallNode *pre, const Expr &post) { return post; }
+
+template <typename T>
+Expr Rewrite(const T *op) {
+    Expr post = ExprMutator::VisitExpr_(op);
+    return Rewrite_(op, post);
+}
+```
+
+当前的实现中，就是使用`ExprMutator::VisitExpr_`生成的新的Expr去重写。所以直接使用这个`MixedModeMutator`得到的结果就是原图节点的一份拷贝。
+
+在使用以上的Vistor和Mutator更多的是一种约定，就是约定不修改节点而只是遍历，或者是修改节点。
+
+这里的举例`InferenceSimplifier`只重载了`TupleGetItemNode`和`CallNode`的`Rewrite_`函数。这个Pass主要的功能是，简化norm类的op，同时去除掉dropout。。。为什么他要多加进去一个干掉dropout
+
+```c++
+Expr Rewrite_(const TupleGetItemNode *n, const Expr &new_e) final
+{
+    const auto *new_n = new_e.as<TupleGetItemNode>();
+    if (new_n->index != 0) {
+        return new_e;
+    }
+    if (const auto *call = new_n->tuple.as<CallNode>()) {
+        if (call->op == batch_norm_op_) {
+            return BatchNormToInferUnpack(call->attrs, call->args[0], call->args[1], call->args[2],
+                                          call->args[3], call->args[4], ty_map_.at(call->args[0]));
+        }
+        else if (call->op == dropout_op_) {
+            return call->args[0];
+        }
+    }
+    return new_e;
+}
+
+Expr Rewrite_(const CallNode *n, const Expr &new_n) {
+    if (n->op == batch_norm_op_) {
+        ty_map_[new_n.as<CallNode>()->args[0]] = n->args[0]->checked_type();
+    }
+    else if (n->op == layer_norm_op_) {
+        const auto *call = new_n.as<CallNode>();
+        return LayerNormToInferUnpack(call->attrs, call->args[0], call->args[1], call->args[2],
+                                      n->args[0]->checked_type());
+    } else if (n->op == group_norm_op_) {
+        const auto *call = new_n.as<CallNode>();
+        return GroupNormToInferUnpack(call->attrs, call->args[0], call->args[1], call->args[2],
+                                      n->args[0]->checked_type());
+    }
+    else if (n->op == instance_norm_op_) {
+        const auto *call = new_n.as<CallNode>();
+        return InstanceNormToInferUnpack(call->attrs, call->args[0], call->args[1], call->args[2],
+                                         n->args[0]->checked_type());
+    }
+    else if (n->op == l2_norm_op_) {
+        const auto *call = new_n.as<CallNode>();
+        return L2NormToInferUnpack(call->attrs, call->args[0]);
+    }
+    return new_n;
+}
+```
+
+这里的`Rewrite_`主要就是将原有的计算逻辑给替换成其他op的组和计算，主要是为了后续的表达式消除以及一些其他的pass优化。
+
+## ExprRewriter
+
+ 表达式重写，更加类似于ExprFunctor，只不过其将所有的逻辑替换为`Rewrite_`，内部也有一个`Rewrite_`的虚函数表，对于某类关注的Op重写。
+
+
+
+以上就是在tvm expr_functor中存在的图访问的，主要模式。
