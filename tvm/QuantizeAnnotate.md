@@ -102,7 +102,33 @@ add
                   
                   
 identity(reshape, clip, nn.relu, strided_slice, nn.avg_pool2d, nn.batch_flatten, transpose, annotation.stop_fusion)
-			
+			data(ACTIVATION/INPUT/WEIGHT)
+            			|
+            		identity
+            		    |
+       QAnnotateExpr(ACTIVATION/INPUT/WEIGHT)
+       
+
+max_pool2d
+				data(ACTIVATION)
+					   |
+				   sim(INPUT)
+				       |
+				    max_pool2d
+				       |
+		       QAnnotateExpr(INPUT)
+		   
+cast_hint
+				data(ACTIVATION)
+					   |
+				   sim(INPUT)
+				       |
+				   cast_hint
+				       |
+		      QAnnotateExpr(INPUT)		
+		      
+...
+				
 '''
 ```
 
