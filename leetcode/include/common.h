@@ -3,13 +3,13 @@ using std::vector;
 
 #include <algorithm>
 using std::all_of;
+using std::find;
 using std::for_each;
 using std::lower_bound;
 using std::max;
 using std::min;
 using std::reverse;
 using std::sort;
-using std::find;
 
 #include <iostream>
 using std::cout;
@@ -58,7 +58,8 @@ struct ListNode
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-struct TreeNode {
+struct TreeNode
+{
     int val;
     TreeNode *left;
     TreeNode *right;
@@ -91,7 +92,7 @@ void print_vec(vector<vector<int>> &vec)
     typedef typename vector<vector<int>>::size_type size_type;
     for (size_type i = 0; i < vec.size(); i++)
     {
-        cout << "(" ;
+        cout << "(";
         for (int j = 0; j < vec[i].size(); j++)
         {
             cout << vec[i][j] << ",";
@@ -140,10 +141,13 @@ void print_list_node(ListNode *head)
     cout << endl;
 }
 
-TreeNode* make_tree_node(vector<int> arr) {
-    vector<TreeNode*> tmp(arr.size(), nullptr);
-    for(int i = 0; i < arr.size(); i++) {
-        if (arr[i] != INT_MIN) {
+TreeNode *make_tree_node(vector<int> arr)
+{
+    vector<TreeNode *> tmp(arr.size(), nullptr);
+    for (int i = 0; i < arr.size(); i++)
+    {
+        if (arr[i] != INT_MIN)
+        {
             tmp[i] = new TreeNode(arr[i]);
         }
     }
@@ -154,31 +158,41 @@ TreeNode* make_tree_node(vector<int> arr) {
             /   \      /   \
            3     4    5     6
     */
-    for(int i = 1; i < arr.size(); i++) {
-        TreeNode* parent = tmp[(i - 1) / 2];
-        if (!parent) continue;
-        if (i % 2 == 0) {
+    for (int i = 1; i < arr.size(); i++)
+    {
+        TreeNode *parent = tmp[(i - 1) / 2];
+        if (!parent)
+            continue;
+        if (i % 2 == 0)
+        {
             parent->right = tmp[i];
-        } else {
+        }
+        else
+        {
             parent->left = tmp[i];
-
         }
     }
     return tmp[0];
 }
 
-void bfs_tree_node(TreeNode* node) {
-    queue<TreeNode*> node_queue;
+void bfs_tree_node(TreeNode *node)
+{
+    queue<TreeNode *> node_queue;
     node_queue.push(node);
-    while(!node_queue.empty()) {
-        TreeNode* cur = node_queue.front();
+    while (!node_queue.empty())
+    {
+        TreeNode *cur = node_queue.front();
         node_queue.pop();
-        if (cur) {
+        if (cur)
+        {
             cout << cur->val << "\t";
             node_queue.push(cur->left);
             node_queue.push(cur->right);
-        } else {
-            cout << "null" << "\t";
+        }
+        else
+        {
+            cout << "null"
+                 << "\t";
         }
     }
     cout << endl;
