@@ -35,6 +35,8 @@ using std::swap;
 #include <queue>
 using std::priority_queue;
 using std::queue;
+using std::deque;
+
 
 #include <map>
 using std::map;
@@ -49,6 +51,7 @@ using std::unordered_set;
 using std::memset;
 
 #include <cassert>
+
 struct ListNode
 {
     int val;
