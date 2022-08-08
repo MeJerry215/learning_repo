@@ -230,5 +230,4 @@ def simulated_quantize_compute(attrs, inputs, out_type):
     return [rdata]
 ```
 
-这个op用来实现模拟量化的操作，
-
+这个op用来实现模拟量化的操作，需要特别注意的是这个simulated_quantize compute的当QAnnotateKind.IDENTITY 可以认为是短路，直接将输入数据作为输出。

@@ -52,6 +52,8 @@ $$
 
 所以就存在丢弃掉一部分的极值，将这部分超过$\alpha$的饱和截取为$\alpha$。所以如何选择合适的$\alpha$ 就存在多种算法: `percentile`、`KL-divergence`。而这个过程也就是被称为校准的过程，通过校准获得使得计算结果相对来说精度较高的$\alpha$
 
+![image-20220808114208759](D:\Repo\learning_repo\quantization\quantization.assets\image-20220808114208759.png)
+
 
 这里推导一下以对称量化方式做add 和矩阵乘法的量化。
 ### Add
@@ -200,6 +202,10 @@ $$
 $$
 
 根据以上公式，我们可以推算出如果P(i)非常相似则$\frac{P(i)}{Q(i)} = 1$, 则最终计算结果为0 
+
+
+
+[Tegine](git@github.com:OAID/Tengine.git)
 
 ## KL_divergence
 
