@@ -4,6 +4,8 @@
 
 [模型量化（int8）知识梳理](https://zhuanlan.zhihu.com/p/516116539)
 
+[神经网络量化方法](https://murphypei.github.io/blog/2019/11/neural-network-quantization)
+
 量化分为：线性量化和非线性量化，线性量化时，信号的幅度划分是等间隔的划分，非线性量化时非等间隔的(比如pow2、log量化)。
 
 常用的量化方式主要是线性量化：对称量化和非对称量化
@@ -212,3 +214,13 @@ $$
 https://blog.51cto.com/u_15357586/3927343
 
 https://www.jianshu.com/p/43318a3dc715?u_atoken=2903d8aa-1db4-4aa0-bc67-a54fc8998df7&u_asession=01mAsAgHyyByO1i_XTMB5t31U7dOtqXaIkcYKDNhxZYomGQplXLNkih_xVkPpDRFeAX0KNBwm7Lovlpxjd_P_q4JsKWYrT3W_NKPr8w6oU7K-BYiPriLjqjig19DrsvhSgS_nntv0fnCqKMMYW1x5qJGBkFo3NEHBv0PZUm6pbxQU&u_asig=05QZIoXbmOlEEvUjqc1jGrYc-2MCWUem8n1TNko1pKq8bSK5obR862dnE_gDb1LYn49EgCKnDTa9kup7Ix4hQFddkj7vCzwakQH12j199-nEBdAc2QpSvWTpu3uJNKE8AiSqu4KFWbIIwRNl34RiVMbO562Y_kA4jFPpWN7ENGeaz9JS7q8ZD7Xtz2Ly-b0kmuyAKRFSVJkkdwVUnyHAIJzQzbM1ZtHuLriD99_vSZLdEh7M8LldgsfgH_MsLgRJrw4Nx7nJyT20ni5onZOBbfUe3h9VXwMyh6PgyDIVSG1W-wkFbG1VXNzjMb0Jz8JBmgPuocUbzskgme5tE-44rhH3qNQUZoe4q7_u2IYKBh6zXdF32GLmf6aEUC23Znq-9dmWspDxyAEEo4kbsryBKb9Q&u_aref=eINeGE5iGXMuWXcNesCG5d44cFQ%3D
+
+
+
+
+
+[A White Paper on Neural Network Quantization](https://arxiv.org/abs/2106.08295)
+
+[Data-Free Quantization Through Weight Equalization and Bias Correction](https://ieeexplore.ieee.org/document/9008784)
+
+[Integer Quantization for Deep Learning Inference: Principles and Empirical Evaluation](https://arxiv.org/abs/2004.09602)
