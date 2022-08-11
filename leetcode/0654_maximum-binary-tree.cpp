@@ -6,7 +6,10 @@ public:
     TreeNode* constructMaximumBinaryTreeHelper(vector<int>& nums, int low , int high) {
         if (low > high) {
             return nullptr;
+        } else if (low == high) {
+            return new TreeNode(nums[high]);
         }
+        cout << high << endl;
         TreeNode *root = new TreeNode(nums[high]);
         int mid = (low + high - 1) / 2;
         root->left = constructMaximumBinaryTreeHelper(nums, low, mid);
@@ -22,7 +25,12 @@ public:
             root = constructMaximumBinaryTreeHelper(nums, 0, size - 1);
         }
         
-// [0, 1, 2, 3, 5, 6]
         return root;
     }
 };
+
+void TestSolution() {
+    vector<int> nums = {3,2,1,6,0,5};
+    Solution s;
+    s.constructMaximumBinaryTree(nums);
+}
