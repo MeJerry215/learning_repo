@@ -101,15 +101,40 @@ sudo docker exec -it container_bi_zhanglei_20220627-1504 /bin/bash
 # TVM 调优日志搜索
 #	autotvm
 
-
-#	auto scheduler
-
-
-./auto_run.sh -b 128 -d float16 -m autotvm -n 1000 -g iluvatar -x True -y 1 -z 18
-
-
 sudo docker run --name "gpu_tvm_v2_zhanglei" --gpus all --shm-size=1g --ulimit memlock=-1 --ulimit stack=67108864 -it --rm -v /home/lei.zhang/:/home/lei.zhang/ --privileged  tvm_gpu_test_images
 
+
+from tensorflow.tools.graph_transforms import TransformGraph
+BATCH = 8
+
+def export_pb(session):
+    # import pdb
+    # pdb.set_trace()
+    with tf.gfile.GFile("myexportedmodel_{:d}.pb".format(BATCH), "wb") as f:
+        inputs = ["input_ids", "input_mask", "segment_ids"] # replace with your input names
+        outputs = ["unstack"] # replace with your output names
+        graph_def = session.graph.as_graph_def(add_shapes=True)
+        graph_def = tf.compat.v1.graph_util.convert_variables_to_constants(session, graph_def, outputs)
+        graph_def = TransformGraph(
+            graph_def,
+            inputs,
+            outputs,
+            [
+                "remove_nodes(op=Identity, op=CheckNumerics, op=StopGradient)",
+                "sort_by_execution_order", # sort by execution order after each transform to ensure correct node ordering
+                "remove_attribute(attribute_name=_XlaSeparateCompiledGradients)",
+                "remove_attribute(attribute_name=_XlaCompile)",
+                "remove_attribute(attribute_name=_XlaScope)",
+                "sort_by_execution_order",
+                "remove_device",
+                "sort_by_execution_order",
+                "fold_batch_norms",
+                "sort_by_execution_order",
+                "fold_old_batch_norms",
+                "sort_by_execution_order"
+            ]
+        )
+        f.write(graph_def.SerializeToString())
 ```
 
 
