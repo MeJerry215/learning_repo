@@ -2,6 +2,8 @@
 
 在有向图中，如果u到v之间，必须经过w节点，那么就称u被w支配。找到这个w的过程也就是支配树算法，而在支配树算法中要使用的一个算法是LCA(Least Common Ancestor)。
 
+https://www.cnblogs.com/fenghaoran/p/dominator_tree.html
+
 ```c++
 #include <iostream>
 #include <vector>
