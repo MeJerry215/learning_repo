@@ -1,5 +1,5 @@
 #include "common.h"
-
+#include <cmath>
 class A {
     int i;
     int j;
@@ -30,8 +30,14 @@ public:
     }
 };
 
+int  cal_val(int x) {
+    return std::abs(x);
+}
+
 
 int main(int argc, char** argv) {
+    const int val = cal_val(-3);
+    std::cout << val << std::endl;
     // std::cout << "Enter two numbers:" << std::endl;
     // int v1 = 0, v2 = 0;
     // while(std::cin >> v1) {
