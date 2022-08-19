@@ -228,6 +228,37 @@ class ScheduleNode {
 
 
 
+其本质调用的是`LowerSchedule`
+
+```c++
+IRModule LowerSchedule(te::Schedule sch, const Array<ObjectRef>& args, const std::string& name,
+                       const std::unordered_map<te::Tensor, tir::Buffer>& binds, bool simple_mode) {
+  IRModule mod = ScheduleToModule(std::move(sch), args, name, binds);
+  // Get the legacy TE pass list
+  Array<transform::Pass> pass_list = CreatePassList(simple_mode);
+  return LowerWithPassList(mod, pass_list);
+}
+```
+
+在`ScheduleToModule`函数内首先会调用Schedule::normlize
+
+```c++
+Schedule Schedule::normalize() {
+  Schedule sn = copy();
+  // 不涉及， 以上操作没有使用，推测应该是对于Inline的Stage进行操作的
+  InjectInline(sn.operator->(), false);
+  RebaseNonZeroMinLoop(sn.operator->());
+  LegalizeInvalidAttach(sn.operator->());
+  return sn;
+}
+```
+
+
+
+
+
+
+
 ```mermaid
 classDiagram
 class IterVarRelation
@@ -289,4 +320,3 @@ class StmtNode {
 
 IterVarRelation <|-- SplitNode
 ```
-
