@@ -143,6 +143,6 @@ def export_pb(session):
 
 [有效筛选github的issue](https://docs.github.com/cn/search-github/searching-on-github/searching-issues-and-pull-requests)
 
-
+[gitignore 模板](https://github.com/github/gitignore)
 
 ![image-20220712224940831](D:\Repo\learning_repo\cmd.assets\image-20220712224940831.png)
