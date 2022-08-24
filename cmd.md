@@ -64,7 +64,7 @@ sudo docker run --name "tvm0.9dev_leizhang_21.10" --shm-size=16g --ulimit --ulim
 sudo docker run  --name "zhanglei.tensorrt_22.02" --ulimit memlock=-1 --ulimit stack=67108864 -it  -v /home/lei.zhang/:/home/lei.zhang/ --privileged  nvcr.io/nvidia/tensorrt:22.02-py3
 sudo nvidia-docker run --gpus all --shm-size=16g --ulimit memlock=-1 --ulimit stack=67108864 -it -v /home/lei.zhang/:/home/lei.zhang/ --privileged  nvcr.io/nvidia/tensorrt:22.02-py3
 
-docker run --name "bi_img_leizhang_20220217" -it --privileged --pid=host --cap-add=ALL -v /dev:/dev -v /lib/modules:/lib/modules -v /usr/src:/usr/src -v /home/lei.zhang:/home/lei.zhang 10.150.9.98:80/performance/bi_img:20220217 /bin/bash
+docker run --name "mr_test_0816_zhanglei" -it --privileged --pid=host --cap-add=ALL -v /dev:/dev -v /lib/modules:/lib/modules -v /usr/src:/usr/src -v /home/lei.zhang:/home/lei.zhang 10.150.9.98:80/sw_test/apps:2.3.0.20220816.86-centos-7.8.2003-x86_64-10.2-python3.6_mr /bin/bash
 
 sudo docker exec -it zhanglei.tensorrt_22.02 /bin/bash
 bi_img_leizhang_20220217

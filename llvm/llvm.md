@@ -20,6 +20,14 @@ LLVM架构，主要有前端、优化器、和后端组成。前端解析代码�
 
 通过这种架构，编译器可以支持新的编程语言，只要实现新的前端。现有的优化器和后端可以复用复用。
 
+编译
+
+```
+cmake -DLLVM_ENABLE_PROJECTS=clang –DLLVM_ENABLE_ASSERTIONS=ON -DLLVM_TARGETS_TO_BUILD="X86" ../llvm -DBUILD_SHARED_LIBS=ON
+```
+
+
+
 **目录架构**
 
 - llvm/cmake/modules： 编译配置
