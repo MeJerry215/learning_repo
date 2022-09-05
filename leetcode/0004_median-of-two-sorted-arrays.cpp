@@ -38,11 +38,13 @@ public:
         int size = nums1.size() + nums2.size();
         double before = 0, cur = 0;
         int i = 0, j = 0, k = 0;
+        // 性价尾部哨兵，遇到即走分支else。也就是当前子串无有效数字了。
         nums1.push_back(INT_MAX);
         nums2.push_back(INT_MAX);
         for (; i <= size / 2; i++)
         {
             before = cur;
+            //更新cur小的存入到cur
             if (nums1[j] < nums2[k])
             {
                 cur = nums1[j++];
@@ -52,8 +54,8 @@ public:
                 cur = nums2[k++];
             }
         }
-        cout << before << " " << cur << endl;
-        if (size % 2 == 0)
+        //最终得到的before 和cur两个数，如果为奇数。则返回的是cur的位置为  size / 2  7 size / 2 = 3     0, 1, 2, /3/, 4, 5, 6   cur
+        if (size % 2 == 0)                      // 如果为偶数           size/2    8 size / 2 = 4    0 1 2 /3/ /4/ 5 6 7   before+cur / 2
         {
             return (before + cur) / 2;
         }

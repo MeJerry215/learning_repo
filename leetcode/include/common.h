@@ -29,6 +29,7 @@ using std::pair;
 #include <string>
 using std::string;
 using std::swap;
+using std::to_string;
 
 #include <climits>
 

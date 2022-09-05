@@ -26,50 +26,32 @@ s 由英文字母、数字、符号和空格组成
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-class Solution
-{
+class Solution {
 public:
-    /*
-    int lengthOfLongestSubstring(string s) {
-        int ans = 0;
-        bool char_flag[256] = {false};
-        int i = 0, j = 0;
-        while(j < s.size()) {
-            if (char_flag[s[j]]) {
-                while(s[i] != s[j]) {
-                    char_flag[s[i]] = false;
-                    i++;
-                }
-                i++;
-            }
-            char_flag[s[j]] = true;
-            ans = max(ans, j - i + 1);
-            j++;
-        }
-        return ans;
+  int lengthOfLongestSubstring(string s) {
+    int ans = 0;
+    // asic 用来对应某个字符最后出现的索引，默认初始化为-1
+    int pos[256];
+    memset(pos, 0xff, sizeof(int) * 256);
+    // i 无重复子串的起始位置，无重复子串的结束位置
+    int i = -1, j = 0;
+    for (int j = 0; j < s.size(); j++) {
+      // 循环到S[j],
+      // 查看其上次出现位置，然后和无重复子串的起始位置相比，最大的为新的无重复子串的起始位置
+      i = max(pos[s[j]], i);
+      // 将当前出现的s[j]的位置刷新到pos中
+      pos[s[j]] = j;
+      // 计算最大位置，这里直接用j - i，不用+1， 因为每次都是用的上次重复的位置
+      ans = max(ans, j - i);
     }
-    */
-    int lengthOfLongestSubstring(string s)
-    {
-        int ans = 0;
-        int pos[256];
-        memset(pos, 0xff, sizeof(int) * 256);
-        int i = -1, j = 0;
-        for (int j = 0; j < s.size(); j++)
-        {
-            i = max(pos[s[j]], i);
-            pos[s[j]] = j;
-            ans = max(ans, j - i);
-        }
-        return ans;
-    }
+    return ans;
+  }
 };
 
-void TestSolution()
-{
-    Solution s;
-    cout << s.lengthOfLongestSubstring("bbbbb") << endl;
-    cout << s.lengthOfLongestSubstring("") << endl;
-    cout << s.lengthOfLongestSubstring("abcabcbb") << endl;
-    cout << s.lengthOfLongestSubstring("pwwkew") << endl;
+void TestSolution() {
+  Solution s;
+  cout << s.lengthOfLongestSubstring("bbbbb") << endl;
+  cout << s.lengthOfLongestSubstring("") << endl;
+  cout << s.lengthOfLongestSubstring("abcabcbb") << endl;
+  cout << s.lengthOfLongestSubstring("pwwkew") << endl;
 }
