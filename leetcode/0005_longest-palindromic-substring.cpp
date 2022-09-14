@@ -1,79 +1,62 @@
+#include <iostream>
+#include <string>
+#include <vector>
 #include "common.h"
+using namespace std;
 
-class Solution
-{
+class Solution {
 public:
-    void find_palindrome(const string &s, int l, int r, int &la, int &ans_size)
-    {
-        while (l >= 0 && r < s.size())
-        {
-            if (s[l] == s[r])
-            {
-                if ((r - l + 1) > ans_size)
-                {
-                    la = l, ans_size = (r - l + 1);
-                }
-                l--, r++;
-                continue;
-            }
-            break;
-        }
-    }
-
-    string longestPalindrome(string s)
-    {
-        string ans = "";
-        int l, r;
-        int la;
-        int ans_size = 0;
-        if (s.size() < 2)
-            return s;
-        for (int i = 0; i < s.size() - 1; i++)
-        {
-            // case aba
-            l = r = i;
-            find_palindrome(s, l, r, la, ans_size);
-            // case abba
-            l = i, r = i + 1;
-            find_palindrome(s, l, r, la, ans_size);
-        }
-        return s.substr(la, ans_size);
-    }
-
-    string longestPalindrome_dp(string s) {
-        int size = s.size();
-        if (size < 2) {
+    string longestPalindrome(string s) {
+        int n = s.size();
+        if (n < 2) {
             return s;
         }
-        bool dp[size][size];
-        for (int i = 0; i < size; i++) {
+
+        int maxLen = 1;
+        int begin = 0;
+        // dp[i][j] 表示 s[i..j] 是否是回文串
+        vector<vector<int>> dp(n, vector<int>(n));
+        // 初始化：所有长度为 1 的子串都是回文串
+        for (int i = 0; i < n; i++) {
             dp[i][i] = true;
         }
-        int start = 0, len = 1;
-        for (int j = 1; j < size; j++) {
-            for(int i = 0; i < j; i++) {
+        // 递推开始
+        // 先枚举子串长度
+        for (int L = 2; L <= n; L++) {
+            // 枚举左边界，左边界的上限设置可以宽松一些
+            for (int i = 0; i < n; i++) {
+                // 由 L 和 i 可以确定右边界，即 j - i + 1 = L 得
+                int j = L + i - 1;
+                // 如果右边界越界，就可以退出当前循环
+                if (j >= n) {
+                    break;
+                }
+
                 if (s[i] != s[j]) {
                     dp[i][j] = false;
                 } else {
-                    if (j - i < 3 || dp[i+1][j - 1]) {
+                    if (j - i < 3) {
                         dp[i][j] = true;
                     } else {
-                        dp[i][j] = false;
+                        dp[i][j] = dp[i + 1][j - 1];
                     }
                 }
-                if (dp[i][j] && (j - i + 1) > len) {
-                    len = j - i + 1;
-                    start = i;
+
+                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
+                if (dp[i][j] && j - i + 1 > maxLen) {
+                    maxLen = j - i + 1;
+                    begin = i;
                 }
             }
         }
-        return s.substr(start, len);
+        return s.substr(begin, maxLen);
     }
 };
 
 
+
+
 void TestSolution() {
     Solution s;
-    cout << s.longestPalindrome_dp("aba") << endl;
-    cout << s.longestPalindrome_dp("cbbd") << endl;
+    std::cout << s.longestPalindrome("abcaaaaaa") << std::endl;
 }
