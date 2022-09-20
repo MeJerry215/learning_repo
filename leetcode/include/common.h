@@ -38,6 +38,7 @@ using std::priority_queue;
 using std::queue;
 using std::deque;
 using std::less;
+using std::greater;
 
 #include <map>
 using std::map;

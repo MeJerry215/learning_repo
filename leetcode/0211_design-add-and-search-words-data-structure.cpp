@@ -18,6 +18,8 @@ public:
         }
     };
     
+
+
     WordDictionary() {
     }
     
@@ -26,7 +28,7 @@ public:
     }
     
     bool search(string word) {
-        return find(strs.begin(), strs.end(), String(word)) != strs.end();
+        return find(strs.begin(), strs.end(), word) != strs.end();
     }
 
 private:
