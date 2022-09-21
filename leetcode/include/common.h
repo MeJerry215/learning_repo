@@ -54,6 +54,9 @@ using std::memset;
 
 #include <cassert>
 
+#include <functional>
+using std::function;
+
 struct ListNode
 {
     int val;
