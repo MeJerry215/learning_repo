@@ -10,6 +10,7 @@ using std::max;
 using std::min;
 using std::reverse;
 using std::sort;
+using std::binary_search;
 
 #include <iostream>
 using std::cout;
@@ -19,6 +20,7 @@ using std::sort;
 #include <numeric>
 using std::abs;
 using std::accumulate;
+using std::transform;
 #include <memory>
 using std::move;
 

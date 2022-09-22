@@ -34,6 +34,6 @@ public:
 void TestSolution() {
     Solution s;
     string s1 = "abcdef";
-    string s2 = "efabcd";
+    string s2 = "abcdfe";
     cout << s.kSimilarity(s1, s2) << endl;
 }
