@@ -1,23 +1,17 @@
 #include "common.h"
 
 
-class Solution
-{
+class Solution {
 public:
-    vector<int> numberOfLines(vector<int> &widths, string s)
-    {
+    vector<int> numberOfLines(vector<int> &widths, string s) {
         int cur = 0;
         int line = 1;
-        for (const auto c : s)
-        {
+        for (const auto c : s) {
             int width = widths[c - 'a'];
             cur = width + cur;
-            if (cur <= 100)
-            {
+            if (cur <= 100) {
                 continue;
-            }
-            else
-            {
+            } else {
                 cur = width;
                 line += 1;
             }
