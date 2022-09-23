@@ -79,6 +79,9 @@ lli output.bc
 # 语法树dump 
 clang -cc1 test.c -ast-dump
 
+# llvm ir -> dot -> png
+llvm-as < t.ll | opt -passes=view-cfg
+dot -Tpng /tmp/cfg.baz-c23353.dot -o wineTree.png
 ```
 
 
