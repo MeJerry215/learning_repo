@@ -62,6 +62,9 @@ using std::function;
 #include <sstream>
 using std::stringstream;
 
+#include <cmath>
+using std::sqrt;
+
 struct ListNode
 {
     int val;
