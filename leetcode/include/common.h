@@ -11,6 +11,7 @@ using std::min;
 using std::reverse;
 using std::sort;
 using std::binary_search;
+using std::fill;
 
 #include <iostream>
 using std::cout;
@@ -64,6 +65,9 @@ using std::stringstream;
 
 #include <cmath>
 using std::sqrt;
+using std::ceil;
+using std::floor;
+using std::round;
 
 struct ListNode
 {
