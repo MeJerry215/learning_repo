@@ -27,6 +27,13 @@
 class Solution {
 public:
     string decodeString(string s) {
+        vector<int> nums;
+        vector<string> strs;
+        stringstream sstream(s);
+        for(int i = 0; i < s.size(); i++) {
+            char c = s[i];
+            if (isdigit(s[i]))
+        }
 
     }
 };

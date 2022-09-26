@@ -59,6 +59,9 @@ using std::memset;
 #include <functional>
 using std::function;
 
+#include <sstream>
+using std::stringstream;
+
 struct ListNode
 {
     int val;
