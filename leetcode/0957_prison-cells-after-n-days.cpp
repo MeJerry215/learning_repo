@@ -35,7 +35,77 @@ cells[i] 为 0 或 1
 
 class Solution {
 public:
-    vector<int> prisonAfterNDays(vector<int>& cells, int n) {
+    enum { CELL_NUM = 8 };
 
+    int encode(vector<int>& cells) {
+        int sum = 0;
+        for(const int cell: cells) {
+            sum *= 2;
+            sum += cell;
+        }
+        return sum;
+    }
+
+    void decode(vector<int>& cells, int encode_val) {
+        int i = CELL_NUM - 1;
+        while(i >= 0) {
+            cells[i] = encode_val % 2;
+            encode_val /= 2;
+            i --;
+        }
+    }
+
+    vector<int> prisonAfterNDays(vector<int>& cells, int n) {
+        int interval = 0;
+        int day = 0;
+        unordered_map<int, int> day_prision_state;
+        int cells_state = 0;
+        while(day < n) {
+            day++;
+            int pre_state = cells[0];
+            for(int i = 1; i < CELL_NUM - 1; i++) {
+                int cur_state = cells[i];
+                cells[i] = !(pre_state ^ cells[i + 1]);
+                pre_state = cur_state;
+            }
+            cells[0] = cells[CELL_NUM - 1] = 0;
+
+            cells_state = encode(cells);
+            if (day_prision_state.find(cells_state) != day_prision_state.end()) {
+                interval = day - day_prision_state[cells_state];
+                break;
+            }
+            day_prision_state[cells_state] = day;
+        }
+        if (day == n) return cells;
+        day = (n - day) % interval + day_prision_state[cells_state];
+        auto iter = day_prision_state.begin();
+        while(iter != day_prision_state.end()) {
+            if (iter->second == day) break;
+            iter++;
+        }
+        int encode_val = iter->first;
+        decode(cells, encode_val);
+        return cells;
+        
     }
 };
+
+void TestSolution() {
+    Solution s;
+    vector<int> cells = {1, 0, 0, 1, 0, 0, 1, 0};
+    // int encode_val = s.encode(cells);
+    // cout << encode_val << endl;
+    // s.decode(cells, encode_val);
+    // print_vec(cells);
+    // encode_val = 8;
+    // s.decode(cells, encode_val);
+    // print_vec(cells);
+    cout << "day 0 : ";
+    print_vec(cells);
+    auto res = s.prisonAfterNDays(cells, 1000000000);
+    print_vec(res);
+}
+
+// [1,0,0,1,0,0,1,0]
+// 1000000000
