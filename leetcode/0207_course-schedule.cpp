@@ -50,6 +50,7 @@ public:
     }
 
     bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
+        // 这里可以考虑不用到unorder map
         unordered_map<int, unordered_set<int>> indegrees;
         unordered_map<int, unordered_set<int>> outdegrees;
         for (const vector<int> &prerequisite : prerequisites) {
