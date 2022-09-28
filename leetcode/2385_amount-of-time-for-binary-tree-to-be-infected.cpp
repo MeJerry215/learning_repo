@@ -54,9 +54,64 @@
  *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
  * };
  */
-class Solution {
+class Solution
+{
+    int res = 0;
+    enum { INFECT_SIGN = 100000 };
+
 public:
-    int amountOfTime(TreeNode* root, int start) {
-        
+    int amountOfTimeHelper(TreeNode *node, int start) {
+        if (!node)
+            return 0;
+        int ldepth = amountOfTimeHelper(node->left, start);
+        int rdepth = amountOfTimeHelper(node->right, start);
+        int max_depth = max(ldepth, rdepth);
+        // no infectins, just return the depth.
+        if (ldepth < INFECT_SIGN && rdepth < INFECT_SIGN && node->val != start) {
+            return max(ldepth, rdepth) + 1;
+        }
+        // one of child has been infected, update the distance
+        if (max_depth > INFECT_SIGN) {
+            res = max(res, ldepth + rdepth - INFECT_SIGN);
+        }
+        // oops, the node itself has been infected. just caculate the max distance of to his child
+        if (node->val == start) {
+            res = max(res, max_depth);
+            return INFECT_SIGN + 1;
+        }
+        return max_depth + 1;
+    }
+
+    /*
+    this problem in other word say the max distance from start node.
+    and the distance from farest node to start node will be the result.
+                  1                             1
+              /       \                       /   \
+             5         3 +                   5     3
+              \     /     \                      /   \
+               4   10      6                    4     6 +
+             /  \                              /       \
+            9 -  2 -                          9         7
+                                               \
+                                                2 -
+    in previous problems we know how to calculate the tree's max distance of any two node.
+    in this situation, we assign one node and to find the farest node.
+    normally we will return depth of a node the larger depth of it's two child tree,
+    but if one of it's subtree has been effect we will use the effect node's depth.
+    take above graph as an example, the node 3's left tree depth is 3, right tree is 2
+    because the node 6 has been effect so the accutual depth will return 1.
+    so we caculate the farest distance at node 3, the distance will 3 + 1 + 1 = 5
+    if node 3 returns actual depth 4, node will get the wrong ans of 1 + 1 + 4 = 6.
+    so only 3 returns the distance from node 6, 1 will get the real ans of 1 + 1 + 2 = 4.
+    if a node his two child has no effected node, the caculate will make no sense.
+    so we also need to know a node, which sub tree has been effected.
+    if using + to annotate start point and - annoted end point
+      \brief solve the problem by caculate the farest distance.
+      \param root, root node
+      \param start, start point to infect other node.
+    */
+    int amountOfTime(TreeNode *root, int start) {
+        amountOfTimeHelper(root, start);
+        return res;
     }
 };
