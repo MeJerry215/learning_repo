@@ -27,12 +27,12 @@
 class Solution
 {
 public:
+  // this problem is same with subset
   vector<vector<int>> subsets(vector<int> &nums)
   {
     int n = nums.size();
     int res_num = 0;
-    for (int i = 0; i < nums.size(); i++)
-    {
+    for (int i = 0; i < nums.size(); i++) {
       res_num *= 2;
       res_num += 1;
     }
