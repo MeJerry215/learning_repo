@@ -59,6 +59,23 @@ ops[i] 为 "C"、"D"、"+"，或者一个表示整数的字符串。整数范围
 class Solution {
 public:
     int calPoints(vector<string>& operations) {
-        
+    vector<int> records;
+    for(string& operation: operations) {
+      if (isdigit(operation[0]) || operation[0] == '-') {
+        records.push_back(atoi(operation.c_str()));
+      } else if(operation[0] == 'D') {
+        int lhs = records.back();
+        records.push_back(lhs * 2);
+      } else if (operation[0] == 'C') {
+        records.pop_back();
+      } else {
+        int n = records.size();
+        int lhs = records[n - 1];
+        int rhs = records[n - 2];
+        records.push_back(lhs + rhs);
+      }
+      print_vec(records);
     }
+    return accumulate(records.begin(), records.end(), 0);
+  }
 };
