@@ -30,9 +30,29 @@ words[i]和 s 都只由小写字母组成。
 链接：https://leetcode.cn/problems/number-of-matching-subsequences
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-class Solution {
+class Solution
+{
 public:
-    int numMatchingSubseq(string s, vector<string>& words) {
+    bool isSubSeq(const string &word, const string &str)
+    {
+        int i = 0, j = 0;
+        while (j < str.size() && i < word.size())
+        {
+            if (str[j] == word[i])
+                i++;
+            j++;
+        }
+        return i == word.size();
+    }
 
+    int numMatchingSubseq(string s, vector<string> &words)
+    {
+        int res = 0;
+        for (const string &word : words)
+        {
+            if (isSubSeq(word, s))
+                res++;
+        }
+        return res;
     }
 };
