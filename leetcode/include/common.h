@@ -127,10 +127,9 @@ void print_mat(vector<vector<T>> &mat)
 {
     typedef typename vector<T>::size_type size_type;
     size_type M = mat.size();
-    size_type N = mat[0].size();
     for (size_type i = 0; i < M; i++)
     {
-        for (size_type j = 0; j < N; j++)
+        for (size_type j = 0; j < mat[i].size(); j++)
         {
             cout << mat[i][j] << "\t";
         }
