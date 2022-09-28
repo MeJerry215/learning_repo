@@ -28,13 +28,66 @@ prerequisites[i] 中的所有课程对 互不相同
 */
 
 
-class Solution {
+
+class Solution
+{
 public:
-    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
-        unordered_map<int, vector<int>> dependencies;
-        for(auto& dependency: prerequisites) {
-            dependencies[dependency[1]].push_back(dependency[0]);
+    void print_degrees(unordered_map<int, unordered_set<int>> &degress)
+    {
+        auto iter = degress.begin();
+        while (iter != degress.end())
+        {
+            cout << iter->first << ": ";
+            auto iter2 = iter->second.begin();
+            while (iter2 != iter->second.end())
+            {
+                cout << " " << *iter2;
+                iter2++;
+            }
+            cout << endl;
+            iter++;
         }
-        unordered_set<int> learned;
+    }
+
+    bool canFinish(int numCourses, vector<vector<int>> &prerequisites) {
+        unordered_map<int, unordered_set<int>> indegrees;
+        unordered_map<int, unordered_set<int>> outdegrees;
+        for (const vector<int> &prerequisite : prerequisites) {
+            indegrees[prerequisite[0]].insert(prerequisite[1]);
+            outdegrees[prerequisite[1]].insert(prerequisite[0]);
+        }
+
+        vector<bool> visited(numCourses, false);
+        while (true) {
+            bool changed = false;
+            for (int i = 0; i < numCourses; i++) {
+                if (visited[i])
+                    continue;
+                cout << indegrees[i].size() << " " << i << endl;
+                if (indegrees[i].size() == 0) {
+                    visited[i] = true;
+                    auto iter = outdegrees[i].begin();
+                    while (iter != outdegrees[i].end()) {
+                        if (indegrees[*iter].find(i) != indegrees[*iter].end()) {
+                            changed = true;
+                            indegrees[*iter].erase(i);
+                        }
+                        iter++;
+                    }
+                    continue;
+                }
+            }
+            if (!changed)
+                break;
+        }
+
+        auto iter = indegrees.begin();
+        while (iter != indegrees.end()) {
+            if (iter->second.size() != 0)
+                return false;
+            iter++;
+        }
+
+        return true;
     }
 };
