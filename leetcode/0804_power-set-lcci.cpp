@@ -24,9 +24,34 @@
 链接：https://leetcode.cn/problems/power-set-lcci
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-class Solution {
+class Solution
+{
 public:
-    vector<vector<int>> subsets(vector<int>& nums) {
-
+  vector<vector<int>> subsets(vector<int> &nums)
+  {
+    int n = nums.size();
+    int res_num = 0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+      res_num *= 2;
+      res_num += 1;
     }
+    vector<vector<int>> res(res_num + 1, vector<int>());
+    for (int mask = 0; mask <= res_num; mask++)
+    {
+      vector<int> &subset = res[mask];
+      int i = 0;
+      int tmp = mask;
+      while (tmp)
+      {
+        if (tmp % 2)
+        {
+          subset.push_back(nums[i]);
+        }
+        i++;
+        tmp /= 2;
+      }
+    }
+    return res;
+  }
 };
