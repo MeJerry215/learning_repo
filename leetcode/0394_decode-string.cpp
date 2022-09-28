@@ -26,13 +26,35 @@
 
 class Solution {
 public:
+    /* 这道题考察毡的用法
+    以  3[a2[c]] 为例，分为数字栈和符号栈，符号栈主要保存的是字符和 []
+    入3 数字
+    3   
+    入符号[
+    3  [
+    入a
+    3  [ a
+    入2
+    3 2   [ a
+    入[
+    3 2   [ a [
+    入c
+    3 2   [ a [ c
+    遇到 ]
+    出字符栈到[ 同时出栈字符相加, 最后出个数字
+    3     [ a              cc
+    遇到 ]
+    accaccacc
+    */
+
+
     string decodeString(string s) {
         vector<int> nums;
         vector<string> strs;
         for(int i = 0; i < s.size(); i++) {
             char c = s[i];
             if (isdigit(s[i])) {
-                
+
             }
         }
 
