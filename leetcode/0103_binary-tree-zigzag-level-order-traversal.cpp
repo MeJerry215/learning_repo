@@ -1,7 +1,8 @@
 #include "common.h"
 
 /*
-给你二叉树的根节点 root ，返回其节点值的 锯齿形层序遍历 。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
+给你二叉树的根节点 root ，返回其节点值的 锯齿形层序遍历
+。（即先从左往右，再从右往左进行下一层遍历，以此类推，层与层之间交替进行）。
 
  
 
@@ -30,9 +31,38 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-class Solution {
+class Solution
+{
 public:
-    vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
+    vector<vector<int>> zigzagLevelOrder(TreeNode *root) {
+        vector<vector<int>> res;
+        // 这里可以考虑用双端队列, 这样就不用reverse了
+        queue<TreeNode *> to_visit_node;
+        if (root) {
+            to_visit_node.push(root);
+            to_visit_node.push(nullptr);
+        }
+        vector<int> layer;
+        while (to_visit_node.size() > 0) {
+            TreeNode *node = to_visit_node.front();
+            to_visit_node.pop();
+            if (!node) {
+                if (res.size() % 2) {
+                    reverse(layer.begin(), layer.end());
+                }
+                res.push_back(layer);
+                layer.clear();
+                if (to_visit_node.size())
+                    to_visit_node.push(nullptr);
+                continue;
+            };
+            layer.push_back(node->val);
+            if (node->left)
+                to_visit_node.push(node->left);
+            if (node->right)
+                to_visit_node.push(node->right);
+        }
 
+        return res;
     }
 };
