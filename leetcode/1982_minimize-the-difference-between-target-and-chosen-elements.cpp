@@ -66,7 +66,6 @@ public:
             min_diff = min(min_diff, abs(target - prob));
         }
         return min_diff;
-
     }
 
 
