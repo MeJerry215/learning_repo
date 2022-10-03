@@ -33,22 +33,18 @@ nums 中的每个值都 独一无二
 class Solution {
 public:
     int search(vector<int>& nums, int target) {
-        /**
-            4,5,6,7,0,1,2
-            以这个为例, 假设mid 的位置开在
-        **/
        int left = 0, right = nums.size() - 1;
        while(left <= right) {
         int mid = (left + right) / 2;
         if (nums[mid] == target) return mid;
-        if (nums[left] <= nums[mid]) {
-            if (nums[left] <= target && target < nums[mid]) {
+        if (nums[left] <= nums[mid]) {  // 左侧有序，同时由于, mid向下取整, 所以mid的值可能会等于left
+            if (nums[left] <= target && target < nums[mid]) {   // 左侧有序存在target, 继续左侧搜索
                 right = mid - 1;
-            } else {
+            } else {                                            // 搜索无序部分
                 left = mid + 1;
             }
-        } else {
-            if (nums[mid] < target && target <= nums[right]) {
+        } else {                        // 右侧有序
+            if (nums[mid] < target && target <= nums[right]) {  // 右侧有序存在target，继续右侧搜索
                 left = mid + 1;
             } else {
                 right = mid - 1;
