@@ -48,15 +48,62 @@ public:
     */
 
 
-    string decodeString(string s) {
-        vector<int> nums;
+    string decodeString(string s)
+    {
+        int n = s.size();
         vector<string> strs;
-        for(int i = 0; i < s.size(); i++) {
-            char c = s[i];
-            if (isdigit(s[i])) {
-
+        vector<int> nums;
+        for (int i = 0; i < n; i++)
+        {
+            if (isdigit(s[i]))
+            {
+                int j = i + 1;
+                while (j < n && isdigit(s[j]))
+                {
+                    j++;
+                }
+                nums.push_back(atoi(s.substr(i, j - i).c_str()));
+                i = j - 1;
+            }
+            else if (s[i] == '[')
+            {
+                strs.push_back("");
+            }
+            else if (s[i] == ']')
+            {
+                // take one num
+                int repeat = nums.back();
+                nums.pop_back();
+                string tmp = "";
+                while (true)
+                {
+                    string top_str = strs.back();
+                    if (top_str.size() == 0)
+                    {
+                        strs.pop_back();
+                        break;
+                    }
+                    tmp = top_str + tmp;
+                    strs.pop_back();
+                }
+                string repeat_tmp = "";
+                for (int j = 0; j < repeat; j++)
+                {
+                    repeat_tmp += tmp;
+                }
+                strs.push_back(repeat_tmp);
+            }
+            else
+            {
+                int j = i + 1;
+                while (j < n && isalpha(s[j]))
+                {
+                    j++;
+                }
+                strs.push_back(s.substr(i, j - i));
+                i = j - 1;
             }
         }
-
+        return accumulate(strs.begin(), strs.end(), string());
     }
 };
