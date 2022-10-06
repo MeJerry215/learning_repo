@@ -71,6 +71,10 @@ using std::round;
 
 
 using std::pair;
+
+#include <array>
+using std::array;
+
 struct ListNode
 {
     int val;
