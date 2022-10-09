@@ -67,6 +67,23 @@
 class Solution {
 public:
     vector<int> largestValues(TreeNode* root) {
-
+    queue<TreeNode*> nodes;
+    nodes.push(root);
+    vector<int> res;
+    while (nodes.size()) {
+      int n = nodes.size();
+      int max_val = INT_MIN;
+      for (int i = 0; i < n; i++) {
+        TreeNode *node = nodes.front();
+        nodes.pop();
+        if (node->left)
+          nodes.push(node->left);
+        if (node->right)
+        nodes.push(node->right);
+        if (node->val > max_val) max_val = node->val;
+      }
+      res.push_back(max_val);
     }
+    return res;
+  }
 };
