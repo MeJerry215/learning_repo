@@ -75,6 +75,9 @@ using std::array;
 #include <utility>
 using std::pair;
 using std::make_pair;
+
+using std::tolower;
+using std::toupper;
 struct ListNode
 {
     int val;
