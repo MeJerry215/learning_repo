@@ -13,7 +13,7 @@ public:
         int res = 0;
         for (auto iter : task_count)
         {
-            if (iter.second % 3 == 1 && iter.second / 3 == 0) return -1;
+            if (iter.second == 1) return -1;
             res = res + iter.second / 3 + (iter.second % 3 > 0);
         }
         return res;
