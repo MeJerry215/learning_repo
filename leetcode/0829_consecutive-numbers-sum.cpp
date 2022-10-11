@@ -48,5 +48,23 @@ public:
             return n % k != 0 && 2 * n % k == 0;
         }
     }
+
+
+    int consecutiveNumbersSum_v1(int n) {
+        int res = 0;
+        int sum = 0;
+        int low = 1, high = 1;
+        for(; high <= n; high++) {
+            sum += high;
+            if (sum == n)
+                res ++;
+            while(sum >= n && low < high) {
+                sum -= low++;
+                if (sum == n)
+                    res ++;
+            }
+        }
+        return res;
+    }
 };
 
