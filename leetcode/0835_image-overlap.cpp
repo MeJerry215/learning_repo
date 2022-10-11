@@ -2,25 +2,7 @@
 
 
 class Solution {
-public:
-    int compare_overlap(vector<vector<int>>& img1, vector<vector<int>>& img2, int x_offset, int y_offset) {
-        /* 这里只移动 img1, 所以img1的索引需要被重新计算，而img2 是不需要被重新计算的 */
-        int overlap_num = 0;
-        int n = img1.size();
-        int y_iter = n + y_offset;
 
-        if (x_offset > 0) {
-            int x_iter = n + x_offset;
-            for(int i = 0; i < x_iter; i++) {
-                for(int j = 0; j < y_iter; j++) {
-                    if (img2[j][i] == 1 && img2[j][i] == img1[j - y_offset][i - x_offset]) {
-                        overlap_num ++;
-                    }
-                }
-            }
-        } else {
-            int x_iter = n;
- class Solution {
 public:
     int compare_overlap(vector<vector<int>>& img1, vector<vector<int>>& img2, int x_offset, int y_offset) {
         /* 这里只移动 img1, 所以img1的索引需要被重新计算，而img2 是不需要被重新计算的 */
