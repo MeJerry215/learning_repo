@@ -48,6 +48,16 @@ ai != bi
 class Solution {
 public:
     vector<int> sumOfDistancesInTree(int n, vector<vector<int>>& edges) {
-
+        /*
+        树的特性是无环, 无环, 无环, 其实我也不知道怎么做，但是根据这个特性，我们可以尝试迭代一下每一个节点添加进来的状态
+        n = 6, edges = [[0,1],[0,2],[2,3],[2,4],[2,5]]
+        edges
+        res     0   0   0   0   0   0   0
+        edges   [0, 1]   新增了一条边，则开始有了距离
+        res     1   1   0   0   0   0   0
+        edges   [0, 1], [0, 2] 跳过察觉不到变化的规律
+        res     3   2   3   0   0   0   0
+        edges   [0, 1], [0, 2], [2, 3]
+        */
     }
 };
