@@ -20,31 +20,72 @@ dominoes[i] = '.'，表示没有推动第 i 张多米诺骨牌。
 链接：https://leetcode.cn/problems/push-dominoes
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-class Solution {
+class Solution
+{
 public:
-    string pushDominoes(string dominoes) {
+    string pushDominoes_v1(string dominoes)
+    {
         vector<int> force(dominoes.size(), 0);
-        while(true) {
-            bool changed = false;        
-            for(int k = 0; k < dominoes.size(); k++) {
-                if (dominoes[k] != '.') continue;
+        while (true)
+        {
+            bool changed = false;
+            for (int k = 0; k < dominoes.size(); k++)
+            {
+                if (dominoes[k] != '.')
+                    continue;
                 int L = k - 1 >= 0 ? dominoes[k - 1] == 'R' ? 1 : 0 : 0;
                 int R = k + 1 < dominoes.size() ? dominoes[k + 1] == 'L' ? -1 : 0 : 0;
                 force[k] = L + R;
             }
-            for(int k = 0; k < force.size(); k++ ) {
-                if (force[k] == 0) continue;
-                dominoes[k] = force[k] > 0 ? 'R' : 'L'; 
+            for (int k = 0; k < force.size(); k++)
+            {
+                if (force[k] == 0)
+                    continue;
+                dominoes[k] = force[k] > 0 ? 'R' : 'L';
                 changed = true;
                 force[k] = 0;
             }
-            if (!changed) break;
+            if (!changed)
+                break;
         }
         return dominoes;
     }
+
+    string pushDominoes(string dominioes) {
+        /**
+         * 多米诺骨牌的四种情况
+         * 'R......R' => 'RRRRRRRR'
+         * 'R......L' => 'RRRRLLLL' or 'RRRR.LLLL'
+         * 'L......R' => 'L......R'
+         * 'L......L' => 'LLLLLLLL'
+         *两个相邻的被推倒的牌互不影响。
+         * 一张站立的牌（"."）的最终状态与离其两侧最近的 "L" 或 "R" 有关。
+         */
+        dominioes = 'L' + dominioes + 'R';
+        int low = 0;
+        for (int i = 1; i < dominioes.size(); i++) {
+            if (dominioes[i] == '.')
+                continue;
+            if (i > low + 1) {
+                if (dominioes[low] == dominioes[i]) {
+                    fill(dominioes.begin() + low + 1, dominioes.begin() + i, dominioes[low]);
+                } else if (dominioes[low] == 'R' && dominioes[i] == 'L') {
+                    int high = i;
+                    while(low + 2 < high) {
+                        dominioes[++low] = 'R';
+                        dominioes[--high] = 'L';
+                    }
+                }
+            }
+            low = i;
+        }
+
+        return dominioes.substr(1, dominioes.size() - 2);
+    }
 };
 
-void TestSolution() {
+void TestSolution()
+{
     Solution s;
     string dominoes = ".L.R...LR..L..";
     cout << s.pushDominoes(dominoes) << endl;

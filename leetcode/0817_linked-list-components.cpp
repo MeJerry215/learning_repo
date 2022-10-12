@@ -27,8 +27,12 @@ public:
             if (nums_set.count(head->val)) {
                 in_set = true;
             } else {
+                if (in_set) {res ++;}
+                in_set = false;
             }
+            head = head->next;
         }
+        if (in_set) {res ++;}
         return res;
     }
 };
