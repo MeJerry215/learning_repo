@@ -28,7 +28,7 @@ arr 中每个元素都 不同
 class Solution
 {
 public:
-    int maxChunksToSorted(vector<int>& arr) {
+    int maxChunksToSorted_v1(vector<int>& arr) {
         /*
         由于数组range范围在[0, n-1], 且unique。
         则排序好后的value和索引是对应的
@@ -63,6 +63,18 @@ public:
 
         return res;
     }
+
+    int maxChunksToSorted(vector<int>& arr) {
+        int m = 0, res = 0;
+        for (int i = 0; i < arr.size(); i++) {
+            m = max(m, arr[i]);
+            if (m == i) {
+                res++;
+            }
+        }
+        return res;
+    }
+
 };
 
 int main(int argc, char** argv)
