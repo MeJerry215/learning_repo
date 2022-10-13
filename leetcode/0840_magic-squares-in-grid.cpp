@@ -30,6 +30,6 @@ col == grid[i].length
 class Solution {
 public:
     int numMagicSquaresInside(vector<vector<int>>& grid) {
-
+        // https://leetcode.cn/problems/magic-squares-in-grid/solution/fei-bao-li-nu-li-xie-chu-you-ya-de-dai-ma-shuang-b/
     }
 };
