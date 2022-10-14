@@ -49,8 +49,8 @@ public:
                     res.push_back("Pop");
                     offset++;
                 }
-                offset --;
             }
+            res.push_back("Push");
         }
         return res;
     }
