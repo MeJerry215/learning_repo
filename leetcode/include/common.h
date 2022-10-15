@@ -78,6 +78,10 @@ using std::make_pair;
 
 using std::tolower;
 using std::toupper;
+
+#include <list>
+using std::list;
+
 struct ListNode
 {
     int val;
