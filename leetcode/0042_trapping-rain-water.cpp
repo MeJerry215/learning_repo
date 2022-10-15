@@ -46,7 +46,7 @@ public:
         return res;
     }
 
-    int trap(vector<int>& height) {
+    int trap_v2(vector<int>& height) {
         deque<int> st;
         int res = 0;
         /* 
@@ -61,6 +61,24 @@ public:
                 res += (min(height[l], height[i]) - height[k]) * (i - l - 1);
             }
             st.push_back(i);
+        }
+        return res;
+    }
+
+    int trap(vector<int>& height) {
+        int res = 0;
+        int left = 0, right = height.size() - 1;
+        int lmax = 0, rmax = 0;
+        while(left < right) {
+            lmax = max(lmax, height[left]);
+            rmax = max(rmax, height[right]);
+            if (height[left] < height[right]) {
+                res += lmax - height[left];
+                left++;
+            } else {
+                res += rmax - height[right];
+                right--;
+            }
         }
         return res;
     }
