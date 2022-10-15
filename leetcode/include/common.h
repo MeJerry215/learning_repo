@@ -82,6 +82,9 @@ using std::toupper;
 #include <list>
 using std::list;
 
+#include <stack>
+using std::stack;
+
 struct ListNode
 {
     int val;
