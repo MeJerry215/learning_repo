@@ -12,6 +12,9 @@ using std::reverse;
 using std::sort;
 using std::binary_search;
 using std::fill;
+using std::max_element;
+using std::begin;
+using std::end;
 
 #include <iostream>
 using std::cout;
@@ -84,6 +87,9 @@ using std::list;
 
 #include <stack>
 using std::stack;
+
+#include <numeric>
+using std::iota;
 
 struct ListNode
 {
