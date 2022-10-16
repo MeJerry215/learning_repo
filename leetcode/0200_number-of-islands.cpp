@@ -53,8 +53,10 @@ public:
             return fa[index] = fa_find(fa[index]);
         };
         function<void(int, int)> fa_union = [&](int index, int fa_index) {
+            cout << "union " << index << " " << fa_index << endl;
             int a = fa_find(index);
             int b = fa_find(fa_index);
+            cout << a << " " << b << endl;
             if (a == b) return;
             fa[fa_index] = a;
         };
@@ -62,15 +64,16 @@ public:
         for(int i = 0; i < m; i++) {
             for(int j = 0; j < n; j++) {
                 if (grid[i][j] == '1') {
-                    // grid[i][j] = '0';
+                    grid[i][j] = '0';
                     int index = i * n + j;
-                    // if (i - 1 >= 0 && grid[i - 1][j] == '1')  fa_union(index, index - n);
+                    if (i - 1 >= 0 && grid[i - 1][j] == '1')  fa_union(index, index - n);
                     if (i + 1 < m && grid[i + 1][j] == '1') fa_union(index, index + n);
-                    // if (j - 1 >= 0 && grid[i][j - 1] == '1') fa_union(index, index - 1);
+                    if (j - 1 >= 0 && grid[i][j - 1] == '1') fa_union(index, index - 1);
                     if (j + 1 < n && grid[i][j + 1] == '1') fa_union(index, index + 1);
                 }
             }
         }
+        print_vec(fa);
 
         unordered_set<int> qqq;
         for(int i = 0; i < m; i++) {
@@ -91,10 +94,9 @@ public:
 void TestSolution() {
     Solution s;
     vector<vector<char>> island = {
-        {'1','1','0','0','0'},
-        {'1','1','0','0','0'},
-        {'0','0','1','0','0'},
-        {'0','0','0','1','1'}
+        {'1','1','1'},
+        {'0','1','0'},
+        {'1','1','1'}
     };
 
     cout << s.numIslands(island) << endl;
