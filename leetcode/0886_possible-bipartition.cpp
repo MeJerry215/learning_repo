@@ -45,19 +45,7 @@ public:
     }
 
 
-    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
-        /*
-                    A --- B     A --- B (AD, BC)        A
-                     \    |     |     |             /       \
-                       \  |     |     |            B        C
-                          C     C --- D            |        |
-                                                   D ------ E
-
-            1   2   3   4   5 [1, 2][1, 5][2, 3][3, 4][4, 5]
-
-            1   3
-            2   5   4
-        */
+    bool possibleBipartition_v1(int n, vector<vector<int>>& dislikes) {
         vector<int> colors(n + 1, 0);
         vector<vector<int>> dislike_list(n + 1, vector<int>());
         for(auto& dislike: dislikes) {
@@ -71,4 +59,37 @@ public:
         }
         return true;
     }
+
+    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
+        vector<int> colors(n + 1, 0);
+        vector<vector<int>> dislike_list(n + 1, vector<int>());
+        for(auto& dislike: dislikes) {
+            dislike_list[dislike[0]].push_back(dislike[1]);
+            dislike_list[dislike[1]].push_back(dislike[0]);
+        }
+        for (int i = 1; i <= n; ++i) {
+            if (colors[i] == 0) {
+                queue<int> q;
+                q.push(i);
+                colors[i] = 1;
+                while (!q.empty()) {
+                    auto t = q.front();
+                    q.pop();
+                    for (auto& next : dislike_list[t]) {
+                        if (colors[next] > 0 && colors[next] == colors[t]) {
+                            return false;
+                        }
+                        if (colors[next] == 0) {
+                            colors[next] = 3 ^ colors[t];
+                            q.push(next);
+                        }
+                    }
+                }
+            }
+        }
+        return true;
+    }
 };
+
+
+
