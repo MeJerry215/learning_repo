@@ -7,3 +7,4 @@
 2. 查询 find
 3. 合并 union
 
+[岛屿数量](number-of-islands)
