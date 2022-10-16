@@ -80,7 +80,7 @@ public:
                             return false;
                         }
                         if (colors[next] == 0) {
-                            colors[next] = 3 ^ colors[t];
+                            colors[next] = colors[t] == 1 ? 2 : 1;
                             q.push(next);
                         }
                     }
