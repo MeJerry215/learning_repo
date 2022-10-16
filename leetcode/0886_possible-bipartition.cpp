@@ -89,7 +89,25 @@ public:
         }
         return true;
     }
+
+    int fa[4010];
+    int find(int x) {return x == fa[x] ? x : fa[x] = find(fa[x]);}
+    bool possibleBipartition(int n, vector<vector<int>>& dislikes) {
+        iota(begin(fa), end(fa), 0);
+        for (auto & dislike : dislikes) {
+            int a = find(dislike[0]), b = find(dislike[1]);
+            if (a == b)return false;
+            fa[find(a+n)] = b;
+            fa[find(b+n)] = a;
+        }
+        return true;
+    }
+
 };
 
+// [[1,2],[1,3],[2,3]]
+// n = 3
+    // 0   1   2   3 | 4   5   6   7
+    // 0   1   3   3 | 3   1   1   7
 
 
