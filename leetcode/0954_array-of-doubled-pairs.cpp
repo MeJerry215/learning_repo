@@ -43,7 +43,7 @@ public:
         return true;
     }
 
-    bool canReorderDoubled(vector<int>& arr) {
+    bool canReorderDoubledgit(vector<int>& arr) {
         sort(arr.begin(), arr.end());
         queue<int> q;
         for(int e : arr)
