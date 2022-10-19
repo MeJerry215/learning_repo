@@ -24,7 +24,7 @@ arr.length 是偶数
 
 class Solution {
 public:
-    bool canReorderDoubled(vector<int>& arr) {
+    bool canReorderDoubled_v1(vector<int>& arr) {
         unordered_map<int, int> num_cnt;
         for(auto num: arr) {
             num_cnt[num] ++;
@@ -41,5 +41,17 @@ public:
             if (num_cnt[key * 2] < 0) return false;
         }
         return true;
+    }
+
+    bool canReorderDoubled(vector<int>& arr) {
+        sort(arr.begin(), arr.end());
+        queue<int> q;
+        for(int e : arr)
+        {
+            if(q.empty()) q.push(e);
+            else if(e * 2 == q.front() || q.front() * 2 == e) q.pop();
+            else q.push(e);
+        }
+        return q.empty();
     }
 };
