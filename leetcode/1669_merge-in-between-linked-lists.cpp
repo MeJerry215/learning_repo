@@ -3,23 +3,21 @@
 class Solution {
 public:
     ListNode* mergeInBetween(ListNode* list1, int a, int b, ListNode* list2) {
-        ListNode* new_head = new ListNode(0);
+        ListNode* new_head = new ListNode();
         new_head->next = list1;
-        ListNode* pre = new_head;
-        ListNode* tail = nullptr;
-        int i = 0;
-        for(; i < a; i++) {
-            pre = pre->next;
+        ListNode* cur = new_head;
+        for(int i = 0; i < a; i++) {
+          cur = cur->next;
         }
-        tail = pre;
-        for(; i < b; i++) {
-            tail = tail->next;
+        for(int i = 0; i < (b - a + 1); i++) {
+          cur->next = cur->next->next;
         }
-        pre->next = tail->next;
-        while(tail->next) {
-            tail = tail->next;
+        ListNode* list2_tail = list2;
+        while(list2_tail && list2_tail->next) {
+          list2_tail = list2_tail->next;
         }
-        tail->next = list2;
+        list2_tail->next = cur->next;
+        cur->next = list2;
         return new_head->next;
-    }
+  }
 };
