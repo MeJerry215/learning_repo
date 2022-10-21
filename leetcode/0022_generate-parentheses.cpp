@@ -18,28 +18,24 @@
 */
 class Solution {
 public:
-    void dfs_generate(vector<string> &ans, string& parent, int l, int r) {
-        if (l == 0 && r == 0) {
-            ans.push_back(parent);
-            return;
-        }
-        if (l > 0) {
-            parent.push_back('(');
-            dfs_generate(ans, parent, l - 1, r);
-            parent.pop_back();
-        }
-        if (l < r) {
-            parent.push_back(')');
-            dfs_generate(ans, parent, l, r - 1);
-            parent.pop_back();
-        }
-    }
-
     vector<string> generateParenthesis(int n) {
-        vector<string> ans;
-        string parent = "";
-        dfs_generate(ans, parent, n, n);
-        return ans;
+        vector<string> res;
+        string str = "";
+        function<void(int, int, int)> dfs = [&](int left_l_num, int left_r_num, int score) {
+            if (str.size() == 2 * n) res.push_back(str);
+            if (left_l_num) {
+                str.push_back('(');
+                dfs(left_l_num - 1, left_r_num, score - 1);
+                str.pop_back();
+            }
+            if (left_r_num && score < 0) {
+                str.push_back(')');
+                dfs(left_l_num, left_r_num - 1, score + 1);
+                str.pop_back();
+            }
+        };
+        dfs(n, n, 0);
+        return res;
     }
 };
 
