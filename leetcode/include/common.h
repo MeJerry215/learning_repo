@@ -130,6 +130,15 @@ void print_vec(vector<T> &vec)
     cout << endl;
 }
 
+template<>
+void print_vec(vector<pair<int, int>> &vec) {
+    typedef typename vector<pair<int, int>>::size_type size_type;
+    for(size_type i = 0; i < vec.size(); i++) {
+        cout << vec[i].first  << ":" << vec[i].second << "\t";
+    }
+    cout << endl;
+}
+
 template <>
 void print_vec(vector<vector<int>> &vec)
 {

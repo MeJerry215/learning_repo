@@ -77,7 +77,6 @@ public:
                 }
                 rotate(arr, 0, j);
                 res.push_back(j + 1);
-                print_vec(arr);
             }
             j--;
         }
