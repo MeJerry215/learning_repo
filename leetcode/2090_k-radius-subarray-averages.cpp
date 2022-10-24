@@ -6,7 +6,7 @@ public:
     if (k == 0) return nums;
     vector<int> res(nums.size(), -1);
     if (2 * k + 1 > nums.size()) return res;
-    int sum = 0;
+    long long sum = 0;
 
     for(int i = 0; i < 2 * k + 1; i++) {
       sum += nums[i];
