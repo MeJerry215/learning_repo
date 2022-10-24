@@ -15,6 +15,8 @@ using std::fill;
 using std::max_element;
 using std::begin;
 using std::end;
+using std::upper_bound;
+using std::lower_bound;
 
 #include <iostream>
 using std::cout;
