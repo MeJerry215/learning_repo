@@ -26,11 +26,9 @@ public:
         for(auto iter: word_cnts) {
             cnts.push_back({iter.first, iter.second});
         }
-        print_vec(cnts);
         sort(cnts.begin(), cnts.end(), [](pair<int, int>& lhs, pair<int, int>& rhs){
             return lhs.first < rhs.first;
         });
-        print_vec(cnts);
         for(int i = cnts.size() - 2; i >= 0; i--) {
             cnts[i].second += cnts[i + 1].second;
         }
