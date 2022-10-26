@@ -2,7 +2,12 @@
 
 本文主要将刷题进行归类。
 
+## 排序
+
+[853. 车队](https://leetcode.cn/problems/car-fleet/)
+
 ## BFS
+
 考察基本的BFS算法熟悉程度, 矩阵中BFS模板写法。
 [面试题 08.10. 颜色填充](https://leetcode.cn/problems/color-fill-lcci/)
 
