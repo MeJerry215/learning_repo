@@ -6,6 +6,19 @@
 
 可以考虑原地交换，将对应的数放到对应位置上去。这种题目的通用解法可以考虑到hash，情况特殊可以考虑到异或的性质，甚至排序之后求解。
 
+## 排序篇
+
+使用辅助索引排序，排序索引，而不是实际元素，通常用在存在两个对应元素的容器，需要对其中一个排序，而另外一个容器也跟着排序。
+通过排序后的辅助索引，顺序遍历即可得到排序的元素。
+
+```cpp
+vector<int> indexs(n);
+iota(indexs.begin(), index.end(), 0);
+sort(indexs.begin(), indexs.end(), [&](int i, int j) {
+    return nums[i] < nums[j];
+});
+```
+
 ## auto推导
 
 trick: 使用auto 推导快速在方法内定义函数
