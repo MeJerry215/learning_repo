@@ -2,6 +2,11 @@
 
 本文主要将刷题进行归类。
 
+## 栈
+
+出入栈即可
+[1047. 删除字符串中的所有相邻重复项](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/)
+
 ## 排序
 
 [853. 车队](https://leetcode.cn/problems/car-fleet/)
