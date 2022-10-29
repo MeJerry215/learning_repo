@@ -4,17 +4,9 @@
 class Solution {
 public:
 
-    int maxDepthHelper(TreeNode* root, int depth) {
-        if (!root) {
-            return depth;
-        }
-        int l_max = maxDepthHelper(root->left, depth + 1);
-        int r_max = maxDepthHelper(root->right, depth + 1);
-        return max(l_max, r_max);
-    }
-
     int maxDepth(TreeNode* root) {
-        return maxDepthHelper(root, 0);
+        if (!root) return 0;
+        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
     }
 };
 
