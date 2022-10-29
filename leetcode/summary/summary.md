@@ -26,9 +26,7 @@
 [457. 环形数组是否存在循环](https://leetcode.cn/problems/circular-array-loop/)
 
 
-## 贪心
 
-[862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
 
 ## 单调栈
@@ -57,4 +55,12 @@
 
 利用前缀和求和
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
+
+## 贪心
+
+[862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
+
+## 动态规划
+
+[322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
