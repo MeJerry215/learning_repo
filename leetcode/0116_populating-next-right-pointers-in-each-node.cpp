@@ -18,12 +18,25 @@ public:
 class Solution {
 public:
     Node* connect(Node* root) {
-        Node* pre = new Node(0);
-        pre->next = root;
-        Node* cur = pre;
-        pre = nullptr
-        while(cur->next) {
-
+        if (!root) return nullptr;
+        Node* dummy = new Node();
+        Node* cur = root;
+        while(cur) {
+            dummy->next = nullptr;
+            Node* pre = dummy;
+            while(cur) {
+                if (cur->left) {
+                    pre->next = cur->left;
+                    pre = pre->next;
+                }
+                if (cur->right) {
+                    pre->next = cur->right;
+                    pre = pre->next;
+                }
+                cur = cur->next;
+            }
+            cur = dummy->next;
         }
+        return root;
     }
 };

@@ -19,6 +19,10 @@
 考察基本的BFS算法熟悉程度, 矩阵中BFS模板写法。
 [面试题 08.10. 颜色填充](https://leetcode.cn/problems/color-fill-lcci/)
 
+考察数的层次化遍历，这里不需要开辟queue来存储遍历的顺序，Node节点的next指针天然的就是遍历顺序。每一次都是处理下一层的next指针, 解法一致。
+[116. 填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
+[117. 填充每个节点的下一个右侧节点指针 II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
+
 ## DFS
 
 
