@@ -33,6 +33,9 @@
 朴素dfs即可，模板化编程
 [784. 字母大小写全排列](https://leetcode.cn/problems/letter-case-permutation/)
 
+数dfs高度，需要求解到剩余的高度
+[6223. 移除子树后的二叉树高度](https://leetcode.cn/problems/height-of-binary-tree-after-subtree-removal-queries/)
+
 递归交换左右子树
 [2415. 反转二叉树的奇数层](https://leetcode.cn/problems/reverse-odd-levels-of-binary-tree/)
 
