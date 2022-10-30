@@ -33,6 +33,9 @@
 朴素dfs即可，模板化编程
 [784. 字母大小写全排列](https://leetcode.cn/problems/letter-case-permutation/)
 
+递归交换左右子树
+[2415. 反转二叉树的奇数层](https://leetcode.cn/problems/reverse-odd-levels-of-binary-tree/)
+
 ## 快慢指针
 
 判断是否成环
