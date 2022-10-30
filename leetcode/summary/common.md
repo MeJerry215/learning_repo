@@ -1,5 +1,20 @@
 # 通用技巧
 
+## 优先权队列应用
+
+1. 大顶堆、小顶堆。
+```cpp
+
+//小顶堆
+priority_queue <int,vector<int>,greater<int>> pri_que;
+//大顶堆
+priority_queue <int,vector<int>,less<int>> pri_que;
+//默认大顶堆
+priority_queue<int> pri_que;
+
+```
+
+
 ## 字符串篇
 
 1. 快速大小写转换
