@@ -44,6 +44,8 @@
 判断是否成环
 [457. 环形数组是否存在循环](https://leetcode.cn/problems/circular-array-loop/)
 
+删除倒数节点，让快指针先走k步，慢指针再开始和快指针一起走。
+[19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
 ## 滑动窗口
 
