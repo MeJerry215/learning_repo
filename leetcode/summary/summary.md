@@ -2,6 +2,11 @@
 
 本文主要将刷题进行归类。
 
+## 贡献值
+
+一般用于求子串的个数，当前字符对于子串的贡献值有多大，就存在多少种该情况下的子串，分别求每个字符的贡献值求和。
+[907. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
+
 ## 栈
 
 **设计**:这道题目可以在开始dfs掉所有元素，但是不符合迭代器的设计思路，迭代器延迟加载数据，所以方法二采用栈来模拟延迟加载，记录当前遍历到的元素iterator，以及尾iterator。
@@ -44,6 +49,15 @@
 2、越靠近栈顶的元素越后进栈。
 
 用法：单调增栈、单调减栈、前向单调栈、后向单调栈。
+
+[907. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
+
+
+[496. 下一个更大元素 I](https://leetcode.cn/problems/next-greater-element-i/)
+[503. 下一个更大元素 II](https://leetcode.cn/problems/next-greater-element-ii/)
+556 并不是，这是类似于 [31. 下一个排列](https://leetcode.cn/problems/next-permutation/)
+[556. 下一个更大元素 III](https://leetcode.cn/problems/next-greater-element-iii/)
+[6227. 下一个更大元素 IV](https://leetcode.cn/problems/next-greater-element-iv/)
 
 ## 双端队列
 
