@@ -85,8 +85,10 @@
 
 前缀和从开头到某一位位置的和，而用两个和相减，则可以达到范围的和，避免了重复计算。
 
+前缀和可以有：一维前缀和、二前缀和
 
 利用前缀和求和
+[303. 区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/)
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
 ## 贪心
