@@ -91,6 +91,9 @@
 [303. 区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/)
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
+状态压缩，bit运算，前缀和，非常有意思的一道题目。
+[1177. 构建回文串检测](https://leetcode.cn/problems/can-make-palindrome-from-substring/)
+
 ## 贪心
 
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
