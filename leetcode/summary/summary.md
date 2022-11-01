@@ -4,9 +4,9 @@
 
 ## 数组
 
-逆序原地旋转字符串，三次reverse即可
+逆序原地旋转字符串，三次reverse即可, 189为右旋
 [剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
-
+[189. 轮转数组](https://leetcode.cn/problems/rotate-array/)
 
 ## 贡献值
 
