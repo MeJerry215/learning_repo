@@ -2,6 +2,12 @@
 
 本文主要将刷题进行归类。
 
+## 数组
+
+逆序原地旋转字符串，三次reverse即可
+[剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
+
+
 ## 贡献值
 
 一般用于求子串的个数，当前字符对于子串的贡献值有多大，就存在多少种该情况下的子串，分别求每个字符的贡献值求和。
