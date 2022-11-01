@@ -93,6 +93,9 @@ using std::stack;
 #include <numeric>
 using std::iota;
 
+#include <bitset>
+using std::bitset;
+
 struct ListNode
 {
     int val;
