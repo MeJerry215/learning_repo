@@ -57,6 +57,22 @@ towers[i].length == 3
 class Solution {
 public:
     vector<int> bestCoordinate(vector<vector<int>>& towers, int radius) {
-
+        vector<int> res;
+        vector<float> signal_power(towers.size(), 0);
+        int n = towers.size();
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++) {
+                if (i == j) continue;
+                float distance = sqrt(powf(towers[i][0] - towers[j][0], 2) + powf((towers[i][1] - towers[j][1]), 2));
+                if (distance > radius) continue;
+                signal_power[j] += towers[i][2] / distance;
+            }
+        }
+        int max_power = 0;
+        for(int i = 0; i < signal_power.size(); i++) {
+            if (signal_power > max_power) {
+                
+            }
+        }
     }
 };
