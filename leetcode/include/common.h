@@ -3,20 +3,20 @@ using std::vector;
 
 #include <algorithm>
 using std::all_of;
+using std::begin;
+using std::binary_search;
+using std::end;
+using std::fill;
 using std::find;
+using std::find_first_of;
 using std::for_each;
 using std::lower_bound;
 using std::max;
+using std::max_element;
 using std::min;
 using std::reverse;
 using std::sort;
-using std::binary_search;
-using std::fill;
-using std::max_element;
-using std::begin;
-using std::end;
 using std::upper_bound;
-using std::lower_bound;
 
 #include <iostream>
 using std::cout;
@@ -42,11 +42,11 @@ using std::to_string;
 #include <climits>
 
 #include <queue>
+using std::deque;
+using std::greater;
+using std::less;
 using std::priority_queue;
 using std::queue;
-using std::deque;
-using std::less;
-using std::greater;
 
 #include <map>
 using std::map;
@@ -69,17 +69,17 @@ using std::function;
 using std::stringstream;
 
 #include <cmath>
-using std::sqrt;
 using std::ceil;
 using std::floor;
 using std::round;
+using std::sqrt;
 
 #include <array>
 using std::array;
 
 #include <utility>
-using std::pair;
 using std::make_pair;
+using std::pair;
 
 using std::tolower;
 using std::toupper;
@@ -133,11 +133,13 @@ void print_vec(vector<T> &vec)
     cout << endl;
 }
 
-template<>
-void print_vec(vector<pair<int, int>> &vec) {
+template <>
+void print_vec(vector<pair<int, int>> &vec)
+{
     typedef typename vector<pair<int, int>>::size_type size_type;
-    for(size_type i = 0; i < vec.size(); i++) {
-        cout << vec[i].first  << ":" << vec[i].second << "\t";
+    for (size_type i = 0; i < vec.size(); i++)
+    {
+        cout << vec[i].first << ":" << vec[i].second << "\t";
     }
     cout << endl;
 }

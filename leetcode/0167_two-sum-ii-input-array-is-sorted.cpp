@@ -12,7 +12,7 @@ public:
             else if (sum < target) {
                 i ++;
             } else {
-                j --；
+                j --;
             }
         }
         return {-1, -1};
