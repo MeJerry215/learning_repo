@@ -54,60 +54,37 @@ towers[i].length == 3
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> bestCoordinate(vector<vector<int>>& towers, int radius) {
-        vector<int> res(2, 0);
-        vector<float> signal_power(towers.size(), 0);
-        int n = towers.size();
-        for(int i = 0; i < n; i++) {
-            for(int j = 0; j < n; j++) {
-                if (i == j) continue;
-                float distance = sqrt(powf(towers[i][0] - towers[j][0], 2) + powf((towers[i][1] - towers[j][1]), 2));
-                if (distance > radius) continue;
-                signal_power[j] += towers[i][2] / distance;
-            }
-        }
-        int max_power = 0;
-        for(int i = 0; i < signal_power.size(); i++) {
-            if (signal_power[i] > max_power) {
-                res[0] = towers[i][0];
-                res[1] = towers[i][1];
-            } else if (signal_power[i] == max_power) {
-                if (res[0] > towers[i][0] || (res[0] == towers[i][0] && res[i] > towers[i][1])) {
-                    res[0] = towers[i][0];
-                    res[1] = towers[i][1];
-                }
-             }
-        }
-        return res;
-    }
-};
-
-
-class Solution {
-public:
-    vector<int> bestCoordinate(vector<vector<int>>& towers, int radius) {
+    vector<int> bestCoordinate(vector<vector<int>> &towers, int radius)
+    {
         int xMax = INT_MIN, yMax = INT_MIN;
-        for (auto &&tower : towers) {
+        for (auto &&tower : towers)
+        {
             int x = tower[0], y = tower[1];
             xMax = max(xMax, x);
             yMax = max(yMax, y);
         }
         int cx = 0, cy = 0;
         int maxQuality = 0;
-        for (int x = 0; x <= xMax; x++) {
-            for (int y = 0; y <= yMax; y++) {
+        for (int x = 0; x <= xMax; x++)
+        {
+            for (int y = 0; y <= yMax; y++)
+            {
                 vector<int> coordinate = {x, y};
                 int quality = 0;
-                for (auto &&tower : towers) {
+                for (auto &&tower : towers)
+                {
                     int squaredDistance = getSquaredDistance(coordinate, tower);
-                    if (squaredDistance <= radius * radius) {
+                    if (squaredDistance <= radius * radius)
+                    {
                         double distance = sqrt((double)squaredDistance);
                         quality += floor((double)tower[2] / (1 + distance));
                     }
                 }
-                if (quality > maxQuality) {
+                if (quality > maxQuality)
+                {
                     cx = x;
                     cy = y;
                     maxQuality = quality;
@@ -117,7 +94,8 @@ public:
         return {cx, cy};
     }
 
-    int getSquaredDistance(const vector<int> &coordinate, const vector<int> &tower) {
+    int getSquaredDistance(const vector<int> &coordinate, const vector<int> &tower)
+    {
         return (tower[0] - coordinate[0]) * (tower[0] - coordinate[0]) + (tower[1] - coordinate[1]) * (tower[1] - coordinate[1]);
     }
 };
