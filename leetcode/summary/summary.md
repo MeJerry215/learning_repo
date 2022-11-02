@@ -67,6 +67,10 @@
 [395. 至少有 K 个重复字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/)
 
 
+## 优先权队列
+
+[23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
+
 ## 单调栈
 
 单调栈性质：
