@@ -50,6 +50,11 @@
 
 ## 快慢指针
 
+快指针2步，慢指针一步，最终相遇，然后推导 得到a+(n+1)b+nc=2(a+b)⟹a=c+(n−1)(b+c)
+[!img](https://assets.leetcode-cn.com/solution-static/142/142_fig1.png)
+[141. 环形链表](https://leetcode.cn/problems/linked-list-cycle/)
+[142. 环形链表 II](https://leetcode.cn/problems/linked-list-cycle-ii/)
+
 判断是否成环
 [457. 环形数组是否存在循环](https://leetcode.cn/problems/circular-array-loop/)
 
