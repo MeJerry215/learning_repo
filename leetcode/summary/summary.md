@@ -41,6 +41,9 @@
 
 ## DFS
 
+朴素dfs
+[51. N 皇后](https://leetcode.cn/problems/n-queens/)
+
 朴素dfs即可，模板化编程
 [784. 字母大小写全排列](https://leetcode.cn/problems/letter-case-permutation/)
 
