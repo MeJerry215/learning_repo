@@ -16,6 +16,8 @@
 一般用于求子串的个数，当前字符对于子串的贡献值有多大，就存在多少种该情况下的子串，分别求每个字符的贡献值求和。
 [907. 子数组的最小值之和](https://leetcode.cn/problems/sum-of-subarray-minimums/)
 
+[2348. 全 0 子数组的数目](https://leetcode.cn/problems/number-of-zero-filled-subarrays/)
+
 ## 栈
 
 **设计**:这道题目可以在开始dfs掉所有元素，但是不符合迭代器的设计思路，迭代器延迟加载数据，所以方法二采用栈来模拟延迟加载，记录当前遍历到的元素iterator，以及尾iterator。
@@ -127,3 +129,4 @@
 
 [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
+[2327. 知道秘密的人数](https://leetcode.cn/problems/number-of-people-aware-of-a-secret/)
