@@ -27,5 +27,25 @@ class Solution
 public:
     vector<vector<string>> solveNQueens(int n)
     {
+        vector<vector<string>> res;
+        vector<string> ans(n, string(n, '.'));
+        unordered_set<int> rows, cols, fslash, bslash;
+        function<void(int)> dfs = [&](int depth) {
+            if (depth == n) {
+                res.push_back(ans);
+            }
+            for(int i = 0; i < n; i++) {
+                int x = depth;
+                int y = i;
+                if (rows.count(x) || cols.count(y) || fslash.count(y - x) || bslash.count(y + x)) continue;
+                rows.insert(x), cols.insert(y), fslash.insert(y - x), bslash.insert(y + x);
+                ans[x][y] = 'Q';
+                dfs(depth + 1);
+                ans[x][y] = '.';
+                rows.erase(x), cols.erase(y), fslash.erase(y - x), bslash.erase(y + x); 
+            }
+        };
+        dfs(0);
+        return res;
     }
 };
