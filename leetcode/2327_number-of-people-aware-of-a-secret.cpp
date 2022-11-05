@@ -1,6 +1,6 @@
 #include "common.h"
 
-./*
+/*
 在第 1 天，有一个人发现了一个秘密。
 
 给你一个整数 delay ，表示每个人会在发现秘密后的 delay 天之后，每天 给一个新的人 分享 秘密。同时给你一个整数 forget ，表示每个人在发现秘密 forget 天之后会 忘记 这个秘密。一个人 不能 在忘记秘密那一天及之后的日子里分享秘密。
@@ -40,9 +40,33 @@
 链接：https://leetcode.cn/problems/number-of-people-aware-of-a-secret
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-class Solution {
+class Solution
+{
 public:
-    int peopleAwareOfSecret(int n, int delay, int forget) {
-        
+    int peopleAwareOfSecret(int n, int delay, int forget)
+    {
+        const int mod = 1e9 + 7;
+        deque<int> delays(delay - 1, 0);
+        deque<int> forgets(forget - 1, 0);
+        int last_day = 1;
+        int sum_delay = 1;
+        delays.push_back(last_day);
+        forgets.push_back(last_day);
+        for (int i = 1; i < n; i++)
+        {
+            sum_delay -= delays.front();
+            int new_inc = last_day - forgets.front() - sum_delay;
+            new_inc = ((new_inc % mod) + mod) % mod;
+            int next_day = last_day - forgets.front() + new_inc;
+            next_day = ((next_day % mod) + mod) % mod;
+            delays.pop_front();
+            forgets.pop_front();
+            sum_delay += new_inc;
+            sum_delay = ((sum_delay % mod) + mod) % mod;
+            last_day = next_day;
+            forgets.push_back(new_inc);
+            delays.push_back(new_inc);
+        }
+        return last_day;
     }
 };
