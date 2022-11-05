@@ -2,6 +2,11 @@
 
 本文主要将刷题进行归类。
 
+## 分治
+
+巧妙的一次遍历引用指针，由叶节点先增加引用，然后最后就是根节点，自然的到达中间值
+[109. 有序链表转换二叉搜索树](https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/)
+
 ## 贡献值
 
 一般用于求子串的个数，当前字符对于子串的贡献值有多大，就存在多少种该情况下的子串，分别求每个字符的贡献值求和。
@@ -97,3 +102,7 @@
 
 [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
+## 数学
+
+到达重点  1 + ... +n 到达m位置，如果m距离target为偶数，翻转前面的一个 (target - m) / 2，1 + .... - (target -m) / 2 + ...n = m - (m - target), 若是剩下的看是否剩下的步数为奇数，目标是将步数转换为偶数。
+[754. 到达终点数字](https://leetcode.cn/problems/reach-a-number/solution/shu-xue-zhu-shi-chao-ji-xiang-xi-by-xun-aethb/)
