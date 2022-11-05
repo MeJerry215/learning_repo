@@ -93,6 +93,9 @@ using std::stack;
 #include <numeric>
 using std::iota;
 
+using std::any_of;
+using std::all_of;
+
 struct ListNode
 {
     int val;

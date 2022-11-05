@@ -17,6 +17,9 @@
 **设计**:这道题目可以在开始dfs掉所有元素，但是不符合迭代器的设计思路，迭代器延迟加载数据，所以方法二采用栈来模拟延迟加载，记录当前遍历到的元素iterator，以及尾iterator。
 [341. 扁平化嵌套列表迭代器](https://leetcode.cn/problems/flatten-nested-list-iterator/)
 
+栈的用法
+[1106. 解析布尔表达式](https://leetcode.cn/problems/parsing-a-boolean-expression/)
+
 出入栈即可
 [1047. 删除字符串中的所有相邻重复项](https://leetcode.cn/problems/remove-all-adjacent-duplicates-in-string/)
 
