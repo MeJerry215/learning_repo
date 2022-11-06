@@ -2,12 +2,11 @@
 
 本文主要将刷题进行归类。
 
-<<<<<<< HEAD
 ## 分治
 
 巧妙的一次遍历引用指针，由叶节点先增加引用，然后最后就是根节点，自然的到达中间值
 [109. 有序链表转换二叉搜索树](https://leetcode.cn/problems/convert-sorted-list-to-binary-search-tree/)
-=======
+
 [https://pan.baidu.com/s/1hjwK0ZeRxYGB8lIkbKuQgQ#list/path=%2Fsharelink3641294814-120028191352976%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95&parentPath=%2Fsharelink3641294814-120028191352976](https://pan.baidu.com/s/1hjwK0ZeRxYGB8lIkbKuQgQ#list/path=%2Fsharelink3641294814-120028191352976%2F%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95&parentPath=%2Fsharelink3641294814-120028191352976)
 6666
 
@@ -16,7 +15,6 @@
 逆序原地旋转字符串，三次reverse即可, 189为右旋
 [剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 [189. 轮转数组](https://leetcode.cn/problems/rotate-array/)
->>>>>>> a810cfd647f53484b600a04051c7648e2bd4ad90
 
 ## 贡献值
 
@@ -62,6 +60,11 @@
 
 递归交换左右子树
 [2415. 反转二叉树的奇数层](https://leetcode.cn/problems/reverse-odd-levels-of-binary-tree/)
+
+组合系列，相对来说难度都是普通的dfs的变种
+[39. 组合总和](https://leetcode.cn/problems/combination-sum/)
+[40. 组合总和 II](https://leetcode.cn/problems/combination-sum-ii/)
+[216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii/)
 
 ## 双指针
 
@@ -142,11 +145,9 @@
 
 [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
-<<<<<<< HEAD
 ## 数学
 
 到达重点  1 + ... +n 到达m位置，如果m距离target为偶数，翻转前面的一个 (target - m) / 2，1 + .... - (target -m) / 2 + ...n = m - (m - target), 若是剩下的看是否剩下的步数为奇数，目标是将步数转换为偶数。
 [754. 到达终点数字](https://leetcode.cn/problems/reach-a-number/solution/shu-xue-zhu-shi-chao-ji-xiang-xi-by-xun-aethb/)
-=======
+
 [2327. 知道秘密的人数](https://leetcode.cn/problems/number-of-people-aware-of-a-secret/)
->>>>>>> a810cfd647f53484b600a04051c7648e2bd4ad90
