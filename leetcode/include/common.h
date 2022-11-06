@@ -93,13 +93,10 @@ using std::stack;
 #include <numeric>
 using std::iota;
 
-<<<<<<< HEAD
 using std::any_of;
 using std::all_of;
-=======
 #include <bitset>
 using std::bitset;
->>>>>>> a810cfd647f53484b600a04051c7648e2bd4ad90
 
 struct ListNode
 {
