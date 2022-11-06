@@ -65,6 +65,8 @@
 [39. 组合总和](https://leetcode.cn/problems/combination-sum/)
 [40. 组合总和 II](https://leetcode.cn/problems/combination-sum-ii/)
 [216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii/)
+[46. 全排列](https://leetcode.cn/problems/permutations/)
+[47. 全排列 II](https://leetcode.cn/problems/permutations-ii/)
 
 ## 双指针
 
