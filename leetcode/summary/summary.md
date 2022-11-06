@@ -67,6 +67,8 @@
 [216. 组合总和 III](https://leetcode.cn/problems/combination-sum-iii/)
 [46. 全排列](https://leetcode.cn/problems/permutations/)
 [47. 全排列 II](https://leetcode.cn/problems/permutations-ii/)
+[78. 子集](https://leetcode.cn/problems/subsets/)
+[90. 子集 II](https://leetcode.cn/problems/subsets-ii/)
 
 ## 双指针
 
