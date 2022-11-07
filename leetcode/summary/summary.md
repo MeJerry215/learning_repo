@@ -97,6 +97,8 @@
 
 固定大小窗口
 [438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
+438 稍微改改就能ac 567
+[567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/)
 
 ## 优先权队列
 
