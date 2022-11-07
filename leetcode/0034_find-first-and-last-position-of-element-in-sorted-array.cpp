@@ -24,41 +24,25 @@ nums 是一个非递减数组
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-class Solution {
+class Solution
+{
 public:
-    vector<int> binary_search_healper(vector<int>& nums, int left, int right, int target) {
-        int l_rng = -1, r_rng = -1;
-        while(left <= right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] == target) {
-                l_rng = r_rng = mid;
-                while (l_rng > 0 && nums[l_rng - 1] == target) {
-                    l_rng --;
-                }
-                while( r_rng < nums.size() - 1 && nums[r_rng + 1] == target) {
-                    r_rng ++;
-                }
-                
-                break;
-            } else {
-                if (nums[mid] < target) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
-            }
+    vector<int> searchRange(vector<int> &nums, int target)
+    {
+        int leftIdx = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
+        int rightIdx = upper_bound(nums.begin(), nums.end(), target) - nums.begin();
+        if (leftIdx < nums.size() && nums[leftIdx] == target)
+        {
+            return {leftIdx, rightIdx - 1};
         }
-        return {l_rng, r_rng};
-    }
-
-    vector<int> searchRange(vector<int>& nums, int target) {
-        return binary_search_healper(nums, 0, nums.size() - 1, target);
+        return {-1, -1};
     }
 };
 
-void TestSolution() {
+void TestSolution()
+{
     Solution s;
-    vector<int> nums = {5,7,7,8,8, 8,10};
+    vector<int> nums = {5, 7, 7, 8, 8, 8, 10};
     auto ans = s.searchRange(nums, 8);
     print_vec(ans);
 }

@@ -47,6 +47,9 @@
 [116. 填充每个节点的下一个右侧节点指针](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node/)
 [117. 填充每个节点的下一个右侧节点指针 II](https://leetcode.cn/problems/populating-next-right-pointers-in-each-node-ii/)
 
+[752. 打开转盘锁](https://leetcode.cn/problems/open-the-lock/)
+
+
 ## DFS
 
 朴素dfs
