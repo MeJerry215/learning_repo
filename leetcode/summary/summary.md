@@ -95,6 +95,8 @@
 这到题目直接用滑动窗口去做是不太好做的，但是如果带上条件约束做滑动窗口还是可以做的，就是约束出现k次以上的字符的个数约束。
 [395. 至少有 K 个重复字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/)
 
+固定大小窗口
+[438. 找到字符串中所有字母异位词](https://leetcode.cn/problems/find-all-anagrams-in-a-string/)
 
 ## 优先权队列
 
