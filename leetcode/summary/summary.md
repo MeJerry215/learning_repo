@@ -168,3 +168,9 @@
 [754. 到达终点数字](https://leetcode.cn/problems/reach-a-number/solution/shu-xue-zhu-shi-chao-ji-xiang-xi-by-xun-aethb/)
 
 [2327. 知道秘密的人数](https://leetcode.cn/problems/number-of-people-aware-of-a-secret/)
+
+
+
+## 状态机
+
+[121. 买卖股票的最佳时机](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/)

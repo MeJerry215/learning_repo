@@ -1,0 +1,7511 @@
+<!DOCTYPE html>
+<!-- saved from url=(0038)https://labuladong.gitee.io/algo/1/14/ -->
+<html lang="en" class="js csstransforms3d supports csstransforms3d"><br id="my_padding" version="3.7.1" data="elafhogmnaapleckojedgipgmidneccg" style="display: none;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style id="giscus-css">
+  .giscus, .giscus-frame {
+    width: 100%;
+    min-height: 150px;
+  }
+
+  .giscus-frame {
+    border: none;
+    color-scheme: normal;
+  }
+</style>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="Hugo 0.93.2">
+    <meta name="description" content="">
+<meta name="author" content="labuladong">
+
+    <link rel="icon" href="https://labuladong.gitee.io/algo/images/avatar.png" type="image/png">
+
+    <title>一个方法团灭 LeetCode 打家劫舍问题 :: labuladong的算法小抄</title>
+
+    
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/nucleus.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/fontawesome-all.min.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/hybrid.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/featherlight.min.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/perfect-scrollbar.min.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/auto-complete.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/atom-one-dark-reasonable.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/theme.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/tabs.css" rel="stylesheet">
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/hugo-theme.css" rel="stylesheet">
+    
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/theme-green.css" rel="stylesheet">
+    
+    <link href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/myimage.css" rel="stylesheet">
+
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/hm.js.下载"></script><script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/jquery-3.3.1.min.js.下载"></script>
+
+    <style>
+      :root #header + #content > #left > #rlblock_left{
+          display:none !important;
+      }
+      
+        :not(pre) > code + span.copy-to-clipboard {
+            display: none;
+        }
+      
+    </style>
+    <style type="text/css">
+     
+    pre code {
+        white-space: pre;
+    }
+
+     
+     
+
+    details[open] > summary:first-of-type {
+        list-style-type: disclosure-open;
+    }
+
+    details > summary:first-of-type {
+        display: list-item;
+        counter-increment: list-item 0;
+        list-style: inside disclosure-closed;
+    }
+
+     
+    .tooltip {
+        position: relative;
+        display: inline-block;
+        border-bottom: 1px dotted black;
+    }
+
+    .tooltip .tooltiptext {
+        display: block;
+        visibility: hidden;
+        width: 400px;
+        height: fit-content;
+         
+        white-space: normal;
+        line-height: normal;
+
+        background-color: black;
+        color: white;
+        border-radius: 6px;
+        border: 1px solid #737373;
+        padding: 0px 8px 8px 8px;
+        overflow: auto;
+
+         
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        margin-left: -200px;
+    }
+
+    div.tooltiptext p {
+        font-style: normal;
+        margin: 0.5rem;
+    }
+
+    div.tooltiptext img {
+        margin: 0 !important;
+    }
+
+    div.tooltiptext code {
+        border-radius: 2px;
+        white-space: nowrap;
+        color: #5e5e5e;
+        background: #FFF7DD;
+        border: 1px solid #fbf0cb;
+        padding: 0px 2px;
+    }
+
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+     
+    #body-inner img.my_header_icon {
+        display: inline-block;
+        margin: 0px 1px 0px 1px;
+    }
+
+    #body-inner img.souyisou_pic {
+        margin: 1rem auto 2rem auto
+    }
+
+     
+    #read_all_wrapper {
+        display: block;
+        position: absolute;
+        bottom: 0px;
+        z-index: 888;
+        width: 100%;
+        margin-top: -100px;
+    }
+
+   #read_all_mask {
+        position: relative;
+        height: 200px;
+        background: -webkit-gradient(linear, 0 0%, 0 100%, from(rgba(255, 255, 255, 0)), to(rgb(255, 255, 255)));
+    }
+
+    #read_all_btn {
+        position: absolute;
+        left: 50%;
+        top: 70%;
+        bottom: 30px;
+        transform: translate(-50%, -50%);
+        width: 160px;
+        height: 36px;
+        line-height: 36px;
+        font-size: 15px;
+        text-align: center;
+        border: 1px solid rgb(1, 36, 3);
+        background: rgb(255, 255, 255);
+        cursor: pointer;
+        border-radius: 6px;
+        color: #1d1f21;
+    }
+
+    #guiding_popup_wrapper {
+        display: none;
+    }
+
+    #guiding_popup_mask {
+        position: fixed;
+        display: inline-block;
+        inset: 0px;
+        opacity: 0.7;
+        z-index: 1111;
+        background: rgb(0, 0, 0);
+    }
+
+    #guiding_popup_div {
+        position: fixed;
+        display: inline-block;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 320px;
+        text-align: center;
+        font-size: 13px;
+        background: rgb(255, 255, 255);
+        border-radius: 10px;
+        z-index: 2222;
+    }
+
+    #guiding_popup_div_close_btn {
+        position: absolute;
+        top: 5px;
+        right: 15px;
+        line-height: 34px;
+        font-size: 34px;
+        cursor: pointer;
+        opacity: 0.2;
+        z-index: 9999;
+        color: rgb(0, 0, 0);
+        background: none;
+        border: none;
+        outline: none;
+    }
+
+    #guiding_popup_div_header {
+        margin-top: 40px;
+        line-height: 1.8;
+        font-size: 15px;
+    }
+</style>
+
+
+
+<link rel="manifest" href="https://labuladong.gitee.io/algo/manifest.json">
+
+<link rel="apple-touch-icon" sizes="180x180" href="https://labuladong.gitee.io/algo/images/avatar.jpeg">
+
+<script>
+    if ('serviceWorker' in navigator) {
+        
+        navigator.serviceWorker.register('/algo/service-worker.js');
+    }
+</script>
+
+<script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/md.js.下载"></script>
+  </head>
+  <body class="" data-url="../../1/14/">
+    <nav id="sidebar" class="showVisitedLinks">
+
+  
+  
+  <div id="header-wrapper">
+    <div id="header">
+      <a id="logo" href="https://labuladong.gitee.io/algo/">
+
+  <svg id="grav-logo" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="100%" height="100%" viewBox="0 0 285.1 69.9" xml:space="preserve">
+<g>
+	<path d="M35,0c9.6,0,17.9,3.4,24.7,10.3c6.8,6.8,10.3,15,10.3,24.7c0,9.7-3.4,17.9-10.3,24.7c-6.8,6.8-15,10.3-24.7,10.3
+		c-9.7,0-17.9-3.4-24.7-10.3C3.4,52.8,0,44.6,0,34.9c0-9.6,3.4-17.9,10.3-24.7C17.1,3.4,25.3,0,35,0z M22.3,63.7
+		c0.3-7.4,0.3-14.7,0-22.1c-2.1-0.4-4-0.4-5.9,0c-0.2,0.8-0.2,2.5-0.1,4.9c0.1,2.3,0,3.9-0.3,4.8c-1.7-0.6-2.7-2.1-3.1-4.6
+		c-0.1-0.7-0.1-3.3-0.1-8c0-14.5-0.1-23-0.3-25.6c-3.6,4.1-5.6,7-5.9,8.5v10.9c0,4.5,0.1,8.1,0.2,10.9c0,0.4,0,1.3-0.1,2.8
+		c-0.1,1.2,0,2.1,0.1,2.6c0.1,0.6,1.1,2.1,2.8,4.7C13.2,58.7,17.5,62.2,22.3,63.7z M44.6,65.4c0.3-5,0.2-12.9-0.1-23.6
+		c-2.1-0.3-4.1-0.3-5.9,0c-0.2,2-0.2,5.1-0.1,9.5c0.1,4.3,0,7.5-0.1,9.5c-2.9,0.4-5,0.3-6.2-0.1c-0.2-5.6-0.2-15.2-0.1-28.7
+		c0.1-12.4,0-21.8-0.3-28.3c-2.4,0.1-4.3,0.6-5.7,1.3c-0.1,7.7-0.2,17.7-0.1,30.1c0,16.5,0,26.6,0,30.3c2.3,1.1,5.4,1.7,9.4,1.7
+		C38.9,66.9,42.1,66.4,44.6,65.4z M48.1,64.1c9.7-4.6,15.7-12,18-22.2c-1.8-0.2-3.8-0.3-6.1-0.3c-1.6,3.9-2.6,6.3-3.2,7.2
+		c-1.1,1.7-2,2.5-2.7,2.5C54,46,54,39.1,54,30.5c0-11.5,0-18.4,0-20.9c-1.4-1.4-3.3-2.5-5.7-3.4C48.1,6.3,48,6.4,48,6.7
+		c0,3.5,0,13.1,0,28.8C47.9,47.2,48,56.8,48.1,64.1z"></path>
+</g>
+    <g>
+	<path d="M116.6,51.3h-29c-0.5,0-0.9-0.1-1.3-0.2c-0.4-0.2-0.7-0.4-1-0.7c-0.3-0.3-0.5-0.6-0.7-1c-0.2-0.4-0.2-0.8-0.2-1.3V16.3h6.3
+		V45h25.8V51.3z"></path>
+      <path d="M154.8,51.3h-22.9c-0.9,0-1.8-0.2-2.9-0.5c-1-0.3-2-0.8-2.9-1.5c-0.9-0.7-1.6-1.6-2.2-2.8c-0.6-1.1-0.9-2.5-0.9-4.2V19.5
+		c0-0.4,0.1-0.9,0.2-1.2c0.2-0.4,0.4-0.7,0.7-1c0.3-0.3,0.6-0.5,1-0.7c0.4-0.2,0.8-0.2,1.3-0.2h28.6v6.3h-25.4v19.8
+		c0,0.8,0.2,1.5,0.7,1.9s1.1,0.7,1.9,0.7h22.9V51.3z M151.9,37h-20v-6.4h20V37z"></path>
+      <path d="M197.3,51.3H191v-8.6h-22.3v8.6h-6.3V33.8c0-2.6,0.4-4.9,1.3-7.1s2.1-4,3.7-5.5c1.6-1.5,3.4-2.8,5.5-3.6
+		c2.1-0.9,4.5-1.3,7-1.3h14.3c0.4,0,0.9,0.1,1.2,0.2c0.4,0.2,0.7,0.4,1,0.7s0.5,0.6,0.7,1c0.2,0.4,0.2,0.8,0.2,1.2V51.3z
+		 M168.7,36.4H191V22.6h-11.2c-0.2,0-0.6,0-1.2,0.1c-0.6,0.1-1.4,0.2-2.2,0.4c-0.8,0.2-1.7,0.6-2.6,1c-0.9,0.5-1.8,1.1-2.5,2
+		c-0.8,0.8-1.4,1.9-1.9,3.1c-0.5,1.2-0.7,2.8-0.7,4.5V36.4z"></path>
+      <path d="M241.7,28.1c0,1.4-0.2,2.7-0.5,3.9c-0.4,1.1-0.8,2.1-1.5,3c-0.6,0.9-1.3,1.6-2.1,2.2c-0.8,0.6-1.6,1.1-2.5,1.5
+		c-0.9,0.4-1.8,0.7-2.6,0.9c-0.9,0.2-1.7,0.3-2.5,0.3l13.3,11.5h-9.8l-13.2-11.5h-4.6v-6.3H230c0.8-0.1,1.5-0.2,2.2-0.5
+		c0.7-0.3,1.2-0.6,1.7-1.1c0.5-0.5,0.9-1,1.1-1.6c0.3-0.6,0.4-1.4,0.4-2.2v-4c0-0.4,0-0.6-0.1-0.8c-0.1-0.2-0.2-0.3-0.3-0.4
+		c-0.1-0.1-0.3-0.1-0.4-0.2c-0.2,0-0.3,0-0.4,0h-20.9v28.7h-6.3V19.5c0-0.4,0.1-0.9,0.2-1.2c0.2-0.4,0.4-0.7,0.7-1
+		c0.3-0.3,0.6-0.5,1-0.7c0.4-0.2,0.8-0.2,1.3-0.2H234c1.4,0,2.6,0.3,3.6,0.8s1.8,1.2,2.4,1.9c0.6,0.8,1,1.6,1.3,2.5
+		c0.3,0.9,0.4,1.7,0.4,2.5V28.1z"></path>
+      <path d="M285.1,48.6c0,0.5-0.1,0.9-0.3,1.3c-0.2,0.4-0.4,0.7-0.7,1c-0.3,0.3-0.6,0.5-1,0.7c-0.4,0.2-0.8,0.2-1.2,0.2
+		c-0.4,0-0.8-0.1-1.2-0.2c-0.4-0.1-0.8-0.4-1.1-0.7l-23.2-24.2v24.7h-6.3V19c0-0.7,0.2-1.2,0.5-1.8c0.4-0.5,0.8-0.9,1.4-1.2
+		c0.6-0.2,1.2-0.3,1.9-0.2s1.2,0.4,1.6,0.9l23.2,24.2V16.3h6.3V48.6z"></path>
+</g>
+</svg>
+
+</a>
+
+    </div>
+    
+    <div class="searchbox">
+    <label for="search-by"><i class="fas fa-search"></i></label>
+    <input data-search-input="" id="search-by" type="search" placeholder="Search...">
+</div>
+<ul id="mySearchResults"></ul>
+
+
+<script type="text/javascript">
+    
+        var baseurl = "https:\/\/labuladong.gitee.io";
+    
+</script>
+<script type="text/javascript" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/fastsearch.js.下载"></script>
+<script type="text/javascript" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/fuse.min.js.下载"></script>
+
+    
+  </div>
+  
+  <section id="homelinks">
+    <ul>
+      <li>
+        <strong> <a style="text-align:center;" class="padding" href="https://labuladong.gitee.io/algo/"><i class="fas fa-home"></i> 本站阅读须知</a></strong>
+      </li>
+    </ul>
+  </section>
+  
+
+  <div class="highlightable ps-container ps-theme-default ps-active-y" data-ps-id="2f0a3560-1959-3995-5529-63b60a871869" style="height: 907.247px;">
+    <ul class="topics">
+
+      
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/1/" title="第零章、核心框架汇总" class="dd-item
+        parent
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>第零章、核心框架汇总
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/2/" title="学习算法和刷题的框架思维" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/2/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>学习算法和刷题的框架思维
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/3/" title="我的刷题心得" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/3/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我的刷题心得
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/4/" title="双指针技巧秒杀七道链表题目" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/4/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>双指针技巧秒杀七道链表题目
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/5/" title="双指针技巧秒杀七道数组题目" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/5/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>双指针技巧秒杀七道数组题目
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/6/" title="东哥带你刷二叉树（纲领篇）" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/6/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（纲领篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/7/" title="动态规划解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/7/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/8/" title="回溯算法解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/8/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/9/" title="回溯算法秒杀所有排列-组合-子集问题" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/9/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法秒杀所有排列-组合-子集问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/10/" title="BFS 算法解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/10/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>BFS 算法解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/11/" title="我写了首诗，把二分搜索算法变成了默写题" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/1/11/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我写了首诗，把二分搜索算法变成了默写题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/12/" title="我写了首诗，把滑动窗口算法变成了默写题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/12/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我写了首诗，把滑动窗口算法变成了默写题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/13/" title="一个方法团灭 LeetCode 股票买卖问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/13/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法团灭 LeetCode 股票买卖问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/14/" title="一个方法团灭 LeetCode 打家劫舍问题" class="dd-item
+        parent
+        active
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/14/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法团灭 LeetCode 打家劫舍问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/15/" title="一个方法团灭 nSum 问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/15/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法团灭 nSum 问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/16/" title="算法时空复杂度分析实用指南" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/16/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>算法时空复杂度分析实用指南
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/1/17/" title="算法笔试「骗分」套路" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/1/17/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>算法笔试「骗分」套路
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/2/" title="第一章、手把手刷数据结构" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>第一章、手把手刷数据结构
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/19/" title="手把手刷链表算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/19/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>手把手刷链表算法
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/19/18/" title="双指针技巧秒杀七道链表题目" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/19/18/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>双指针技巧秒杀七道链表题目
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/19/19/" title="递归魔法：反转单链表" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/19/19/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>递归魔法：反转单链表
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/19/20/" title="如何 K 个一组反转链表" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/19/20/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何 K 个一组反转链表
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/19/21/" title="如何判断回文链表" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/19/21/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何判断回文链表
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/" title="手把手刷数组算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>手把手刷数组算法
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/23/" title="双指针技巧秒杀七道数组题目" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/23/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>双指针技巧秒杀七道数组题目
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/24/" title="小而美的算法技巧：前缀和数组" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/24/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>小而美的算法技巧：前缀和数组
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/25/" title="小而美的算法技巧：差分数组" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/25/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>小而美的算法技巧：差分数组
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/26/" title="二维数组的花式遍历技巧" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/26/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>二维数组的花式遍历技巧
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/27/" title="我写了首诗，把滑动窗口算法算法变成了默写题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/27/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我写了首诗，把滑动窗口算法算法变成了默写题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/28/" title="滑动窗口算法延伸：Rabin Karp 字符匹配算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/28/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>滑动窗口算法延伸：Rabin Karp 字符匹配算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/29/" title="我写了首诗，让你闭着眼睛也能写对二分搜索" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/29/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我写了首诗，让你闭着眼睛也能写对二分搜索
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/30/" title="带权重的随机选择算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/30/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>带权重的随机选择算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/31/" title="二分搜索怎么用？我又总结了套路" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/31/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>二分搜索怎么用？我又总结了套路
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/32/" title="田忌赛马背后的算法决策" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/32/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>田忌赛马背后的算法决策
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/33/" title="常数时间删除-查找数组中的任意元素" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/33/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>常数时间删除-查找数组中的任意元素
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/20/34/" title="一道数组去重的算法题把我整不会了" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/20/34/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一道数组去重的算法题把我整不会了
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/" title="手把手刷二叉树算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>手把手刷二叉树算法
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/36/" title="东哥带你刷二叉树（纲领篇）" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/2/21/36/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（纲领篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/37/" title="东哥带你刷二叉树（思路篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/37/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（思路篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/38/" title="东哥带你刷二叉树（构造篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/38/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（构造篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/39/" title="东哥带你刷二叉树（序列化篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/39/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（序列化篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/40/" title="东哥带你刷二叉树（后序篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/40/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉树（后序篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/41/" title="归并排序详解及应用" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/41/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>归并排序详解及应用
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/42/" title="东哥带你刷二叉搜索树（特性篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/42/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉搜索树（特性篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/43/" title="东哥带你刷二叉搜索树（基操篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/43/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉搜索树（基操篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/44/" title="东哥带你刷二叉搜索树（构造篇）" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/44/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>东哥带你刷二叉搜索树（构造篇）
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/45/" title="快速排序详解及应用" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/45/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>快速排序详解及应用
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/46/" title="题目不让我干什么，我偏要干什么" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/46/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>题目不让我干什么，我偏要干什么
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/47/" title="Git原理之最近公共祖先" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/47/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Git原理之最近公共祖先
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/21/48/" title="如何计算完全二叉树的节点数" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/21/48/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何计算完全二叉树的节点数
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/" title="手把手刷图算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>手把手刷图算法
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/50/" title="图论基础及遍历算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/50/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>图论基础及遍历算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/51/" title="环检测及拓扑排序算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/51/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>环检测及拓扑排序算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/52/" title="二分图判定算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/52/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>二分图判定算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/53/" title="并查集（Union-Find）算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/53/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>并查集（Union-Find）算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/54/" title="Kruskal 最小生成树算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/54/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Kruskal 最小生成树算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/55/" title="Prim 最小生成树算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/55/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Prim 最小生成树算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/56/" title="Dijkstra 算法模板及应用" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/56/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Dijkstra 算法模板及应用
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/22/57/" title="众里寻他千百度：名流问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/22/57/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>众里寻他千百度：名流问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/" title="手把手设计数据结构" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>手把手设计数据结构
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/59/" title="算法就像搭乐高：带你手撸 LRU 算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/59/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>算法就像搭乐高：带你手撸 LRU 算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/60/" title="算法就像搭乐高：带你手撸 LFU 算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/60/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>算法就像搭乐高：带你手撸 LFU 算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/61/" title="前缀树算法模板秒杀五道算法题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/61/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>前缀树算法模板秒杀五道算法题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/62/" title="一道求中位数的算法题把我整不会了" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/62/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一道求中位数的算法题把我整不会了
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/63/" title="单调栈结构解决三道算法题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/63/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>单调栈结构解决三道算法题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/64/" title="单调队列结构解决滑动窗口问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/64/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>单调队列结构解决滑动窗口问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/65/" title="二叉堆详解实现优先级队列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/65/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>二叉堆详解实现优先级队列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/66/" title="队列实现栈以及栈实现队列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/66/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>队列实现栈以及栈实现队列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/2/23/67/" title="设计朋友圈时间线功能" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/2/23/67/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>设计朋友圈时间线功能
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/3/" title="第二章、手把手刷动态规划" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>第二章、手把手刷动态规划
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/" title="动态规划基本技巧" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/25/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>动态规划基本技巧
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/69/" title="动态规划解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/3/25/69/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/70/" title="动态规划设计：最长递增子序列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/25/70/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划设计：最长递增子序列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/71/" title="最优子结构原理和 dp 数组遍历方向" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/25/71/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>最优子结构原理和 dp 数组遍历方向
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/72/" title="base case 和备忘录的初始值怎么定？" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/25/72/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>base case 和备忘录的初始值怎么定？
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/25/73/" title="对动态规划进行降维打击" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/25/73/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>对动态规划进行降维打击
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/" title="子序列类型问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>子序列类型问题
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/75/" title="经典动态规划：编辑距离" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/75/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：编辑距离
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/76/" title="动态规划设计：最长递增子序列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/76/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划设计：最长递增子序列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/77/" title="动态规划设计：最大子数组" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/77/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划设计：最大子数组
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/78/" title="经典动态规划：最长公共子序列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/78/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：最长公共子序列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/26/79/" title="动态规划之子序列问题解题模板" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/26/79/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划之子序列问题解题模板
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/27/" title="背包类型问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/27/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>背包类型问题
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/27/81/" title="经典动态规划：0-1 背包问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/27/81/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：0-1 背包问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/27/82/" title="经典动态规划：子集背包问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/27/82/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：子集背包问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/27/83/" title="经典动态规划：完全背包问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/27/83/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：完全背包问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/27/84/" title="动态规划和回溯算法到底谁是谁爹？" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/27/84/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划和回溯算法到底谁是谁爹？
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/" title="用动态规划玩游戏" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>用动态规划玩游戏
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/86/" title="动态规划之最小路径和" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/86/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划之最小路径和
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/87/" title="动态规划帮我通关了《魔塔》" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/87/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划帮我通关了《魔塔》
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/88/" title="动态规划帮我通关了《辐射4》" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/88/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>动态规划帮我通关了《辐射4》
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/89/" title="旅游省钱大法：加权最短路径" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/89/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>旅游省钱大法：加权最短路径
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/90/" title="经典动态规划：正则表达式" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/90/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：正则表达式
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/91/" title="经典动态规划：高楼扔鸡蛋" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/91/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：高楼扔鸡蛋
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/92/" title="经典动态规划：戳气球" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/92/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：戳气球
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/93/" title="经典动态规划：博弈问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/93/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：博弈问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/94/" title="经典动态规划：四键键盘" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/94/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典动态规划：四键键盘
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/95/" title="一个方法团灭 LeetCode 打家劫舍问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/95/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法团灭 LeetCode 打家劫舍问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/96/" title="一个方法团灭 LeetCode 股票买卖问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/96/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法团灭 LeetCode 股票买卖问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/28/97/" title="有限状态机之 KMP 字符匹配算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/28/97/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>有限状态机之 KMP 字符匹配算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/29/" title="贪心类型问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/29/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>贪心类型问题
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/29/99/" title="贪心算法之区间调度问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/29/99/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>贪心算法之区间调度问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/29/100/" title="扫描线技巧：安排会议室" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/29/100/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>扫描线技巧：安排会议室
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/29/101/" title="剪视频剪出一个贪心算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/29/101/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>剪视频剪出一个贪心算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/3/29/102/" title="如何运用贪心思想玩跳跃游戏" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/3/29/102/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何运用贪心思想玩跳跃游戏
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/4/" title="第三章、必知必会算法技巧" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>第三章、必知必会算法技巧
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/" title="暴力搜索算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>暴力搜索算法
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/104/" title="回溯算法解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/4/31/104/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/105/" title="经典回溯算法：集合划分问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/105/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>经典回溯算法：集合划分问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/106/" title="回溯算法秒杀所有排列-组合-子集问题" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/4/31/106/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法秒杀所有排列-组合-子集问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/107/" title="一文秒杀所有岛屿题目" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/107/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一文秒杀所有岛屿题目
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/108/" title="回溯算法最佳实践：解数独" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/108/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法最佳实践：解数独
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/109/" title="回溯算法最佳实践：括号生成" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/109/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>回溯算法最佳实践：括号生成
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/110/" title="BFS 算法解题套路框架" class="dd-item visited">
+  <a href="https://labuladong.gitee.io/algo/4/31/110/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>BFS 算法解题套路框架
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/31/111/" title="如何用 BFS 算法秒杀各种智力题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/31/111/"><b style="float:right;opacity:initial;">🕒</b>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何用 BFS 算法秒杀各种智力题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/" title="数学运算技巧" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>数学运算技巧
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/113/" title="谈谈游戏中的随机算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/113/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>谈谈游戏中的随机算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/114/" title="常用的位操作" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/114/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>常用的位操作
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/115/" title="讲两道常考的阶乘算法题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/115/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>讲两道常考的阶乘算法题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/116/" title="如何高效寻找素数" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/116/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何高效寻找素数
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/117/" title="如何高效进行模幂运算" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/117/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何高效进行模幂运算
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/118/" title="如何同时寻找缺失和重复的元素" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/118/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何同时寻找缺失和重复的元素
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/119/" title="一行代码就能解决的算法题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/119/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一行代码就能解决的算法题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/32/120/" title="几个反直觉的概率问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/32/120/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>几个反直觉的概率问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/" title="经典面试题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>经典面试题
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/122/" title="分治算法详解：运算优先级" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/122/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>分治算法详解：运算优先级
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/123/" title="一个方法解决三道区间问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/123/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一个方法解决三道区间问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/124/" title="谁能想到，斗地主也能玩出算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/124/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>谁能想到，斗地主也能玩出算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/125/" title="烧饼排序算法" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/125/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>烧饼排序算法
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/126/" title="字符串乘法计算" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/126/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>字符串乘法计算
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/127/" title="如何实现一个计算器" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/127/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何实现一个计算器
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/128/" title="如何高效解决接雨水问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/128/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何高效解决接雨水问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/129/" title="如何解决括号相关的问题" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/129/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何解决括号相关的问题
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/130/" title="如何判定完美矩形" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/130/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何判定完美矩形
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/131/" title="如何调度考生的座位" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/131/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>如何调度考生的座位
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/4/33/132/" title="二分查找高效判定子序列" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/4/33/132/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>二分查找高效判定子序列
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+
+
+
+
+
+
+
+<li data-nav-id="/5/" title="第四章、通用计算机技术" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/"><strong>
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▼ </b>第四章、通用计算机技术
+    
+  </strong></a>
+  
+  
+  <ul>
+    
+    
+    
+    
+    
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/35/" title="Linux 文件系统都是什么鬼" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/35/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Linux 文件系统都是什么鬼
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/36/" title="Linux 的进程-线程-文件描述符是什么" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/36/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Linux 的进程-线程-文件描述符是什么
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/37/" title="关于 Linux shell 你必须知道的" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/37/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>关于 Linux shell 你必须知道的
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/38/" title="Linux 管道和重定向的坑" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/38/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Linux 管道和重定向的坑
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/39/" title="一文看懂 session 和 cookie" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/39/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>一文看懂 session 和 cookie
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/40/" title="加密算法的前身今世" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/40/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>加密算法的前身今世
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/41/" title="我用四个命令概括了 Git 的所有套路" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/41/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>我用四个命令概括了 Git 的所有套路
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/42/" title="Git-SQL-正则表达式的在线练习平台" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/42/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>Git-SQL-正则表达式的在线练习平台
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/43/" title="消息队列架构设计演进" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/43/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>消息队列架构设计演进
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/44/" title="存储系统设计之 LSM 树原理" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/44/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>存储系统设计之 LSM 树原理
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/45/" title="用消息队列制作一款多人在线游戏" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/45/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>用消息队列制作一款多人在线游戏
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+    
+
+
+
+
+
+
+
+<li data-nav-id="/5/46/" title="拥抱开源，告别 CRUD" class="dd-item
+        
+        
+        
+        ">
+  <a href="https://labuladong.gitee.io/algo/5/46/">
+    <i class="fas fa-check read-icon"></i>
+    
+    <b>▸ </b>拥抱开源，告别 CRUD
+    
+  </a>
+  
+  
+</li>
+
+
+
+    
+    
+    
+  </ul>
+  
+</li>
+
+
+
+      
+      
+    </ul>
+
+    
+    
+    <section id="shortcuts">
+      <h3>More</h3>
+      <ul>
+        
+        <li>
+          <a class="padding" target="_blank" href="https://mp.weixin.qq.com/s/X-fE9sR4BLi6T9pn7xP4pg">配套 PDF 和插件下载</a>
+        </li>
+        
+        <li>
+          <a class="padding" target="_blank" href="https://github.com/labuladong/fucking-algorithm"><i class="fab fa-github"></i> GitHub fucking-algorithm</a>
+        </li>
+        
+        <li>
+          <a class="padding" target="_blank" href="https://gitee.com/labuladong/fucking-algorithm"><i class="fab fa-git"></i> Gitee fucking-algorithm</a>
+        </li>
+        
+        <li>
+          <a class="padding" target="_blank" href="https://space.bilibili.com/14089380">B站 @labuladong</a>
+        </li>
+        
+      </ul>
+    </section>
+    
+
+    
+    <section id="prefooter">
+      <hr>
+      <ul>
+        
+
+        
+        
+
+        
+        <li><a class="padding" href="https://labuladong.gitee.io/algo/1/14/#" data-clear-history-toggle=""><i class="fas fa-history fa-fw"></i> 清除阅读历史</a></li>
+        
+      </ul>
+    </section>
+    
+    <section id="footer">
+      <center>
+
+    
+    
+
+    
+    <span></span>
+
+    
+    <span></span>
+
+    <p><i class="fas fa-heart"></i> 给我点个 star <i class="fas fa-heart"></i></p>
+
+    <br>
+    <br>
+</center>
+
+<script async="" defer="" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/buttons.js.下载"></script>
+    </section>
+  <div class="ps-scrollbar-x-rail" style="left: 0px; bottom: 0px;"><div class="ps-scrollbar-x" tabindex="0" style="left: 0px; width: 0px;"></div></div><div class="ps-scrollbar-y-rail" style="top: 0px; right: 0px; height: 907px;"><div class="ps-scrollbar-y" tabindex="0" style="top: 0px; height: 643px;"></div></div></div>
+</nav>
+
+<script>
+  
+  $('#sidebar a').each(function () {
+    
+    if ($(this).text().includes('▼')) {
+        $(this).wrapInner("<strong></strong>");
+    }
+  })
+</script>
+
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+              
+              <div>
+                <div id="top-bar-sticky-wrapper" class="sticky-wrapper" style="height: 48px;"><div id="top-bar">
+                
+                
+                <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                    <span id="sidebar-toggle-span">
+                        <a href="https://labuladong.gitee.io/algo/1/14/#" id="sidebar-toggle" data-sidebar-toggle="" class="highlight">
+                          <i class="fas fa-bars"></i>
+                        </a>
+                    </span>
+                  
+                  <span id="toc-menu"><i class="fas fa-list-alt"></i></span>
+                  
+                  <span class="links">
+                 
+                 
+                    
+          
+          
+            
+            
+          
+          
+            
+            
+          
+          
+            <a href="https://labuladong.gitee.io/algo/" class="highlight">labuladong 的算法小抄</a> &gt; <a href="https://labuladong.gitee.io/algo/1/" class="highlight">第零章、核心框架汇总</a> &gt; 一个方法团灭 LeetCode 打家劫舍问题
+          
+        
+          
+        
+          
+        
+                 
+                  </span>
+                </div>
+                
+                    <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="https://labuladong.gitee.io/algo/1/14/#%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D-i" class="highlight">打家劫舍 I</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+                
+                
+                <span class="anchor" style="position: relative;
+                  top: 20%; float: right;
+                  height: auto; font-size: initial;
+                  visibility: initial; padding-right: 0;" data-clipboard-text="https://labuladong.gitee.io/article/fname.html?fname=抢房子">
+
+                  <i class="fas fa-link fa-lg"></i>
+                </span>
+              </div></div>
+            </div>
+            
+        <div id="head-tags">
+        
+        </div>
+        
+        <div id="body-inner" style="max-height: initial;">
+          
+          <div id="read_all_wrapper" style="display: none;">
+              <div id="read_all_mask"></div>
+              <a id="read_all_btn" target="_self" style="line-height: 36px;" class="highlight">阅读全文</a>
+          </div>
+
+          <div id="guiding_popup_wrapper">
+            <div id="guiding_popup_mask"></div>
+            <div id="guiding_popup_div">
+              <span id="guiding_popup_div_close_btn">×</span>
+              <p id="guiding_popup_div_header">
+                由于本站访问压力较大<br>
+                微信扫码关注公众号 <strong>labuladong</strong><br>
+                回复关键词「<strong>解锁</strong>」<br>
+                按照操作即可解锁本站全部文章<br>
+              </p>
+              <a href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/qrcode.jpg" data-featherlight="image"><img style="margin: 2rem auto;" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/qrcode.jpg" alt="公众号"></a>
+            </div>
+          </div>
+
+          
+            <h1>
+              
+              一个方法团灭 LeetCode 打家劫舍问题
+            </h1><p align="center"><a href="https://github.com/labuladong/fucking-algorithm" target="_blank"><img class="my_header_icon" alt="GitHub" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/fucking-algorithm"></a><a href="https://space.bilibili.com/14089380" target="_blank"><img class="my_header_icon" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/B站-@labuladong-000000.svg"></a><a href="https://mp.weixin.qq.com/s/X-fE9sR4BLi6T9pn7xP4pg" target="_blank"><img class="my_header_icon" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/v1"></a><a href="https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q" target="_blank"><img class="my_header_icon" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/v1(1)"></a><a href="https://appktavsiei5995.pc.xiaoe-tech.com/index" target="_blank"><img class="my_header_icon" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/v1(2)"></a></p>
+          
+
+          
+        
+
+
+
+	<div id="wx_slug" data="z44hk0MW14_mAQd7988mfw"></div>
+<div id="cmt_number" data="780"></div>
+<div id="discuss_number" data="1075"></div>
+<figure><a href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/souyisou1.png" data-featherlight="image"><img src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/souyisou1.png" class="shadow myimage souyisou_pic"></a>
+</figure>
+<p><strong>通知：
+
+<a href="https://aep.h5.xeknow.com/s/1XJHEO" target="_blank" rel="noopener" class="highlight">数据结构精品课</a> 已更新到 V2.0；
+
+<a href="https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q" target="_blank" rel="noopener" class="highlight">第 13 期刷题打卡</a> 最后几天报名！</strong></p>
+<p>读完本文，你不仅学会了算法套路，还可以顺便解决如下题目：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">LeetCode</th>
+<th style="text-align:center">力扣</th>
+<th style="text-align:center">难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">
+
+<a href="https://leetcode.com/problems/house-robber/" target="_blank" rel="noopener" class="highlight">198. House Robber</a></td>
+<td style="text-align:center">
+
+<a href="https://leetcode.cn/problems/house-robber/" target="_blank" rel="noopener" class="highlight">198. 打家劫舍</a></td>
+<td style="text-align:center">🟠</td>
+</tr>
+<tr>
+<td style="text-align:center">
+
+<a href="https://leetcode.com/problems/house-robber-ii/" target="_blank" rel="noopener" class="highlight">213. House Robber II</a></td>
+<td style="text-align:center">
+
+<a href="https://leetcode.cn/problems/house-robber-ii/" target="_blank" rel="noopener" class="highlight">213. 打家劫舍 II</a></td>
+<td style="text-align:center">🟠</td>
+</tr>
+<tr>
+<td style="text-align:center">
+
+<a href="https://leetcode.com/problems/house-robber-iii/" target="_blank" rel="noopener" class="highlight">337. House Robber III</a></td>
+<td style="text-align:center">
+
+<a href="https://leetcode.cn/problems/house-robber-iii/" target="_blank" rel="noopener" class="highlight">337. 打家劫舍 III</a></td>
+<td style="text-align:center">🟠</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">
+
+<a href="https://leetcode.cn/problems/Gu0c2T/" target="_blank" rel="noopener" class="highlight">剑指 Offer II 089. 房屋偷盗</a></td>
+<td style="text-align:center">🟠</td>
+</tr>
+<tr>
+<td style="text-align:center">-</td>
+<td style="text-align:center">
+
+<a href="https://leetcode.cn/problems/PzWKhm/" target="_blank" rel="noopener" class="highlight">剑指 Offer II 090. 环形房屋偷盗</a></td>
+<td style="text-align:center">🟠</td>
+</tr>
+</tbody>
+</table>
+<p><strong>———–</strong></p>
+<p>有读者私下问我 LeetCode 「打家劫舍」系列问题（英文版叫 House Robber）怎么做，我发现这一系列题目的点赞非常之高，是比较有代表性和技巧性的动态规划题目，今天就来聊聊这道题目。</p>
+<p>打家劫舍系列总共有三道，难度设计非常合理，层层递进。第一道是比较标准的动态规划问题，而第二道融入了环形数组的条件，第三道更绝，把动态规划的自底向上和自顶向下解法和二叉树结合起来，我认为很有启发性。如果没做过的朋友，建议学习一下。</p>
+<p>下面，我们从第一道开始分析。</p>
+<h3 id="打家劫舍-i">打家劫舍 I <span class="anchor" data-clipboard-text="https://labuladong.gitee.io/algo/1/14/#打家劫舍-i"><i class="fas fa-link fa-lg"></i></span></h3>
+<p>力扣第 198 题「
+
+<a href="https://leetcode.cn/problems/house-robber/" target="_blank" rel="noopener" class="highlight">打家劫舍</a>」的题目如下：</p>
+<p>街上有一排房屋，用一个包含非负整数的数组 <code>nums</code> 表示，每个元素 <code>nums[i]</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> 代表第 <code>i</code> 间房子中的现金数额。现在你是一名专业小偷，你希望<strong>尽可能多</strong>的盗窃这些房子中的现金，但是，<strong>相邻的房子不能被同时盗窃</strong>，否则会触发报警器，你就凉凉了。</p>
+<p>请你写一个算法，计算在不触动报警器的前提下，最多能够盗窃多少现金呢？函数签名如下：</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java hljs" data-lang="java"><span style="display:flex;"><span><span style="color:#0b0;font-weight:bold"><span class="hljs-function"><span class="hljs-keyword">int</span></span></span><span class="hljs-function"> </span><span style="color:#00a000"><span class="hljs-function"><span class="hljs-title">rob</span></span></span><span style="color:#666"><span class="hljs-function"><span class="hljs-params">(</span></span></span><span style="color:#0b0;font-weight:bold"><span class="hljs-function"><span class="hljs-params"><span class="hljs-keyword">int</span></span></span></span><span style="color:#666"><span class="hljs-function"><span class="hljs-params">[]</span></span></span><span class="hljs-function"><span class="hljs-params"> nums</span></span><span style="color:#666"><span class="hljs-function"><span class="hljs-params">)</span></span>;</span>
+</span></span></code><span class="copy-to-clipboard" title="Copy to clipboard"></span></pre></div><p>比如说输入 <code>nums=[2,1,7,9,3,1]</code><span class="copy-to-clipboard" title="Copy to clipboard"></span>，算法返回 12，小偷可以盗窃 <code>nums[0], nums[3], nums[5]</code><span class="copy-to-clipboard" title="Copy to clipboard"></span> 三个房屋，得到的现金之和为 2 + 9 + 1 = 12，是最优的选择。</p>
+<p>题目很容易理解，而且动态规划的特征很明显。我们前文 
+
+<a href="https://labuladong.gitee.io/algo/3/25/69/" target="_blank" rel="noopener" class="highlight">动态规划详解</a> 做过总结，<strong>解决动态规划问题就是找「状态」和「选择」，仅此而已</strong>。</p>
+<p><strong>＿＿＿＿＿＿＿＿＿＿＿＿＿</strong></p>
+<p>应合作方要求，本文不便在此发布，请扫码关注回复关键词「抢房子」或 
+
+<a href="https://appktavsiei5995.pc.xiaoe-tech.com/detail/i_62987952e4b09dda12708bf8/1" target="_blank" rel="noopener" class="highlight">点这里</a> 查看：</p>
+<p></p><figure><a href="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/qrcode.jpg" data-featherlight="image"><img src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/qrcode.jpg" class="shadow myimage"></a>
+</figure><div id="redirect_fname" data="抢房子"></div><p></p>
+
+
+
+
+
+<footer class=" footline">
+	
+</footer>
+
+        
+        </div>
+        
+
+<p style="margin-bottom:0px;font-size:14px;color:#586069;text-align:center;">
+    <strong>共同维护高质量学习环境，评论礼仪<a href="https://mp.weixin.qq.com/s/YdSoYZS0QjZpbphQlpHyyA" target="_blank">见这里</a>，违者直接拉黑不解释</strong>
+</p>
+
+<script id="giscus_script" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/client.js.下载" data-repo="labuladong/fucking-algorithm" data-repo-id="MDEwOlJlcG9zaXRvcnkyNDE1NzYyNzA=" data-category="comment" data-category-id="DIC_kwDODmYpTs4CQ1I4" data-mapping="number" data-reactions-enabled="0" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="zh-CN" crossorigin="anonymous" async="" data-term="1075">
+</script><div class="giscus"><iframe class="giscus-frame" title="Comments" scrolling="no" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/widget.html"></iframe></div>
+
+<script>
+    if ($('#discuss_number').length) {
+        
+        const dis_number = $('#discuss_number').attr('data')
+        $('#giscus_script').attr('data-term', dis_number)
+    } else {
+        
+        
+        $('#giscus_script').remove()
+        
+        const cmt_number = $('#cmt_number').attr('data')
+        let script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "https://utteranc.es/client.js"
+        script.setAttribute('repo', "labuladong/fucking-algorithm")
+        script.setAttribute('theme', "github-light")
+        script.setAttribute('crossorigin', "anonymous")
+        script.async = true;
+        if (cmt_number) {
+            script.setAttribute('issue-number', cmt_number)
+        } else {
+            script.setAttribute('issue-term', 'title')
+        }
+        document.currentScript.after(script)
+    }
+
+
+    
+    const fname_redirect_url = 'https://' + location.hostname + '/article/fname.html?fname=' + $('#redirect_fname').attr('data')
+    $('#top-bar .anchor').attr('data-clipboard-text', fname_redirect_url)
+
+</script>
+      </div>
+
+    <div id="navigation">
+        
+        
+
+        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                        
+                    
+                    
+
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+
+                    
+                    
+                    
+
+                    
+            
+        
+                    
+            
+        
+                    
+            
+        
+
+        
+
+
+	 
+	 
+		
+			<a class="nav nav-prev" href="https://labuladong.gitee.io/algo/1/13/" title="一个方法团灭 LeetCode 股票买卖问题"> <i class="fa fa-chevron-left"></i></a>
+		
+		
+			<a class="nav nav-next" href="https://labuladong.gitee.io/algo/1/15/" title="一个方法团灭 nSum 问题" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+		
+	
+    </div>
+
+    <script>
+        let EXT_ID = ""
+        if (EXT_ID.length) {
+          document.getElementById('body-inner').style['max-height'] = 'initial'
+          $('#read_all_wrapper').css('display', 'none')
+        }
+        
+        $('#read_all_btn').on('click', function () {
+            $('#guiding_popup_wrapper').css('display', 'block')
+        })
+        $('#guiding_popup_div_close_btn').on('click', function () {
+            $('#guiding_popup_wrapper').css('display', 'none')
+        })
+
+        const header_icons = $(`<p align='center'></p>`)
+        // github
+        header_icons.append($(`<a href="https://github.com/labuladong/fucking-algorithm" target="_blank"><img class='my_header_icon' alt="GitHub" src="https://img.shields.io/github/stars/labuladong/fucking-algorithm?label=Stars&style=flat&logo=GitHub"></a>`))
+        // 公众号
+        
+        
+        header_icons.append($(`<a href="https://space.bilibili.com/14089380" target="_blank"><img class='my_header_icon' src="https://img.shields.io/badge/B站-@labuladong-000000.svg?style=flat&logo=Bilibili"></a>`))
+        // 三件套下载
+        header_icons.append($(`<a href="https://mp.weixin.qq.com/s/X-fE9sR4BLi6T9pn7xP4pg" target="_blank"><img class='my_header_icon' src="https://img.shields.io/static/v1?label=配套PDF和插件&message=下载&color=red&style=flat"></a>`))
+        // 打卡挑战
+        header_icons.append($(`<a href="https://mp.weixin.qq.com/s/eUG2OOzY3k_ZTz-CFvtv5Q" target="_blank"><img class='my_header_icon' src="https://img.shields.io/static/v1?label=打卡挑战&message=报名&color=green&style=flat"></a>`))
+        // xiaoe
+        header_icons.append($(`<a href="https://appktavsiei5995.pc.xiaoe-tech.com/index" target="_blank"><img class='my_header_icon' src="https://img.shields.io/static/v1?label=精品课程&message=查看&color=pink&style=flat"></a>`))
+
+        // 添加头部 icon
+        $('h1').after(header_icons)
+
+        
+        $('img').filter(function () {
+            return $(this).attr('src').match(/souyisou\d*/);
+        }).addClass('souyisou_pic')
+      </script>
+    
+    <script type="text/javascript" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/render.js.下载"></script>
+
+    </section>
+
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/clipboard.min.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/perfect-scrollbar.min.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/perfect-scrollbar.jquery.min.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/jquery.sticky.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/featherlight.min.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/highlight.pack.js.下载"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/modernizr.custom-3.6.0.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/learn.js.下载"></script>
+    <script src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/hugo-learn.js.下载"></script>
+    
+    
+
+
+
+
+
+
+<script async="" src="./一个方法团灭 LeetCode 打家劫舍问题 __ labuladong的算法小抄_files/js"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3Z5M0X5DYE');
+</script>
+
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?8b6d7a4489d030cd541ae6fdef62bac5";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+  
+
+<audio controls="controls" style="display: none;"></audio></body><style type="text/css">#yddContainer{display:block;font-family:Microsoft YaHei;position:relative;width:100%;height:100%;top:-4px;left:-4px;font-size:12px;border:1px solid}#yddTop{display:block;height:22px}#yddTopBorderlr{display:block;position:static;height:17px;padding:2px 28px;line-height:17px;font-size:12px;color:#5079bb;font-weight:bold;border-style:none solid;border-width:1px}#yddTopBorderlr .ydd-sp{position:absolute;top:2px;height:0;overflow:hidden}.ydd-icon{left:5px;width:17px;padding:0px 0px 0px 0px;padding-top:17px;background-position:-16px -44px}.ydd-close{right:5px;width:16px;padding-top:16px;background-position:left -44px}#yddKeyTitle{float:left;text-decoration:none}#yddMiddle{display:block;margin-bottom:10px}.ydd-tabs{display:block;margin:5px 0;padding:0 5px;height:18px;border-bottom:1px solid}.ydd-tab{display:block;float:left;height:18px;margin:0 5px -1px 0;padding:0 4px;line-height:18px;border:1px solid;border-bottom:none}.ydd-trans-container{display:block;line-height:160%}.ydd-trans-container a{text-decoration:none;}#yddBottom{position:absolute;bottom:0;left:0;width:100%;height:22px;line-height:22px;overflow:hidden;background-position:left -22px}.ydd-padding010{padding:0 10px}#yddWrapper{color:#252525;z-index:10001;background:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ab20.png);}#yddContainer{background:#fff;border-color:#4b7598}#yddTopBorderlr{border-color:#f0f8fc}#yddWrapper .ydd-sp{background-image:url(chrome-extension://eopjamdnofihpioajgfdikhhbobonhbb/ydd-sprite.png)}#yddWrapper a,#yddWrapper a:hover,#yddWrapper a:visited{color:#50799b}#yddWrapper .ydd-tabs{color:#959595}.ydd-tabs,.ydd-tab{background:#fff;border-color:#d5e7f3}#yddBottom{color:#363636}#yddWrapper{min-width:250px;max-width:400px;}</style></html>
