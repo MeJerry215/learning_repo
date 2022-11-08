@@ -100,6 +100,9 @@
 438 稍微改改就能ac 567
 [567. 字符串的排列](https://leetcode.cn/problems/permutation-in-string/)
 
+滑动窗口统计字符个数，不断收缩扩张左右边界
+[76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/)
+
 ## 优先权队列
 
 [23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
@@ -155,6 +158,9 @@
 [1668. 最大重复子字符串](https://leetcode.cn/problems/maximum-repeating-substring/)
 
 [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
+
+状态有点多，搞清楚初始状态以及状态转移，轻松解决
+[552. 学生出勤记录 II](https://leetcode.cn/problems/student-attendance-record-ii/)
 
 ## 数学
 
