@@ -47,6 +47,7 @@ public:
             visited.emplace(deadend);
         }
         string password = "0000";
+        if(visited.count(password)) return -1;
         queue<pair<string, int>> to_trys;
         to_trys.emplace(password, 0);
         while (!to_trys.empty())
