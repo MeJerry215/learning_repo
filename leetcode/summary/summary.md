@@ -162,6 +162,10 @@
 状态有点多，搞清楚初始状态以及状态转移，轻松解决
 [552. 学生出勤记录 II](https://leetcode.cn/problems/student-attendance-record-ii/)
 
+[198. 打家劫舍](https://leetcode.cn/problems/house-robber/)
+[213. 打家劫舍 II](https://leetcode.cn/problems/house-robber-ii/)
+[337. 打家劫舍 III](https://leetcode.cn/problems/house-robber-iii/)
+
 ## 数学
 
 到达重点  1 + ... +n 到达m位置，如果m距离target为偶数，翻转前面的一个 (target - m) / 2，1 + .... - (target -m) / 2 + ...n = m - (m - target), 若是剩下的看是否剩下的步数为奇数，目标是将步数转换为偶数。
