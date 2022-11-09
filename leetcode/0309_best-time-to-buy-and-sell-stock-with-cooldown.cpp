@@ -35,9 +35,10 @@ public:
             int s = q + prices[i];
             q = max(q, p - prices[i]);
             p = max(p, r);
+            r = s;
         }
         return max(p, r);
     }
 };
 
-q  r p
+// q  r p
