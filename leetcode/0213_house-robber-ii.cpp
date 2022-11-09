@@ -6,7 +6,7 @@
 
 示例 1:
 输入: root = [3,2,3,null,3,null,1]
-输出: 7 
+输出: 7
 解释: 小偷一晚能够盗取的最高金额 3 + 3 + 1 = 7
 示例 2:
 
@@ -24,25 +24,28 @@
 链接：https://leetcode.cn/problems/house-robber-iii
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
-class Solution {
+class Solution
+{
 public:
-    int robRange(vector<int>& nums, int start, int end) {
-        int first = nums[start], second = max(nums[start], nums[start + 1]);
-        for (int i = start + 2; i <= end; i++) {
-            int temp = second;
-            second = max(first + nums[i], second);
-            first = temp;
+    int rob(vector<int> &nums)
+    {
+        int n = nums.size();
+        if (n <= 3)
+            return *max_element(nums.begin(), nums.end());
+        int p = nums[0], q = max(nums[0], nums[1]), r = nums[1], s = max(nums[1], nums[2]);
+        int t = max(p + nums[2], q);
+        p = q, q = t;
+        for (int i = 3; i < n - 1; i++)
+        {
+            t = max(p + nums[i], q);
+            p = q;
+            q = t;
+            t = max(r + nums[i], s);
+            r = s;
+            s = t;
         }
-        return second;
-    }
-
-    int rob(vector<int>& nums) {
-        int length = nums.size();
-        if (length == 1) {
-            return nums[0];
-        } else if (length == 2) {
-            return max(nums[0], nums[1]);
-        }
-        return max(robRange(nums, 0, length - 2), robRange(nums, 1, length - 1));
+        t = max(r + nums[nums.size() - 1], s);
+        cout << q << " " << t << endl;
+        return max(t, q);
     }
 };
