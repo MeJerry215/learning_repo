@@ -34,7 +34,6 @@ public:
             while(j < k) {
                 int sum = nums[i] + nums[j] + nums[k];
                 if (sum == 0) {
-                    cout << "pushed" << endl;
                     ans.push_back({nums[i], nums[j], nums[k]});
                     while(j < k && nums[j + 1] == nums[j]) j ++;
                     j++;
