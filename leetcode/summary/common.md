@@ -1,5 +1,23 @@
 # 通用技巧
 
+
+## 数学
+
+求解最小公约数，GCD辗转相除法
+```c++
+int GCD(int a, int b) {
+    return b == 0 ? a : GCD(b, a % b);
+}
+```
+
+求解最小公倍数，为 a * b = i * gcd  * j * gcd, gcd 两次乘 a * b / gcd = 最小公倍数
+```c++
+int LCM(int a, int b) {
+    return a * b / GCD(a, b);
+}
+```
+
+
 ## 优先权队列应用
 
 1. 大顶堆、小顶堆。
@@ -67,3 +85,4 @@ function<void(int, int, int)> dfs1 = [&](int sn, int fa, int d) {
     for(auto fn: g[sn]) if (fn != fa) dfs1(fn, sn, d + 1);
 };
 ```
+
