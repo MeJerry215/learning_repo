@@ -163,6 +163,16 @@ void print_vec(vector<vector<int>> &vec)
 }
 
 template <typename T>
+void print_arr(T* arr, int size) {
+    for (int i = 0; i < size; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
+
+template <typename T>
 void print_mat(vector<vector<T>> &mat)
 {
     typedef typename vector<T>::size_type size_type;
