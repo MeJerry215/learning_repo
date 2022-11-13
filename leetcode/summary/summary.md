@@ -1,6 +1,11 @@
 # Summary
 
 本文主要将刷题进行归类。
+## 字符串
+
+一道处理起来还挺麻烦的字符串题目
+[6239. 根据限制分割消息](https://leetcode.cn/problems/split-message-based-on-limit/)
+
 
 ## 分治
 
