@@ -58,6 +58,26 @@ sort(indexs.begin(), indexs.end(), [&](int i, int j) {
 });
 ```
 
+计算排序需要的置换次数，数值离散
+```cpp
+vector<int> B = A;
+/* 预期排列 */
+sort(B.begin(), B.end());
+/* 预期排列的index */
+unordered_map<int, int> mp;
+for (int i = 0; i < B.size(); i++) mp[B[i]] = i;
+
+int ret = 0;
+for (int i = 0; i < A.size(); i++) {
+    // 不断将 A[i] 交换到目标位置，直到 A[i] = B[i]
+     while (A[i] != B[i]) {
+        swap(A[i], A[mp[A[i]]]);
+        ret++;
+    }
+}
+return ret;
+```
+
 ## auto推导
 
 trick: 使用auto 推导快速在方法内定义函数
