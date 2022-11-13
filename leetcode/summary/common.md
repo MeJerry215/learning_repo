@@ -48,3 +48,22 @@ auto next = [&](int cur) {
     return ((cur + nums[cur]) % n + n) % n; // 保证返回值在 [0,n) 中
 };
 ```
+
+## 图
+
+连接边转换为邻接矩阵表示
+```c++
+for(auto edge: edges) {
+    g[edge[0]].push_back(edge[1]);
+    g[edge[1]].push_back(edge[0]);
+}
+```
+
+遍历记录父节点和遍历深度
+```c++
+function<void(int, int, int)> dfs1 = [&](int sn, int fa, int d) {
+    pa[sn] = fa;
+    a[sn] = d;
+    for(auto fn: g[sn]) if (fn != fa) dfs1(fn, sn, d + 1);
+};
+```
