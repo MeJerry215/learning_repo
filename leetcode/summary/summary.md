@@ -140,7 +140,7 @@
 而当当前元素小于队尾元素时，说明队尾元素不在最优解考虑范围内。
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
-## 前缀和/前缀积/后缀和/后缀积
+## 前缀和/前缀积/后缀和/后缀积/差分
 
 前缀和从开头到某一位位置的和，而用两个和相减，则可以达到范围的和，避免了重复计算。
 
@@ -149,6 +149,7 @@
 利用前缀和求和
 [303. 区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/)
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
+[1109. 航班预订统计](https://leetcode.cn/problems/corporate-flight-bookings/)
 
 状态压缩，bit运算，前缀和，非常有意思的一道题目。
 [1177. 构建回文串检测](https://leetcode.cn/problems/can-make-palindrome-from-substring/)
