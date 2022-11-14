@@ -1,5 +1,21 @@
 # 通用技巧
 
+## 并查集
+
+并查集的通用写法为:
+
+```c++
+struct dsu {
+  vector<int> pa;
+
+  explicit dsu(int size) : pa(size) { iota(pa.begin(), pa.end(), 0); }
+
+  int find(int x) { return pa[x] == x ? x : pa[x] = find(pa[x]); }
+
+  void merge(int x, int y) { pa[find(x)] = find(y); }
+};
+```
+
 
 ## 数学
 
