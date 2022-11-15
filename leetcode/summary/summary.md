@@ -43,6 +43,13 @@
 
 [853. 车队](https://leetcode.cn/problems/car-fleet/)
 
+## 二分搜索
+通常用来求解最大值最小化问题，最小值最大化问题。
+
+[1011. 在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/)
+
+## 二分查找
+
 ## BFS
 
 考察基本的BFS算法熟悉程度, 矩阵中BFS模板写法。
