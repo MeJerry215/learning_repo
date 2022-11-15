@@ -47,6 +47,8 @@
 通常用来求解最大值最小化问题，最小值最大化问题。
 
 [1011. 在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/)
+最大值最小化问题，直接二分搜索, 也可以使用动态规划求解
+[410. 分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)
 
 ## 二分查找
 
