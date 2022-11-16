@@ -137,3 +137,52 @@ int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
     return f.back();
 }
 ```
+
+
+## 背包问题
+
+### 0-1背包
+
+作为背包系列的经典问题存在，每个元素只可以取一次的情况下，需要枚举capacity, 并且限定当前元素取还是取。
+
+只所以叫0-1背包在于，对于当前状态仅且存在两个状态0-1, 如果用通常的dfs处理，其时间复杂度可以达到(2^n)大小。
+
+其主要问题在于重复计算了之前的状态结果。
+
+```cpp
+int knapsack(vector<int>& weights, vector<int>& values, int capacity) {
+  int n = weights.size();
+  vector<vector<int>> dp(n + 1, vector<int>(capacity + 1, 0));
+  for (int i = 1; i <= n; i++) {
+    for (int j = 1; j <= capacity; j++) {
+      if (j - weights[i - 1] < 0) {
+        dp[i][j] = dp[i - 1][j];
+      } else {
+        dp[i][j] = max(dp[i - 1][j - weights[i - 1]] + values[i - 1], dp[i - 1][j]);
+      }
+    }
+  }
+
+  return dp[n][capacity];
+}
+```
+
+作为常见的优化方式
+
+
+
+
+### 完全背包
+
+
+### 多重背包
+
+
+### 分组背包
+
+
+### 依赖背包
+
+
+## 区间DP
+
