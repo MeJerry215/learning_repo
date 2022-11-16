@@ -43,6 +43,16 @@
 
 [853. 车队](https://leetcode.cn/problems/car-fleet/)
 
+## 二分搜索
+通常用来求解最大值最小化问题，最小值最大化问题。
+
+[1011. 在 D 天内送达包裹的能力](https://leetcode.cn/problems/capacity-to-ship-packages-within-d-days/)
+最大值最小化问题，直接二分搜索, 也可以使用动态规划求解
+[410. 分割数组的最大值](https://leetcode.cn/problems/split-array-largest-sum/)
+[875. 爱吃香蕉的珂珂](https://leetcode.cn/problems/koko-eating-bananas/)
+
+## 二分查找
+
 ## BFS
 
 考察基本的BFS算法熟悉程度, 矩阵中BFS模板写法。
@@ -140,7 +150,7 @@
 而当当前元素小于队尾元素时，说明队尾元素不在最优解考虑范围内。
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
-## 前缀和/前缀积/后缀和/后缀积
+## 前缀和/前缀积/后缀和/后缀积/差分
 
 前缀和从开头到某一位位置的和，而用两个和相减，则可以达到范围的和，避免了重复计算。
 
@@ -149,6 +159,7 @@
 利用前缀和求和
 [303. 区域和检索 - 数组不可变](https://leetcode.cn/problems/range-sum-query-immutable/)
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
+[1109. 航班预订统计](https://leetcode.cn/problems/corporate-flight-bookings/)
 
 状态压缩，bit运算，前缀和，非常有意思的一道题目。
 [1177. 构建回文串检测](https://leetcode.cn/problems/can-make-palindrome-from-substring/)
@@ -174,6 +185,7 @@
 经典, 参考 https://leetcode.cn/problems/domino-and-tromino-tiling/solution/by-endlesscheng-umpp/
 [790. 多米诺和托米诺平铺](https://leetcode.cn/problems/domino-and-tromino-tiling/)
 
+[805. 数组的均值分割](https://leetcode.cn/problems/split-array-with-same-average/)
 
 ## 数学
 
