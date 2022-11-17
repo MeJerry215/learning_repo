@@ -147,7 +147,7 @@ int uniquePathsWithObstacles(vector<vector<int>>& obstacleGrid) {
 
 只所以叫0-1背包在于，对于当前状态仅且存在两个状态0-1, 如果用通常的dfs处理，其时间复杂度可以达到(2^n)大小。
 
-其主要问题在于重复计算了之前的状态结果。
+其主要问题在于重复计算了之前的状态结果。 外层枚举当前加入的物品，内层枚举capacity。
 
 ```cpp
 int knapsack(vector<int>& weights, vector<int>& values, int capacity) {
@@ -167,16 +167,67 @@ int knapsack(vector<int>& weights, vector<int>& values, int capacity) {
 }
 ```
 
-作为常见的优化方式
+作为常见的优化方式, 由于当前状态只依赖于上一次的状态，所以采取滚动数组的方式优化，降低空间占用
 
-
-
+```cpp
+int knapsack_opt(vector<int> &weights, vector<int> &values, int capacity) {
+    int n = weights.size();
+    vector<int> prev(capacity + 1, 0), next(capacity + 1, 0);
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= capacity; j++) {
+            if (j - weights[i - 1] >= 0) {
+                next[j] = max(prev[j - weights[i - 1]] + values[i - 1], prev[j]);
+            }
+        }
+        swap(prev, next);
+    }
+    return prev[capacity];
+}
+```
 
 ### 完全背包
+
+完全背包问题每一件物品都可以放入无限次数，所以其枚举的外层是capacity，内层枚举的是所有的物品
+
+```cpp
+
+int fullpack(vector<int>& weights, vector<int>& values, int capacity) {
+    int n = weights.size();
+    vector<int> prev(capacity + 1, 0);
+    for (int i = 1; i <= capacity; i++) {
+        for (int j = 0; j < weights.size(); j++) {
+            if (i - weights[j] >= 0) {
+                prev[i] = max(prev[i - weights[j]] + values[j], prev[i]);
+            }
+        }
+    }
+    return prev[capacity];
+}
+```
 
 
 ### 多重背包
 
+多重背包，每个物品都存在一定的次数, 将使用物品次数作为一个整体，可以转换为0-1背包问题
+
+```cpp
+int multipack(vector<int>& weights, vector<int>& values, vector<int>& counts, int capacity) {
+    /* the only problem is the weight count, transfer the mulipacket problem to 0-1 packet problem */
+    int n = weights.size();
+    vector<int> prev(capacity + 1, 0), next(capacity + 1, 0);
+    for (int i = 0; i < n; i++) {
+        for (int j = 1; j <= capacity; j++) {
+            for (int k = 0; k <= counts[i]; k++) {
+                if (j - k * weights[i] >= 0) {
+                    next[j] = max(next[j], prev[j - k * weights[i]] + k * values[i]);
+                }
+            }
+        }
+        swap(prev, next);
+    }
+    return prev[capacity];
+}
+```
 
 ### 分组背包
 
