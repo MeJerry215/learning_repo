@@ -168,7 +168,12 @@
 
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
+贪心最远距离，维护选择的每次跳跃的最后位置，超过了则需要增加跳跃次数
+[45. 跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/)
+
 ## 动态规划
+
+[55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
 
 万物皆可动态规划
 [1668. 最大重复子字符串](https://leetcode.cn/problems/maximum-repeating-substring/)
