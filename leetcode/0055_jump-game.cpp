@@ -28,15 +28,36 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-class Solution {
+class Solution
+{
 public:
-    bool canJump(vector<int>& nums) {
+    bool canJump_v1(vector<int> &nums)
+    {
+        int n = nums.size();
+        vector<int> dp(n, 0);
+        dp[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++)
+        {
+            if (i < dp[i - 1])
+                return false;
+            dp[i] = max(dp[i - 1], i + nums[i]);
+            if (dp[i] >= n - 1)
+                return true;
+        }
+        return true;
+    }
+
+    bool canJump_opt(vector<int> &nums)
+    {
         int n = nums.size();
         int step = 0;
-        for(int i = 0; i < n; i++) {
-            if (step < i) return false;
+        for (int i = 0; i < n; i++)
+        {
+            if (step < i)
+                return false;
             step = max(step, i + nums[i]);
-            if (step >= n - 1) return true;
+            if (step >= n - 1)
+                return true;
         }
         return true;
     }

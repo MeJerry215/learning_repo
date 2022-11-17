@@ -28,29 +28,30 @@
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 */
 
-
-class Solution {
+class Solution
+{
 public:
     /* beat 9.26% */
-    int jump_v1(vector<int>& nums) {
+    int jump_v1(vector<int> &nums)
+    {
         vector<int> times(nums.size(), INT_MAX);
-        for(int i = 0; i < nums.size() - 1; i++) {
-            for(int j = i + 1; j <= i + nums[i] && j < nums.size(); j++) {
+        for (int i = 0; i < nums.size() - 1; i++)
+        {
+            for (int j = i + 1; j <= i + nums[i] && j < nums.size(); j++)
+            {
                 times[j] = min(times[i] + 1, times[j]);
             }
         }
         return times[nums.size() - 1];
     }
 
-    int jump(vector<int>& nums) {
-        int maxPos = 0, n = nums.size(), end = 0, step = 0;
-        for (int i = 0; i < n - 1; ++i) {
-            if (maxPos >= i) {
-                maxPos = max(maxPos, i + nums[i]);
-                if (i == end) {
-                    end = maxPos;
-                    ++step;
-                }
+    int jump(vector<int> &nums) {
+        int max_pos = 0, end = 0, step = 0;
+        for (int i = 0; i < nums.size() - 1; ++i) {
+            max_pos = max(max_pos, i + nums[i]);
+            if (i == end) {
+                end = max_pos;
+                ++step;
             }
         }
         return step;
