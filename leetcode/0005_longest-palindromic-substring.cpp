@@ -36,6 +36,21 @@ public:
         }
         return s.substr(start, len);
     }
+
+    string longestPalindrome(string s) {
+        int n = s.size(); 
+        int l_max = 0, r_max = 0;
+        for(int i = 0; i < 2 *n - 1; ++i) {
+            int l = i / 2, r = i / 2 + i % 2;
+            while (l >= 0 && r < n && s[l] == s[r]) {
+                if (r - l > r_max - l_max) l_max = l, r_max = r;
+                --l;
+                ++r;
+            }
+        }
+        return s.substr(l_max, r_max - l_max + 1);
+    }
+
 };
 
 

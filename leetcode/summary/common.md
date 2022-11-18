@@ -1,5 +1,137 @@
 # 通用技巧
 
+## debug
+
+变参打印debug
+```cpp
+#include <bits/stdc++.h>
+
+using namespace std;
+
+namespace DEBUG {
+template <typename T>
+inline void _debug(const char* format, T t) {
+  cerr << format << '=' << t << endl;
+}
+
+template <class First, class... Rest>
+inline void _debug(const char* format, First first, Rest... rest) {
+  while (*format != ',') cerr << *format++;
+  cerr << '=' << first << ",";
+  _debug(format + 1, rest...);
+}
+
+template <typename T>
+ostream& operator<<(ostream& os, const vector<T>& V) {
+  os << "[ ";
+  for (const auto& vv : V) os << vv << ", ";
+  os << "]";
+  return os;
+}
+
+#define debug(...) _debug(#__VA_ARGS__, __VA_ARGS__)
+}  // namespace DEBUG
+
+using namespace DEBUG;
+
+int main(int argc, char* argv[]) {
+  int a = 666;
+  vector<int> b({1, 2, 3});
+  string c = "hello world";
+
+  // before
+  cout << "a=" << a << ", b=" << b << ", c=" << c << endl;  // a=666, b=[ 1, 2, 3, ], c=hello world
+  // 如果用printf的话，在只有基本数据类型的时候是比较方便的，然是如果要输出vector等的内容的话，就会比较麻烦
+
+  // after
+  debug(a, b, c);  // a=666, b=[ 1, 2, 3, ], c=hello world
+
+  return 0;
+}
+```
+
+## 容器
+
+比较运算符重载
+
+```cpp
+
+struct student {
+  string name;
+  int score;
+};
+
+struct cmp {
+  bool operator()(const student& a, const student& b) const {
+    return a.score < b.score || (a.score == b.score && a.name > b.name);
+  }
+};
+
+priority_queue<student, vector<student>, cmp> pq;
+
+int main() {
+  int n;
+  cin >> n;
+  for (int i = 1; i <= n; i++) {
+    string name;
+    int score;
+    cin >> name >> score;
+    pq.push({name, score});
+  }
+  student rk1 = pq.top();
+  cout << rk1.name << ' ' << rk1.score << endl;
+  return 0;
+}
+```
+
+
+## 哈希
+
+在标准库实现里，每个元素的散列值是将值对一个质数取模得到的，更具体地说，是 这个列表 中的质数(g++ 6 及以前版本的编译器，这个质数一般是 ，g++ 7 及之后版本的编译器，这个质数一般是)。自定义hash, 防hack。
+
+```cpp
+struct my_hash {
+  static uint64_t splitmix64(uint64_t x) {
+    x += 0x9e3779b97f4a7c15;
+    x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;
+    x = (x ^ (x >> 27)) * 0x94d049bb133111eb;
+    return x ^ (x >> 31);
+  }
+
+  size_t operator()(uint64_t x) const {
+    static const uint64_t FIXED_RANDOM =
+        chrono::steady_clock::now().time_since_epoch().count();
+    return splitmix64(x + FIXED_RANDOM);
+  }
+
+  // 针对 std::pair<int, int> 作为主键类型的哈希函数
+  size_t operator()(pair<uint64_t, uint64_t> x) const {
+    static const uint64_t FIXED_RANDOM =
+        chrono::steady_clock::now().time_since_epoch().count();
+    return splitmix64(x.first + FIXED_RANDOM) ^
+           (splitmix64(x.second + FIXED_RANDOM) >> 1);
+  }
+};
+
+unordered_map<int, int, my_hash> my_map;
+```
+
+## 并查集
+
+并查集的通用写法为:
+
+```c++
+struct dsu {
+  vector<int> pa;
+
+  explicit dsu(int size) : pa(size) { iota(pa.begin(), pa.end(), 0); }
+
+  int find(int x) { return pa[x] == x ? x : pa[x] = find(pa[x]); }
+
+  void merge(int x, int y) { pa[find(x)] = find(y); }
+};
+```
+
 
 ## 数学
 
@@ -71,6 +203,157 @@ for (int i = 0; i < 2 * n - 1; ++i) {
 可以考虑原地交换，将对应的数放到对应位置上去。这种题目的通用解法可以考虑到hash，情况特殊可以考虑到异或的性质，甚至排序之后求解。
 
 ## 排序篇
+
+基数排序、计数排序、插入排序、冒泡排序、归并排序是稳定排序。
+选择排序、堆排序、快速排序、希尔排序不是稳定排序。
+
+![sort](https://oi-wiki.org/basic/images/sort-intro-1.apng)
+
+### 选择排序
+
+非稳定排序O(n^2)
+example `[7, 7, 3, 2, 4, 5]` 由于选择之后进行交换，所以7的位置错乱导致了其非稳定
+
+```cpp
+void selection_sort(int* a, int n) {
+  for (int i = 0; i < n - 1; ++i) {
+    int ith = i;
+    for (int j = i + 1; j < n; ++j) {
+      if (a[j] < a[ith]) {
+        ith = j;
+      }
+    }
+    std::swap(a[i], a[ith]);
+  }
+}
+```
+
+### 冒泡排序
+
+稳定排序O(n^2), 大数不断沉底，小数不断上浮，一次循环至少排列出沉底的值。以下可以优化循环
+
+```cpp
+void bubble_sort(int *a, int n) {
+  bool flag = true;
+  while (flag) {
+    flag = false;
+    for (int i = 0; i < n - 1; ++i) {
+      if (a[i] > a[i + 1]) {
+        flag = true;
+        int t = a[i];
+        a[i] = a[i + 1];
+        a[i + 1] = t;
+      }
+    }
+  }
+}
+```
+
+### 插入排序
+
+从当前元素往前找合适的插入位置，前面的子序列一定是排序好的，算稳定排序O(n^2)。找到位置之后，将后面的元素往后移动一位。
+
+```cpp
+void insertion_sort(int* a, int n) {
+  for (int i = 1; i <= n; ++i) {
+    int key = a[i];
+    int j = i - 1;
+    while (j >= 0 && a[j] > key) {
+      a[j + 1] = a[j];
+      --j;
+    }
+    a[j + 1] = key;
+  }
+}
+```
+### 计数排序
+
+计数排序的时间复杂度为O(n + w), 其中w代表待排序数据的值域大小。
+
+```cpp
+const int N = 100010;
+const int W = 100010;
+
+int n, w, a[N], cnt[W], b[N];
+
+void counting_sort() {
+  memset(cnt, 0, sizeof(cnt));
+  for (int i = 0; i < n; ++i) ++cnt[a[i]];
+  for (int i = 0; i < w; ++i) cnt[i] += cnt[i - 1];
+  for (int i = n - 1; i >= 0; --i) b[cnt[a[i]]--] = a[i];
+}
+```
+
+### 基数排序
+
+...
+
+### 快速排序
+
+非稳定排序O(nlog n)
+快速排序分为三个过程：
+
+将数列划分为两部分（要求保证相对大小关系）；
+递归到两个子序列中分别进行快速排序；
+不用合并，因为此时数列已经完全有序。
+```cpp
+int partition(vector<int> &arr, int low, int high) {
+    int pivot = arr[low];
+    int i = low + 1, j = high;
+    while (true) {
+        while (i < high && arr[i] < pivot) i++;
+        while (j > low && arr[j] > pivot) j--;
+        if (i >= j) break;
+        swap(arr[i], arr[j]);
+        i++;
+        j--;
+    }
+    swap(arr[low], arr[j]);
+    return j;
+}
+
+void quicksort(vector<int> &arr, int low, int high) {
+    if (low >= high) return;
+    int position = partition(arr, low, high);
+    quicksort(arr, low, position - 1);
+    quicksort(arr, position + 1, high);
+}
+```
+
+### 归并排序
+
+归并排序（merge sort）是高效的基于比较的稳定排序算法。
+归并排序基于分治思想将数组分段排序后合并，时间复杂度在最优、最坏与平均情况下均为O(nlog n)，空间复杂度为O(n)。
+
+```cpp
+void Merge(int arr[],int low,int mid,int high){
+    //low为第1有序区的第1个元素，i指向第1个元素, mid为第1有序区的最后1个元素
+    int i=low,j=mid+1,k=0;  //mid+1为第2有序区第1个元素，j指向第1个元素
+    int *temp=new int[high-low+1]; //temp数组暂存合并的有序序列
+    while(i<=mid&&j<=high){
+        if(arr[i]<=arr[j]) //较小的先存入temp中
+            temp[k++]=arr[i++];
+        else
+            temp[k++]=arr[j++];
+    }
+    while(i<=mid)//若比较完之后，第一个有序区仍有剩余，则直接复制到t数组中
+        temp[k++]=arr[i++];
+    while(j<=high)//同上
+        temp[k++]=arr[j++];
+    for(i=low,k=0;i<=high;i++,k++)//将排好序的存回arr中low到high这区间
+  arr[i]=temp[k];
+    delete []temp;//释放内存，由于指向的是数组，必须用delete []
+}
+
+void MergeSort (int arr [], int low,int high) {
+  if(low>=high) { return; } // 终止递归的条件，子序列长度为1
+  int mid =  low + (high - low)/2;  // 取得序列中间的元素
+  MergeSort(arr,low,mid);  // 对左半边递归
+  MergeSort(arr,mid+1,high);  // 对右半边递归
+  Merge(arr,low,mid,high);  // 合并
+}
+```
+
 
 使用辅助索引排序，排序索引，而不是实际元素，通常用在存在两个对应元素的容器，需要对其中一个排序，而另外一个容器也跟着排序。
 通过排序后的辅助索引，顺序遍历即可得到排序的元素。
