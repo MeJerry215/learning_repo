@@ -21,6 +21,19 @@ public:
     }
 };
 
-
-[[2,1,5],[3,5,7]]
-3
+class Solution {
+public:
+    bool carPooling(vector<vector<int>>& trips, int capacity) {
+        map<int, int> m;
+        for(auto & t: trips){
+            m[t[1]] += t[0];  // pick up
+            m[t[2]] -= t[0];  // drop off
+        }
+        int passengers = 0;
+        for(auto it: m){
+            passengers += it.second;
+            if(passengers > capacity) return false;
+        }
+        return true;
+    }
+};
