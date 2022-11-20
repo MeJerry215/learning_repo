@@ -403,6 +403,13 @@ for(auto edge: edges) {
     g[edge[0]].push_back(edge[1]);
     g[edge[1]].push_back(edge[0]);
 }
+
+vector<int> e[n];
+for (auto &road : roads) {
+    e[road[0]].push_back(road[1]);
+    e[road[1]].push_back(road[0]);
+}
+
 ```
 
 遍历记录父节点和遍历深度
