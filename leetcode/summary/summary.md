@@ -189,7 +189,7 @@
 
 经典, 参考 https://leetcode.cn/problems/domino-and-tromino-tiling/solution/by-endlesscheng-umpp/
 [790. 多米诺和托米诺平铺](https://leetcode.cn/problems/domino-and-tromino-tiling/)
-
+[799. 香槟塔](https://leetcode.cn/problems/champagne-tower/)
 [805. 数组的均值分割](https://leetcode.cn/problems/split-array-with-same-average/)
 
 ## 数学
