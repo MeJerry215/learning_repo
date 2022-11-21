@@ -192,6 +192,9 @@
 [799. 香槟塔](https://leetcode.cn/problems/champagne-tower/)
 [805. 数组的均值分割](https://leetcode.cn/problems/split-array-with-same-average/)
 
+字符串dp, 记忆
+[140. 单词拆分 II](https://leetcode.cn/problems/word-break-ii/)
+
 ## 数学
 
 到达重点  1 + ... +n 到达m位置，如果m距离target为偶数，翻转前面的一个 (target - m) / 2，1 + .... - (target -m) / 2 + ...n = m - (m - target), 若是剩下的看是否剩下的步数为奇数，目标是将步数转换为偶数。
