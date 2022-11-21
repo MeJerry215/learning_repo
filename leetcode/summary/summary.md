@@ -193,7 +193,10 @@
 [805. 数组的均值分割](https://leetcode.cn/problems/split-array-with-same-average/)
 
 字符串dp, 记忆
+[139. 单词拆分](https://leetcode.cn/problems/word-break/)
 [140. 单词拆分 II](https://leetcode.cn/problems/word-break-ii/)
+
+
 
 ## 数学
 
