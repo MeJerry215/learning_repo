@@ -28,6 +28,9 @@
 
 [2348. 全 0 子数组的数目](https://leetcode.cn/problems/number-of-zero-filled-subarrays/)
 
+
+[2393. Count Strictly Increasing Subarrays](https://leetcode.cn/problems/count-strictly-increasing-subarrays/)
+
 ## 栈
 
 **设计**:这道题目可以在开始dfs掉所有元素，但是不符合迭代器的设计思路，迭代器延迟加载数据，所以方法二采用栈来模拟延迟加载，记录当前遍历到的元素iterator，以及尾iterator。
