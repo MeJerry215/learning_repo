@@ -196,7 +196,8 @@
 [139. 单词拆分](https://leetcode.cn/problems/word-break/)
 [140. 单词拆分 II](https://leetcode.cn/problems/word-break-ii/)
 
-
+概率问题，记忆化dfs 或者dp都可以解
+[808. 分汤](https://leetcode.cn/problems/soup-servings/)
 
 ## 数学
 
