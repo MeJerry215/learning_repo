@@ -220,6 +220,10 @@
 [2327. 知道秘密的人数](https://leetcode.cn/problems/number-of-people-aware-of-a-secret/)
 
 
+9进制计算
+[660. 移除 9](https://leetcode.cn/problems/remove-9/)
+
+
 
 ## 状态机
 DP Table
