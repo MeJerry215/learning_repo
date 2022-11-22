@@ -8,7 +8,8 @@
 一道处理起来还挺麻烦的字符串题目
 [6239. 根据限制分割消息](https://leetcode.cn/problems/split-message-based-on-limit/)
 
-
+暴力解法的话可以直接substr
+[1910. 删除一个字符串中所有出现的给定子字符串](https://leetcode.cn/problems/remove-all-occurrences-of-a-substring/)
 ## 分治
 
 巧妙的一次遍历引用指针，由叶节点先增加引用，然后最后就是根节点，自然的到达中间值
