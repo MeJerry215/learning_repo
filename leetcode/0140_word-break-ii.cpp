@@ -59,12 +59,3 @@ public:
     }
 };
 
-if (!dp[i - word.size()].empty() && s.substr(start, word.size()) == word) {
-    for (auto& sub : dp[start]) {
-        if (start == 0) {
-            dp[i].push_back(word);
-        } else {
-            dp[i].push_back(sub + " " + word);
-        }
-    }
-}

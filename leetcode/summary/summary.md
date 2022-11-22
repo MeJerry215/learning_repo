@@ -1,6 +1,8 @@
 # Summary
 
 本文主要将刷题进行归类。
+
+
 ## 字符串
 
 一道处理起来还挺麻烦的字符串题目
@@ -55,6 +57,10 @@
 [875. 爱吃香蕉的珂珂](https://leetcode.cn/problems/koko-eating-bananas/)
 
 ## 二分查找
+
+二分查找 + 容斥原理
+![img](https://pic.leetcode.cn/1669032532-GjXsyF-878-2.png) 
+[878. 第 N 个神奇数字](https://leetcode.cn/problems/nth-magical-number/)
 
 ## BFS
 
