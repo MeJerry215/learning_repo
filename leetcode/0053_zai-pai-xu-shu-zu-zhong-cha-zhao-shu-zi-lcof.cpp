@@ -37,32 +37,44 @@ nums 是一个非递减数组
 
 class Solution {
 public:
-    vector<int> binary_search_healper(vector<int>& nums, int left, int right, int target) {
-        int l_rng = -1, r_rng = -1;
-        while(left <= right) {
-            int mid = (left + right) / 2;
-            if (nums[mid] == target) {
-                l_rng = r_rng = mid;
-                while (l_rng > 0 && nums[l_rng - 1] == target) {
-                    l_rng --;
-                }
-                while( r_rng < nums.size() - 1 && nums[r_rng + 1] == target) {
-                    r_rng ++;
-                }
-                
-                break;
-            } else {
-                if (nums[mid] < target) {
-                    left = mid + 1;
-                } else {
-                    right = mid - 1;
-                }
-            }
+    int lower_bound_a(vector<int>& nums, int target) {
+        int i = 0, j = nums.size() - 1;
+        while(i <= j) {
+            int m = (i + j) / 2;
+            if(nums[m] <= target) i = m + 1;
+            else j = m - 1;
         }
-        return {l_rng, r_rng};
+
+        return j;
+    };
+
+
+    int upper_bound_a(vector<int>& nums, int target) {
+
+        int i = 0, j = nums.size() - 1;
+        while(i <= j) {
+            int m = (i + j) / 2;
+            if(nums[m] < target) i = m + 1;
+            else j = m - 1;
+        }
+
+        return i;
     }
 
-    vector<int> searchRange(vector<int>& nums, int target) {
-        return binary_search_healper(nums, 0, nums.size() - 1, target);
+    int search(vector<int>& nums, int target) {
+        int l = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
+        int r = upper_bound(nums.begin(), nums.end(), target) - nums.begin();
+
+        return l == nums.size() ? 0 : r - l;
     }
 };
+
+void TestSolution() {
+    Solution s;
+    vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
+    for(int i = 0; i < 12; i ++) {
+        cout << s.upper_bound_a(nums, i) << endl;;
+    }
+}
+
+

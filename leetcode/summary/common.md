@@ -158,6 +158,33 @@ x & -x
 */
 ```
 
+## 二分查找
+
+```cpp
+int lower_bound_a(vector<int>& nums, int target) {
+    int i = 0, j = nums.size() - 1;
+    while(i <= j) {
+        int m = (i + j) / 2;
+        if(nums[m] <= target) i = m + 1;
+        else j = m - 1;
+    }
+
+    return j;
+};
+
+
+int upper_bound_a(vector<int>& nums, int target) {
+
+    int i = 0, j = nums.size() - 1;
+    while(i <= j) {
+        int m = (i + j) / 2;
+        if(nums[m] < target) i = m + 1;
+        else j = m - 1;
+    }
+
+    return i;
+}
+```
 
 ## 优先权队列应用
 
