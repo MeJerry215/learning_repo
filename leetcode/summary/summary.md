@@ -98,9 +98,6 @@
 [78. 子集](https://leetcode.cn/problems/subsets/)
 [90. 子集 II](https://leetcode.cn/problems/subsets-ii/)
 
-## 双指针
-
-[167. 两数之和 II - 输入有序数组](two-sum-ii-input-array-is-sorted)
 
 ## 快慢指针
 
@@ -115,7 +112,7 @@
 删除倒数节点，让快指针先走k步，慢指针再开始和快指针一起走。
 [19. 删除链表的倒数第 N 个结点](https://leetcode.cn/problems/remove-nth-node-from-end-of-list/)
 
-## 滑动窗口
+## 滑动窗口/双指针
 
 这到题目直接用滑动窗口去做是不太好做的，但是如果带上条件约束做滑动窗口还是可以做的，就是约束出现k次以上的字符的个数约束。
 [395. 至少有 K 个重复字符的最长子串](https://leetcode.cn/problems/longest-substring-with-at-least-k-repeating-characters/)
@@ -128,6 +125,10 @@
 滑动窗口统计字符个数，不断收缩扩张左右边界
 [76. 最小覆盖子串](https://leetcode.cn/problems/minimum-window-substring/)
 
+
+[167. 两数之和 II - 输入有序数组](two-sum-ii-input-array-is-sorted)
+
+[1004. 最大连续1的个数 III](https://leetcode.cn/problems/max-consecutive-ones-iii/)
 ## 优先权队列
 
 [23. 合并K个升序链表](https://leetcode.cn/problems/merge-k-sorted-lists/)
