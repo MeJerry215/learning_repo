@@ -132,6 +132,29 @@ struct dsu {
 };
 ```
 
+## 字典树
+```c++
+struct TrieNode {
+    string word;
+    unordered_map<char,TrieNode *> children;
+    TrieNode() {
+        this->word = "";
+    }   
+};
+
+void insertTrie(TrieNode * root,const string & word) {
+    TrieNode * node = root;
+    for (auto c : word){
+        if (!node->children.count(c)) {
+            node->children[c] = new TrieNode();
+        }
+        node = node->children[c];
+    }
+    node->word = word;
+}
+
+```
+
 
 ## 数学
 

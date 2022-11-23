@@ -10,6 +10,11 @@
 
 暴力解法的话可以直接substr
 [1910. 删除一个字符串中所有出现的给定子字符串](https://leetcode.cn/problems/remove-all-occurrences-of-a-substring/)
+
+## 字典树
+
+[212. 单词搜索 II](https://leetcode.cn/problems/word-search-ii/)
+
 ## 分治
 
 巧妙的一次遍历引用指针，由叶节点先增加引用，然后最后就是根节点，自然的到达中间值
