@@ -45,6 +45,26 @@
 class Solution {
 public:
     vector<vector<int>> reconstructMatrix(int upper, int lower, vector<int>& colsum) {
-
+        int sum = accumulate(colsum.begin(), colsum.end(), 0);
+        int k = accumulate(colsum.begin(), colsum.end(), 0, [&](int l, int r) {
+            if (r == 2) return l + 1;
+            return l;
+        });
+        upper -= k, lower -= k;
+        if (sum != upper + lower + 2 * k || upper < 0 || lower < 0) return {};
+        int cnt1 = 0, cnt2 = 0, n = colsum.size();
+        vector<vector<int>> res(2, vector<int>(n));
+        for(int i = 0; i < colsum.size(); i++) {
+            if (colsum[i] == 2) {
+                res[0][i] = res[1][i] = 1;
+            } else if (colsum[i] == 1) {
+                if (cnt1 < upper) {
+                    res[0][i] = 1, cnt1++;
+                } else {
+                    res[1][i] = 1, cnt2++;
+                }
+            }
+        }
+        return res;
     }
 };
