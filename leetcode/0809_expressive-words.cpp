@@ -32,6 +32,7 @@ words = ["hello", "hi", "helo"]
 class Solution {
 public:
     int expressiveWords(string s, vector<string>& words) {
-
+        vector<int> char_cnt;
+        for(int i = 0; i )
     }
 };
