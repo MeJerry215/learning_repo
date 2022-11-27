@@ -9,7 +9,7 @@
 
 示例：
 
-输入： 
+输入：
 S = "heeellooo"
 words = ["hello", "hi", "helo"]
 输出：1
@@ -32,7 +32,44 @@ words = ["hello", "hi", "helo"]
 class Solution {
 public:
     int expressiveWords(string s, vector<string>& words) {
-        vector<int> char_cnt;
-        for(int i = 0; i )
+        int res = 0;
+        for (string word : words) {
+            if (check(s, word)) res++;
+        }
+        return res;
+    }
+
+private:
+    bool check(string s, string word) {
+        int i = 0, j = 0;
+        while (i < s.size() && j < word.size()) {
+            if (s[i] != word[j]) return false;
+
+            char c = s[i];
+
+            int cnts = 0;
+            while (i < s.size() && s[i] == c) {
+                i++;
+                cnts++;
+            }
+
+            int cntw = 0;
+            while (j < word.size() && word[j] == c) {
+                j++;
+                cntw++;
+            }
+
+            if (cnts < cntw) return false;
+            if (cnts > cntw && cnts < 3) return false;
+        }
+        return i == s.size() && j == word.size();
     }
 };
+
+
+void TestSolution() {
+    Solution s;
+    string str = "heeelloooqq";
+    vector<string> words;
+    cout << s.expressiveWords(str, words);
+}
