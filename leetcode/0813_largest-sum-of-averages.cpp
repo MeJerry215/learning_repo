@@ -1,42 +1,57 @@
 #include "common.h"
 
-/*
-You are given an integer array nums and an integer k. You can partition the array into at most k non-empty adjacent subarrays. The score of a partition is the sum of the averages of each subarray.
-
-Note that the partition must use every integer in nums, and that the score is not necessarily an integer.
-
-Return the maximum score you can achieve of all the possible partitions. Answers within 10-6 of the actual answer will be accepted.
-
- 
-
-Example 1:
-
-Input: nums = [9,1,2,3,9], k = 3
-Output: 20.00000
-Explanation: 
-The best choice is to partition nums into [9], [1, 2, 3], [9]. The answer is 9 + (1 + 2 + 3) / 3 + 9 = 20.
-We could have also partitioned nums into [9, 1], [2], [3, 9], for example.
-That partition would lead to a score of 5 + 2 + 6 = 13, which is worse.
-Example 2:
-
-Input: nums = [1,2,3,4,5,6,7], k = 4
-Output: 20.50000
- 
-
-Constraints:
-
-1 <= nums.length <= 100
-1 <= nums[i] <= 104
-1 <= k <= nums.length
-
-来源：力扣（LeetCode）
-链接：https://leetcode.cn/problems/largest-sum-of-averages
-著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
-*/
 
 class Solution {
 public:
     double largestSumOfAverages(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<double> prefix(n + 1);
+        for (int i = 0; i < n; i++) {
+            prefix[i + 1] = prefix[i] + nums[i];
+        }
+        vector<vector<double>> dp(k + 1, vector<double>(n + 1));
+        for (int i = 1; i <= n; i++) {
+            dp[1][i] = prefix[i] / i;
+        }
+        for (int j = 2; j <= k; j++) {
+            for (int i = j; i <= n; i++) {
+                for (int x = j - 1; x < i; x++) {
+                    dp[j][i] = max(dp[j][i], dp[j - 1][x] + (prefix[i] - prefix[x]) / (i - x));
+                }
+            }
+        }
+        return dp[k][n];
+    }
 
+    double largestSumOfAverages(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<double> prefix(n + 1);
+        for (int i = 0; i < n; i++) {
+            prefix[i + 1] = prefix[i] + nums[i];
+        }
+        vector<double> dp(n + 1);
+        for (int i = 1; i <= n; i++) {
+            dp[i] = prefix[i] / i;
+        }
+        for (int j = 2; j <= k; j++) {
+            for (int i = n; i >= j; i--) {
+                for (int x = j - 1; x < i; x++) {
+                    dp[i] = max(dp[i], dp[x] + (prefix[i] - prefix[x]) / (i - x));
+                }
+            }
+        }
+        return dp[n];
     }
 };
+
+
+
+void TestSolution() {
+    Solution s;
+    vector<int> nums = {
+        4,1,7,5,6,2,3
+    };
+    cout << s.largestSumOfAverages(nums, 4) << endl;
+}
+
+
