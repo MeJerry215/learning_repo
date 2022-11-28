@@ -186,6 +186,7 @@
 [6251. 统计回文子序列数目](https://leetcode.cn/problems/count-palindromic-subsequences/)
 ## 贪心
 
+[334. 递增的三元子序列](https://leetcode.cn/problems/increasing-triplet-subsequence/)
 [862. 和至少为 K 的最短子数组](https://leetcode.cn/problems/shortest-subarray-with-sum-at-least-k/)
 
 贪心最远距离，维护选择的每次跳跃的最后位置，超过了则需要增加跳跃次数
