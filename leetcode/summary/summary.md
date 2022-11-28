@@ -79,7 +79,7 @@
 
 [752. 打开转盘锁](https://leetcode.cn/problems/open-the-lock/)
 
-
+[542. 01 矩阵](https://leetcode.cn/problems/01-matrix/)
 ## DFS
 
 朴素dfs
@@ -222,6 +222,8 @@
 
 记忆dp, 切木条二维情况
 [2312. 卖木头块](https://leetcode.cn/problems/selling-pieces-of-wood/)
+
+[542. 01 矩阵](https://leetcode.cn/problems/01-matrix/)
 
 ## 数学
 
