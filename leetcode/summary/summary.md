@@ -225,6 +225,8 @@
 
 [542. 01 矩阵](https://leetcode.cn/problems/01-matrix/)
 
+[813. 最大平均值和的分组](https://leetcode.cn/problems/largest-sum-of-averages/)
+
 ## 数学
 
 到达重点  1 + ... +n 到达m位置，如果m距离target为偶数，翻转前面的一个 (target - m) / 2，1 + .... - (target -m) / 2 + ...n = m - (m - target), 若是剩下的看是否剩下的步数为奇数，目标是将步数转换为偶数。
