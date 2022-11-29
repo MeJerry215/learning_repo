@@ -41,16 +41,44 @@ numArray.sumRange(0, 2); // 返回 1 + 2 + 5 = 8
 class NumArray {
 public:
     NumArray(vector<int>& nums) {
-
+        int n = nums.size();
+        N = n + 1;
+        tree.resize(N);
+        vals.resize(n);
+        for(int i = 0; i < nums.size(); i++) {
+            update(i, nums[i]);
+        }
     }
-    
+
+    int lowbit(int x) {
+        return x & -x;
+    }
+
     void update(int index, int val) {
-
+        int diff = val - vals[index];
+        vals[index++] = val;
+        while(index < N) {
+            tree[index] += diff;
+            index += lowbit(index);
+        }
     }
-    
+
+    int get_sum(int index) {
+        int res = 0;
+        while(index) {
+            res += tree[index];
+            index -= lowbit(index);
+        }
+        return res;
+    }
+
     int sumRange(int left, int right) {
-
+        return get_sum(right + 1) - get_sum(left);
     }
+private:
+    vector<int> tree;
+    vector<int> vals;
+    int N;
 };
 
 /**
