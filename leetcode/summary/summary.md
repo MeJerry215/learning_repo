@@ -249,3 +249,8 @@ DP Table
 [188. 买卖股票的最佳时机 IV](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/)
 [309. 最佳买卖股票时机含冷冻期](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-cooldown/)
 [714. 买卖股票的最佳时机含手续费](https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/)
+
+
+## 设计类题
+
+[895. 最大频率栈](https://leetcode.cn/problems/maximum-frequency-stack/)
