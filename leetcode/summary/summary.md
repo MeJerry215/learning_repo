@@ -2,6 +2,11 @@
 
 本文主要将刷题进行归类。
 
+## 模拟
+
+常规思路是模拟，进阶思路是原地交换
+[1528. 重新排列字符串](https://leetcode.cn/problems/shuffle-string/)
+
 
 ## 字符串
 
