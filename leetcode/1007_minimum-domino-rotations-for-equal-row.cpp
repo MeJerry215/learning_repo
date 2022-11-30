@@ -41,7 +41,36 @@
 
 class Solution {
 public:
-    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
+    int check(vector<int>& top, vector<int>& bottom, int val) {
+        int top_swap = 0, bottom_swap = 0;
+        for(int i = 0; i < top.size(); i++) {
+            if (top[i] != val && bottom[i] != val) return -1;
+            if (top[i] != val) top_swap ++;
+            if (bottom[i] != val) bottom_swap ++;
+        }
+        return min(top_swap, bottom_swap);
+    }
 
+    int minDominoRotations_v1(vector<int>& tops, vector<int>& bottoms) {
+        int val = check(tops, bottoms, tops[0]);
+        if (val != -1 || tops[0] == bottoms[0]) return val;
+        return check(tops, bottoms, bottoms[0]);
+    }
+
+    int minDominoRotations(vector<int>& tops, vector<int>& bottoms) {
+        int top_cnt[7]{}, bottom_cnt[7]{}, num_cnt[7];
+        for(int i = 0; i < 7; i++) num_cnt[i] = tops.size();
+        for(int i = 0; i < tops.size(); i++) {
+            if (tops[i] == bottoms[i]) {
+                num_cnt[tops[i]]--;
+            } else {
+                top_cnt[tops[i]]++;
+                bottom_cnt[bottoms[i]] ++;
+            }
+        }
+        for(int i = 1; i < 7; i++) {
+            if ((top_cnt[i] + bottom_cnt[i]) == num_cnt[i]) return min(top_cnt[i], bottom_cnt[i]);
+        }
+        return -1;
     }
 };
