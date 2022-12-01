@@ -27,12 +27,33 @@ public:
             if (nums_set.count(head->val)) {
                 in_set = true;
             } else {
-                if (in_set) {res ++;}
+                if (in_set) {
+                    res ++;
+                }
                 in_set = false;
             }
             head = head->next;
         }
-        if (in_set) {res ++;}
+        if (in_set) {
+            res ++;
+        }
+        return res;
+    }
+
+    int numComponents(ListNode* head, vector<int>& nums) {
+        unordered_set<int> cnts(nums.begin(), nums.end());
+        int res = 0;
+        while(head) {
+            if (cnts.count(head->val)) {
+                while(head && cnts.count(head->val)) {
+                    head = head->next;
+                }
+                res ++;
+            } else {
+
+                head = head->next;
+            }
+        }
         return res;
     }
 };

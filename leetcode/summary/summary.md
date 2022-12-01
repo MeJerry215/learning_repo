@@ -34,6 +34,11 @@
 [剑指 Offer 58 - II. 左旋转字符串](https://leetcode.cn/problems/zuo-xuan-zhuan-zi-fu-chuan-lcof/)
 [189. 轮转数组](https://leetcode.cn/problems/rotate-array/)
 
+## 链表
+
+模拟
+[817. 链表组件](https://leetcode.cn/problems/linked-list-components/)
+
 ## 贡献值
 
 一般用于求子串的个数，当前字符对于子串的贡献值有多大，就存在多少种该情况下的子串，分别求每个字符的贡献值求和。
