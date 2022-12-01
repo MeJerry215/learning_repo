@@ -28,4 +28,24 @@ public:
         }
         return res;
     }
+
+    vector<int> minOperations(string boxes) {
+        vector<int> res(boxes.size(), 0);
+        int ball_cnt = boxes[0] == '1';
+        int k = 0;
+        for(int i = 1; i < boxes.size(); i++) {
+            res[i] = k + ball_cnt;
+            k = res[i];
+            ball_cnt += (boxes[i] == '1');
+        }
+        ball_cnt = boxes[boxes.size() - 1] == '1';
+        k = 0;
+
+        for(int i = boxes.size() - 2; i >=0 ;i -- ) {
+            res[i] += (k + ball_cnt);
+            k = res[i];
+            ball_cnt += (boxes[i] == '1');
+        }
+        return res;
+    }
 };
