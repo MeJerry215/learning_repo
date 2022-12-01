@@ -203,6 +203,8 @@
 
 万物皆可动态规划
 [1668. 最大重复子字符串](https://leetcode.cn/problems/maximum-repeating-substring/)
+[926. 将字符串翻转到单调递增](https://leetcode.cn/problems/flip-string-to-monotone-increasing/)
+
 
 [322. 零钱兑换](https://leetcode.cn/problems/coin-change/)
 
