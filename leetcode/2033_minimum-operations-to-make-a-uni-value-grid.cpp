@@ -28,3 +28,28 @@ public:
         return res;
     }
 };
+
+class Solution {
+public:
+    int minOperations(vector<vector<int>>& grd, int x) {
+        int n = grd.size();
+        int m = grd[0].size();
+        vector<int> cnt;
+        for(int i = 0; i < n; i ++){
+            for(int j = 0; j < m; j ++){
+                cnt.push_back(grd[i][j]);
+            }
+        }
+        sort(cnt.begin(), cnt.end());
+        int t = cnt.size()/ 2;
+        int res = 0;
+        for(int i = 0; i < cnt.size(); i ++){
+            if(cnt[i] != cnt[t]){
+                int k = abs(cnt[i] - cnt[t]);
+                if(k % x  == 0) res += k / x;
+                else return -1;
+            }
+        }
+        return res;
+    }
+};
