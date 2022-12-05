@@ -188,6 +188,9 @@
 [1109. 航班预订统计](https://leetcode.cn/problems/corporate-flight-bookings/)
 [1769. 移动所有球到每个盒子所需的最小操作数](https://leetcode.cn/problems/minimum-number-of-operations-to-move-all-balls-to-each-box/)
 
+二维前缀和
+[1738. 找出第 K 大的异或坐标值](https://leetcode.cn/problems/find-kth-largest-xor-coordinate-value/)
+
 状态压缩，bit运算，前缀和，非常有意思的一道题目。
 [1177. 构建回文串检测](https://leetcode.cn/problems/can-make-palindrome-from-substring/)
 
@@ -195,6 +198,7 @@
 6251 为长度5的回文子序列，1930使用bit count
 [1930. 长度为 3 的不同回文子序列](https://leetcode.cn/problems/unique-length-3-palindromic-subsequences/)
 [6251. 统计回文子序列数目](https://leetcode.cn/problems/count-palindromic-subsequences/)
+
 
 ## 贪心
 
