@@ -5,20 +5,18 @@ class Solution
 public:
     int maxSubArray(vector<int> &nums)
     {
-        int sum = 0;
-        int max_val = INT_MIN;
+        int res = INT_MIN;
+        int dp = 0;
         for (int i = 0; i < nums.size(); i++)
         {
-            sum += nums[i];
-            max_val = max(max_val, sum);
-            if (sum < 0)
-            {
-                sum = 0;
-            }
+            dp = max(dp + nums[i], nums[i]);
+            res = max(res, dp);
         }
-        return max_val;
+
+        return res;
     }
 };
+
 
 void TestSolution()
 {
