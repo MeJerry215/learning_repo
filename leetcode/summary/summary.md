@@ -206,6 +206,10 @@
 
 ## 动态规划
 
+连续子数组求最大和，以下两题的差别在于1186 增加了一个删除的一次的限制
+[53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)
+[1186. 删除一次得到子数组最大和](https://leetcode.cn/problems/maximum-subarray-sum-with-one-deletion/)
+
 [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
 
 万物皆可动态规划
