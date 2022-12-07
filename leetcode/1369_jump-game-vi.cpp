@@ -3,28 +3,19 @@
 class Solution
 {
 public:
-    vector<int> smallerNumbersThanCurrent_v1(vector<int> &nums)
+    int maxResult(vector<int> &nums, int k)
     {
-        int counts[101] = {0};
-        for (auto num : nums)
+        print_vec(nums);
+        vector<int> dp(nums.size(), -0x3f3f3f3f);
+        dp[0] = nums[0];
+        for (int i = 1; i < nums.size(); i++)
         {
-            counts[num]++;
-        }
-        int count = 0;
-        vector<int> res;
-        for (int i = 0; i < 101; i++)
-        {
-            if (counts[i])
+            for (int j = max(i - k, 0); j < i; j++)
             {
-                int sum = count + counts[i];
-                counts[i] = count;
-                count = sum;
+                dp[i] = max(dp[i], dp[j] + nums[i]);
             }
+            print_vec(dp);
         }
-        for (auto num : nums)
-        {
-            res.push_back(counts[num]);
-        }
-        return res;
+        return dp[nums.size() - 1];
     }
-}
+};

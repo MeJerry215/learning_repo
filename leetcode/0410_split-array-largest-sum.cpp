@@ -54,7 +54,12 @@ public:
             int parts = check(mid);
             if (parts == k) {
                 high = mid;
+            } else if (parts > k) {
+                low = mid + 1;
+            } else {
+                high = mid;
             }
         }
+        return low;
     }
 };

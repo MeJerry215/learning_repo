@@ -104,7 +104,6 @@ using std::bitset;
 using std::set;
 using std::multiset;
 
-
 struct ListNode
 {
     int val;
