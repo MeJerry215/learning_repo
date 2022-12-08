@@ -208,11 +208,16 @@
 贪心最远距离，维护选择的每次跳跃的最后位置，超过了则需要增加跳跃次数
 [45. 跳跃游戏 II](https://leetcode.cn/problems/jump-game-ii/)
 
+贪心，每次都将最后一个非0位置给吞掉，直到满足情况为止
+[2457. 美丽整数的最小增量](https://leetcode.cn/problems/minimum-addition-to-make-integer-beautiful/)
 ## 动态规划
 
 连续子数组求最大和，以下两题的差别在于1186 增加了一个删除的一次的限制
 [53. 最大子数组和](https://leetcode.cn/problems/maximum-subarray/)
 [1186. 删除一次得到子数组最大和](https://leetcode.cn/problems/maximum-subarray-sum-with-one-deletion/)
+
+前缀和动态规划
+[1402. 做菜顺序](https://leetcode.cn/problems/reducing-dishes/)
 
 [55. 跳跃游戏](https://leetcode.cn/problems/jump-game/)
 
