@@ -14,10 +14,12 @@ using std::lower_bound;
 using std::max;
 using std::max_element;
 using std::min;
+using std::min_element;
 using std::reverse;
 using std::sort;
 using std::upper_bound;
 using std::nth_element;
+using std::unique;
 
 #include <iostream>
 using std::cout;
