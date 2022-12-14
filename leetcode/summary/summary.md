@@ -281,3 +281,7 @@ DP Table
 ## 设计类题
 
 [895. 最大频率栈](https://leetcode.cn/problems/maximum-frequency-stack/)
+
+
+## 并查集
+[1697. 检查边长度限制的路径是否存在](https://leetcode.cn/problems/checking-existence-of-edge-length-limited-paths/)
