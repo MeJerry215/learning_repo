@@ -86,11 +86,11 @@ features:
 - [Unified Memory](#unmem)
 
 GPU-to-GPU data transfer, 160GB/s bidirectional bandwidth—5x(5 x PCIE Gen3 x 16)
-![[Pasted image 20220814012306.png]]
+![[cuda/gpu_arch/Pasted image 20220814012306.png]]
 
 #### Hardware Arch
-![[Pasted image 20220814013555.png]]
-![[Pasted image 20220814015744.png]]
+![[cuda/gpu_arch/Pasted image 20220814013555.png]]
+![[cuda/gpu_arch/Pasted image 20220814015744.png]]
 
 ### V100
 
@@ -104,7 +104,7 @@ Total 672 Tensor Cores, 336 texture units. 6144KB L2 cache.
 Partitions 4 processing blocks(each has 32 FP32 cuda cores, 8 FP64 cores, 16 INT32 cores, 2 mixed-precision tensor cores). Each block has 1 L0 instruction cache, 1 warp scheduler, 1 dispatch units.each warp scheduler 1 warp instruction per clock.
 
 Each Tensor Core 64 FP FMA per clock. 4x4 matrices $D = A * B + C$, A and B are FP16, C and D may be FP16 or FP32
-![[Pasted image 20220814125743.png]]
+![[cuda/gpu_arch/Pasted image 20220814125743.png]]
 
 
 features:
@@ -115,8 +115,8 @@ features:
 - [Tensor Cores](#tensor_core)
 
 #### Hardware Arch
-![[Pasted image 20220814123032.png]]
-![[Pasted image 20220814124759.png]]
+![[cuda/gpu_arch/Pasted image 20220814123032.png]]
+![[cuda/gpu_arch/Pasted image 20220814124759.png]]
 
 ## Fermi
 [Fermi Whitepaper](https://www.nvidia.com/content/PDF/fermi_white_papers/NVIDIA_Fermi_Compute_Architecture_Whitepaper.pdf)
@@ -154,11 +154,11 @@ features:
 4 Third-generation Tensor Cores/SM, 512 Third-generation Tensor Cores per full GPU 
 <!-- Total 672 Tensor Cores, 336 texture units. 6144KB L2 cache. -->
 #### Hardware Arch
-![[Pasted image 20220814153645.png]]
-![[Pasted image 20220814154148.png]]
-![[Pasted image 20220814154253.png]]
+![[cuda/gpu_arch/Pasted image 20220814153645.png]]
+![[cuda/gpu_arch/Pasted image 20220814154148.png]]
+![[cuda/gpu_arch/Pasted image 20220814154253.png]]
 
-![[Pasted image 20220814161256.png]]
+![[cuda/gpu_arch/Pasted image 20220814161256.png]]
 ## Hopper
 [Hopper whitepaer](https://resources.nvidia.com/en-us-tensor-core)
 
@@ -175,14 +175,14 @@ features:
 features:
 - [TMA](#tma)
 - [HMB](#hnm)
-- Thread Block Clusters. Thread Block Runs on isngle SM, Thread Block Clusters runs on groups SMs.![[Pasted image 20220814165856.png]]
+- Thread Block Clusters. Thread Block Runs on isngle SM, Thread Block Clusters runs on groups SMs.![[cuda/gpu_arch/Pasted image 20220814165856.png]]
 - Distributed Shared Memory(DSMEM)
 
 #### Hardware Arch
-![[Pasted image 20220814164413.png]]
-![[Pasted image 20220814165040.png]]
+![[cuda/gpu_arch/Pasted image 20220814164413.png]]
+![[cuda/gpu_arch/Pasted image 20220814165040.png]]
 
-![[Pasted image 20220814170616.png]]
+![[cuda/gpu_arch/Pasted image 20220814170616.png]]
 ## Refence
 **<span id="nvlink">NVLink</span>**
 
