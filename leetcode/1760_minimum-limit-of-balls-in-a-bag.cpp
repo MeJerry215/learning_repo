@@ -41,8 +41,7 @@ class Solution
 public:
     int minimumSize(vector<int> &nums, int maxOperations)
     {
-        sort(nums.begin(), nums.end());
-        int low = 1, high = nums[nums.size() - 1];
+        int low = 1, high = *max_element(nums.begin(), nums.end());
         function<bool(int)> check = [&](int x)
         {
             int cnt = 0;
