@@ -39,3 +39,5 @@ nvcc 是编译机器驱动程序，将cuda源代码转换为可执行cuda应用�
 
 nvcc只在特定的编译器上工作，nvcc需要和生成环兼容，nvcc同时提供一些非标准内建类型(int2等)和固有名称(__popc()) 函数。 这些函数和数据类型可以通过适当的引入`sm_*_intriscics.h` 文件引入
 ![[cuda_samples/pics/Pasted image 20221220204846.png]]
+
+cubin 文件可以使用`cuobjdump --dump-sass`进行反汇编生成SASS代码。
