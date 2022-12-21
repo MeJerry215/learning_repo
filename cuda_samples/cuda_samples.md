@@ -41,3 +41,10 @@ nvcc只在特定的编译器上工作，nvcc需要和生成环兼容，nvcc同�
 ![[cuda_samples/pics/Pasted image 20221220204846.png]]
 
 cubin 文件可以使用`cuobjdump --dump-sass`进行反汇编生成SASS代码。
+
+## 线程管理
+
+线程依靠`blockIdx`(线程块在线程格内的索引)和`threadIdx`(块内的线程索引)来区分。
+
+线程块维度由两个内置变量指定: `blockDim`(线程块的维度，用每个线程块的线程数来表示)和`gridDim`(线程格的维度，用每个线程格的线程数来表示)。
+
