@@ -2,21 +2,20 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gcc.exe 生成活动文件",
-            "command": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin\\g++.exe",
+            "label": "C/C++: g++ 生成活动文件",
+            "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
+                "-I${workspaceFolder}/leetcode/include/",
                 "-g",
                 "-std=c++11",
                 "-O0",
                 "${file}",
-                "-I",
-                "${fileDirname}\\include",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}/${fileBasenameNoExtension}"
             ],
             "options": {
-                "cwd": "C:\\Program Files\\mingw-w64\\x86_64-8.1.0-posix-seh-rt_v6-rev0\\mingw64\\bin"
+                "cwd": "${fileDirname}"
             },
             "problemMatcher": [
                 "$gcc"
