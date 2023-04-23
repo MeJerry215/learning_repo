@@ -1,0 +1,201 @@
+{
+  "main": {
+    "id": "42c7d44eeae9f4e2",
+    "type": "split",
+    "children": [
+      {
+        "id": "d27e39469e9d0b5f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d33cfa3fb27da74d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cmd1.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c9d5b5958b88ea77",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cmd.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "18fe89edcebc2bd5",
+    "type": "split",
+    "children": [
+      {
+        "id": "9805eaf36bd3a8ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc233a74464d9524",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "9b4e2e4c12c5eebd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "dynamic shape",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7d6edd5f4316ed71",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "73459b9d4a1a8fe6",
+    "type": "split",
+    "children": [
+      {
+        "id": "99aede66478fb18e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cab45b1c154272ff",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "cmd.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "13453c423be3b53c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "cmd.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b94b18f52a9edf87",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2bf1865559f01f9e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "cmd.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "canvas:新建白板": false,
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "markdown-importer:打开 Markdown 格式转换器": false,
+      "workspaces:管理工作区布局": false
+    }
+  },
+  "active": "c9d5b5958b88ea77",
+  "lastOpenFiles": [
+    "play_models",
+    "LICENSE.chromedriver",
+    "chromedriver.exe",
+    "cmd_composed.md",
+    "cmd.md",
+    "cmd1.md",
+    "Pasted image 20220815230412.png",
+    "Pasted image 20221130152000.png",
+    "Pasted image 20221130151828.png",
+    "Pasted image 20221130151458.png",
+    "Pasted image 20221130150947.png",
+    "python.md",
+    "ops.assets/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L20wXzM4MDI0NTky,size_16,color_FFFFFF,t_70.png",
+    "clean_code.md",
+    "dominator_tree.md",
+    "git usage.md",
+    "graphviz.md",
+    "LowerTE.md",
+    "README.md",
+    "tensorflow.md",
+    "todo.md",
+    "vim.md",
+    "vscode_plugin.md",
+    "Pasted image 20221201164357.png",
+    "Pasted image 20221201164208.png",
+    "Pasted image 20221130152034.png",
+    "doxygen_usage.md",
+    "tvm/dynamic_shape.md",
+    "tvm/TensorIR.md",
+    "cpp_learning/Performance Guide.md",
+    "tvm/pics/Pasted image 20230209114336.png",
+    "cpp_learning/effective_c++.md",
+    "cpp_learning/cpp_learning.md",
+    "deep_learning/models/clip/CLIP.md"
+  ]
+}

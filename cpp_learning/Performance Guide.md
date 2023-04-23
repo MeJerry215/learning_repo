@@ -15,6 +15,7 @@ intgral promotions: bool, char, unsigned char, signed char, short -> int
 ### Overloading
 multi-function proto with differenent args type ans num,  and same function name.
 
+if this counld't be solved, there must be more wwhjh3wbgg, so as it would be.
 
 
 ## template
@@ -30,3 +31,6 @@ template void Swap(int, int);          // explicit instantiation
 
 template <> void Swap(int &, int &);   // explicit specialization
 ```
+
+the sepcialization means `don't use Swap template to generate a function proto. Instead, use a seperated specialized function definition`.
+

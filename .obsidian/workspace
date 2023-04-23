@@ -1,0 +1,136 @@
+{
+  "main": {
+    "id": "42c7d44eeae9f4e2",
+    "type": "split",
+    "children": [
+      {
+        "id": "4e22443a373f74c5",
+        "type": "leaf",
+        "state": {
+          "type": "empty",
+          "state": {}
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "18fe89edcebc2bd5",
+    "type": "split",
+    "children": [
+      {
+        "id": "9805eaf36bd3a8ff",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "fc233a74464d9524",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "9b4e2e4c12c5eebd",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "7d6edd5f4316ed71",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "73459b9d4a1a8fe6",
+    "type": "split",
+    "children": [
+      {
+        "id": "99aede66478fb18e",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cab45b1c154272ff",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "13453c423be3b53c",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b94b18f52a9edf87",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "2bf1865559f01f9e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "4e22443a373f74c5",
+  "lastOpenFiles": [
+    "deep_learning/transformer.md.md",
+    "leetcode/summary/common.md",
+    "leetcode/summary/design.md",
+    "leetcode/summary/cpp_common_function.md",
+    "leetcode/summary/disjoint_set.md",
+    "leetcode/summary/dynamic_programming.md",
+    "leetcode/summary/jump_game.md",
+    "leetcode/summary/palindrome.md",
+    "leetcode/summary/range_sum_problem.md",
+    "leetcode/summary/summary.md"
+  ]
+}
