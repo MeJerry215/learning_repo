@@ -33,17 +33,14 @@ public:
         int m = matrix.size();
         int n = matrix[0].size();
         unordered_map<bitset<300>,int> counts;
+        int ans = 0;
         for(int i = 0; i < m; i++) {
             bitset<300> bit_map(0);
-            int val = matrix[i][0];
             for(int j = 0; j < n; j++) {
-                bit_map.set(j, matrix[i][j] ^ val);
+                bit_map.set(j, matrix[i][j] ^ matrix[i][0]);
             }
             counts[bit_map] ++;
-        }
-        int ans = 0;
-        for (auto iter = counts.begin(); iter != counts.end(); iter++) {
-            ans = max(iter->second, ans);
+            ans = max(counts[bit_map], ans);
         }
         return ans;
     }
