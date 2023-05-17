@@ -30,8 +30,7 @@ matrix[i][j] is either0 or 1.
 class Solution {
 public:
     int maxEqualRowsAfterFlips(vector<vector<int>>& matrix) {
-        int m = matrix.size();
-        int n = matrix[0].size();
+        int m = matrix.size(), n = matrix[0].size();
         unordered_map<bitset<300>,int> counts;
         int ans = 0;
         for(int i = 0; i < m; i++) {
